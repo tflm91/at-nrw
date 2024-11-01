@@ -54,7 +54,8 @@ function show_detailed_product_information($wpdb, $product_id) {
     } else {
         $output .= "<p>Dieses Produkt wurde nicht gefunden. </p>\n";
     }
-    $output .= "<a href='..'>Zurück zur Übersicht</a>\n";
+    $back_url = site_url('/hilfsmittel');
+    $output .= "<a href='". $back_url ."'>Zurück zur Übersicht</a>\n";
     $output .= "</div>\n";
     return $output;
 }
