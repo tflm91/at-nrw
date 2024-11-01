@@ -15,8 +15,8 @@ function list_product_categories($connection_table_name, $impairment_id) {
     if ($categories) {
         $output .= "<ul>\n";
         foreach ($categories as $category) {
-            $category_url = "https://at-nrw.dobus.tu-dortmund.de/hilfsmittel#category-" . $category->id;
-            $output .= "<li><a href=" . $category_url . ">" . $category->name . "</a></li>\n";
+            $category_url = 'https://at-nrw.dobus.tu-dortmund.de/hilfsmittel' . '#category-' . $category->id;
+            $output .= "<li><a href='" . esc_url($category_url) . "'>" . esc_html($category->name) . "</a></li>\n";
         }
         $output .= "</ul>\n";
     } else {
