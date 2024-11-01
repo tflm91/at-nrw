@@ -43,6 +43,31 @@ function list_categories($wpdb) {
     return $output;
 }
 
+/* list universities which offer the specified product */
+function list_universities_with_product($wpdb, $product_id) {
+    $connection_table_name = AVAILABILITY_TABLE;
+    $university_table_name = UNIVERSITY_TABLE;
+
+    $stmt = "SELECT $university_table_name.id AS id, $university_table_name.name AS name FROM $connection_table_name"
+        . " INNER JOIN $university_table_name ON $connection_table_name.universityId = $university_table_name.id"
+        . " WHERE $connection_table_name.productId = %d";
+    $universities = $wpdb->get_results($wpdb->prepare($stmt, $product_id));
+
+    $output = "<div>\n";
+    if ($universities) {
+        $output .= "<p>Folgende Hochschulen in Nordrhein-Westfalen bieten dieses Hilfsmittel an: </p>\n";
+        $output .= "<ul>\n";
+        foreach ($universities as $university) {
+            $output .= "<li>" . $university->name . "</li>\n";
+        }
+        $output .= "</ul>\n";
+    } else {
+        $output .= "<p>Dieses Hilfsmittel wird in NRW leider von keiner Hochschule angeboten. </p>\n";
+    }
+    $output .= "</div>\n";
+    return $output;
+}
+
 /* show detailed information about a specified product */
 function show_detailed_product_information($wpdb, $product_id) {
     $product_table_name = PRODUCT_TABLE;
@@ -52,6 +77,8 @@ function show_detailed_product_information($wpdb, $product_id) {
     $output = "<div>\n";
     if ($product) {
        $output .= "<h2>" . esc_html($product->name) . "</h2>\n";
+       $output .= '<a href="' . esc_url($product->manufacturerURL) . '" target="_blank">' . esc_html($product->manufacturerAlt) . '</a>';
+       $output .= list_universities_with_product($wpdb, $product_id);
     } else {
         $output .= "<p>Dieses Produkt wurde nicht gefunden. </p>\n";
     }
