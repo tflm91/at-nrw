@@ -3,7 +3,8 @@
  * Add custom query variables
  */
 function custom_query_vars($vars) {
-    $vars[] = ['disability_id','product_id'];
+    $vars[] = 'disability_id';
+    $vars[] = 'product_id';
     return $vars;
 }
 add_filter('query_vars', 'custom_query_vars');
