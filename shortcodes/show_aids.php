@@ -15,7 +15,7 @@ function list_products($wpdb, $category_id) {
     if ($products) {
         $output .= "<ul>\n";
         foreach ($products as $product) {
-            $details_url = siteurl('/hilfsmittel/' . $product->id);
+            $details_url = site_url('/hilfsmittel/' . $product->id);
             $output .= '<li><a href="' . $details_url . '">' . esc_html($product->name) . '</a></li>';
         }
         $output .= "</ul>\n";
