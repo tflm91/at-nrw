@@ -15,7 +15,8 @@ function list_product_categories($connection_table_name, $impairment_id) {
     if ($categories) {
         $output .= "<ul>\n";
         foreach ($categories as $category) {
-            $output .= "<li>" . esc_html($category->name) . "</li>\n";
+            $category_url = site_url("/hilfsmittel#category-" . $category->id);
+            $output .= "<li><a href=" . $category_url . ">" . $category->name . "</a></li>\n";
         }
         $output .= "</ul>\n";
     } else {
