@@ -9,7 +9,7 @@ require_once get_stylesheet_directory() . "/table-names.php";
 require_once get_stylesheet_directory() . "/inc/product_category.php";
 
 /* show detailed information about a specific disability */
-function show_detailed_information ($disability_id) {
+function show_detailed_disability_information ($disability_id) {
     global $wpdb;
     $disability_table_name = DISABILITY_TABLE;
 
@@ -81,7 +81,7 @@ function show_disabilities() {
 
     // If a specific disability ID is present, show detailed information about that disability
     if ($disability_id) {
-        return show_detailed_information($disability_id);
+        return show_detailed_disability_information($disability_id);
     }
 
     return list_disability_categories();

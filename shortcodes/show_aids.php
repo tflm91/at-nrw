@@ -15,7 +15,7 @@ function list_products($wpdb, $category_id) {
     if ($products) {
         $output .= "<ul>\n";
         foreach ($products as $product) {
-            $output .= "<li>" . $product->name . "</li>\n";
+            $output .= "<li>" . esc_html($product->name) . "</li>\n";
         }
         $output .= "</ul>\n";
     } else {
@@ -42,9 +42,30 @@ function list_categories($wpdb) {
     return $output;
 }
 
+/* show detailed information about a specified product */
+function show_detailed_product_information($wpdb, $product_id) {
+    $product_table_name = PRODUCT_TABLE;
+    $stmt = "SELECT * FROM $product_table_name WHERE id = %d";
+    $product = $wpdb->get_row($wpdb->prepare($stmt, $product_id));
+
+    $output = "<div>\n";
+    if ($product) {
+       $output .= "<h2>" . esc_html($product->name) . "</h2>\n";
+    } else {
+        $output .= "<p>Dieses Produkt wurde nicht gefunden. </p>\n";
+    }
+    $output .= '<a href="..">Zurück zur Übersicht</a>\n';
+    $output .= "</div>\n";
+    return $output;
+}
+
 /* the shortcode for displaying the assistive technologies */
 function show_aids() {
     global $wpdb;
+    $product_id = get_query_var('product_id');
+    if($product_id) {
+        return show_detailed_product_information($wpdb, $product_id);
+    } 
     return list_categories($wpdb);
 }
 
