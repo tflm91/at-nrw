@@ -17,7 +17,7 @@ function show_aids() {
 
             $stmt = "SELECT $product_table_name.id AS id, $product_table_name.name AS name FROM $connection_table_name"
                 . " INNER JOIN $product_table_name ON $connection_table_name.productId = $product_table_name.id"
-                . "WHERE $connection_table_name.categoryId = %d";
+                . " WHERE $connection_table_name.categoryId = %d";
 
             $products = $wpdb->get_results($wpdb->prepare($stmt, $category->id));
 
