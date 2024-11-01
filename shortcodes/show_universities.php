@@ -1,5 +1,6 @@
 <?php
 require_once get_stylesheet_directory() . "/table-names.php";
+require_once get_stylesheet_directory() . "/inc/university.php";
 
 /* list all universities in NRW */
 function list_universities($wpdb) {
@@ -10,6 +11,7 @@ function list_universities($wpdb) {
     if ($universities) {
         foreach ($universities as $university) {
             $output .= "<h2>" . $university->name . "</h2>\n";
+            $output .= show_university_information($university);
         }
     } else {
         $output .= "<h2>Keine Universitäten gefunden</h2>\n";
