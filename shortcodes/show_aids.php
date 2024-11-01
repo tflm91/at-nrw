@@ -54,7 +54,7 @@ function show_detailed_product_information($wpdb, $product_id) {
     } else {
         $output .= "<p>Dieses Produkt wurde nicht gefunden. </p>\n";
     }
-    $output .= '<a href="..">Zurück zur Übersicht</a>\n';
+    $output .= "<a href='..'>Zurück zur Übersicht</a>\n";
     $output .= "</div>\n";
     return $output;
 }
@@ -65,7 +65,7 @@ function show_aids() {
     $product_id = get_query_var('product_id');
     if($product_id) {
         return show_detailed_product_information($wpdb, $product_id);
-    } 
+    }
     return list_categories($wpdb);
 }
 
