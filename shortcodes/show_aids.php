@@ -10,7 +10,7 @@ function show_aids() {
     if ($disability_categories) {
         foreach ($disability_categories as $category) {
             $heading_id = $category->id;
-            $output .= "<h2 id='category-" . $heading_id . "'> . $category->name . </h2>\n";
+            $output .= "<h2 id='category-" . $heading_id . "'>" . esc_html($category->name) . "</h2>\n";
         }
     } else {
         $output .= "<p>Keine Hilfsmittel vorhanden</p>\n";
