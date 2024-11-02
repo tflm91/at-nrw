@@ -10,18 +10,13 @@ function list_universities($wpdb) {
     if ($universities) {
         foreach ($universities as $university) {
             $output .= show_university_information($university);
+            $output .= "<a href='" . site_url("/hochschulen/" . esc_url($university->id)) . "'>Verfügbare Hilfsmittel anzeigen</a>\n";
         }
     } else {
         $output .= "<h2>Keine Universitäten gefunden</h2>\n";
     }
     $output .= "</div>\n";
     return $output;
-}
-
-/* the shortcodes for displaying the universities */
-function show_universities() {
-    global $wpdb;
-    return list_universities($wpdb);
 }
 
 /* show detailed information about the given university */
@@ -33,6 +28,59 @@ function show_university_information($university) {
     $output .= "<p><b>Arbeitsräume: </b>" . esc_html($university->workspaces) . "</p>\n";
     return $output;
 }
+
+function list_available_products($wpdb, $university_id) {
+    $connection_table_name = AVAILABILITY_TABLE;
+    $product_table = PRODUCT_TABLE;
+    $stmt = "SELECT $product_table.id AS id, $product_table.name AS name FROM $connection_table_name"
+        . " INNER JOIN $product_table ON $connection_table_name.product_id=$product_table.id"
+        . " WHERE $connection_table_name.universityId=%d";
+    $products = $wpdb->get_results($wpdb->prepare($stmt, $university_id));
+
+    $output = "<div>\n";
+    if ($products) {
+        $output .= "<p><b>Verfügbare Hilfsmittel:</b></p>\n";
+        $output .= "<ul>\n";
+        foreach ($products as $product) {
+            $output .= "<li><a href='". site_url("/hilfsmittel/" . esc_url($product->id)) . "'>" . esc_html($product->name) . "</a></li>";
+        }
+        $output .= "</ul>\n";
+    } else {
+        $output .= "<p>Diese Hochschule bietet leider keine Hilfsmittel an. </p>\n";
+    }
+    $output .= "</div>\n";
+    return $output;
+}
+
+function show_university_details_page($wpdb, $university_id) {
+    $university_table_name = UNIVERSITY_TABLE;
+
+    $stmt = "SELECT * FROM $university_table_name WHERE id = %d";
+    $university = $wpdb->get_row($wpdb->prepare($stmt, $university_id));
+
+    $output = "<div>\n";
+    if ($university) {
+        $output .= show_university_information($university);
+        $output .= list_available_products($wpdb, $university_id);
+    } else {
+        $output .= "<p>Die Hochschule konnte nicht gefunden werden. </p>";
+    }
+
+    $output .= "<a href='" . site_url("/hochschulen") . "'>Zur Hochschulübersicht</a>\n";
+    $output .= "</div>\n";
+    return $output;
+}
+
+/* the shortcodes for displaying the universities */
+function show_universities() {
+    global $wpdb;
+    $university_id = get_query_var('university_id');
+    if ($university_id) {
+        return show_university_details_page($wpdb, $university_id);
+    }
+    return list_universities($wpdb);
+}
+
 
 add_shortcode("universities", "show_universities");
 ?>
