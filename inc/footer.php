@@ -18,7 +18,7 @@ function add_footer_info()
 {
     $copyright = '<span class="copyright">&copy; ' . date('Y') . ' zhb//DoBuS - Bereich Behinderung und Studium - Technische Universität Dortmund</span>';
     $all_rights_reserved = 'Alle Rechte vorbehalten';
-    $generate_press = 'Erstellt mit <a href="https://generatepress.com" target="_blank">GeneratePress</a>';
+    $generate_press = 'Erstellt mit <a href="https://generatepress.com">GeneratePress</a>';
     $imprint = '<a href="impressum">Impressum</a>';
     $privacy = '<a href="datenschutz">Datenschutzerklärung</a>';
     $terms_of_use = '<a href="nutzungsbedingungen">Nutzungsbedingungen</a>';
