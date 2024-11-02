@@ -10,7 +10,6 @@ function list_universities($wpdb) {
     $output = "<div>\n";
     if ($universities) {
         foreach ($universities as $university) {
-            $output .= "<h2>" . $university->name . "</h2>\n";
             $output .= show_university_information($university);
         }
     } else {
