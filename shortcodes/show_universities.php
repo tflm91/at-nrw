@@ -10,7 +10,7 @@ function list_universities($wpdb) {
     if ($universities) {
         foreach ($universities as $university) {
             $output .= show_university_information($university);
-            $output .= "<p><a href='" . site_url("/hochschulen/" . esc_html($university->id)) . "'>Verfügbare Hilfsmittel anzeigen</a></p>\n";
+            $output .= "<p><a href='" . site_url("/hochschulen/" . esc_attr($university->id)) . "'>Verfügbare Hilfsmittel anzeigen</a></p>\n";
         }
     } else {
         $output .= "<h2>Keine Universitäten gefunden</h2>\n";
@@ -42,7 +42,7 @@ function list_available_products($wpdb, $university_id) {
         $output .= "<p><b>Verfügbare Hilfsmittel:</b></p>\n";
         $output .= "<ul>\n";
         foreach ($products as $product) {
-            $output .= "<li><a href='". site_url("/hilfsmittel/" . esc_html($product->id)) . "'>" . esc_html($product->name) . "</a></li>";
+            $output .= "<li><a href='". site_url("/hilfsmittel/" . esc_attr($product->id)) . "'>" . esc_html($product->name) . "</a></li>";
         }
         $output .= "</ul>\n";
     } else {

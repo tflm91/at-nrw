@@ -15,7 +15,7 @@ function list_products($wpdb, $category_id) {
     if ($products) {
         $output .= "<ul>\n";
         foreach ($products as $product) {
-            $details_url = site_url('/hilfsmittel/' . $product->id);
+            $details_url = site_url('/hilfsmittel/' . esc_attr($product->id));
             $output .= '<li><a href="' . $details_url . '">' . esc_html($product->name) . '</a></li>';
         }
         $output .= "</ul>\n";
@@ -58,7 +58,7 @@ function list_universities_with_product($wpdb, $product_id) {
         $output .= "<p>Folgende Hochschulen in Nordrhein-Westfalen bieten dieses Hilfsmittel an: </p>\n";
         $output .= "<ul>\n";
         foreach ($universities as $university) {
-            $output .= "<li><a href='" . site_url("/hochschulen/" . esc_html($university->id)) ."'>" . esc_html($university->name) . "</li>\n";
+            $output .= "<li><a href='" . site_url("/hochschulen/" . esc_attr($university->id)) ."'>" . esc_html($university->name) . "</li>\n";
         }
         $output .= "</ul>\n";
     } else {

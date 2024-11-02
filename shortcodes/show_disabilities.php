@@ -45,7 +45,7 @@ function list_disabilities($category_id) {
     if ($disabilities) {
         $output .= "<ul>\n";
         foreach ($disabilities as $disability) {
-            $detail_url = site_url('/behinderungen/' . $disability->id);
+            $detail_url = site_url('/behinderungen/' . esc_attr($disability->id));
             $output .= "<li><a href='" . esc_url($detail_url) . "'>" . esc_html($disability->name) . "</a></li>\n";
         }
         $output .= "</ul>\n";
