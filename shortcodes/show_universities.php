@@ -1,6 +1,5 @@
 <?php
 require_once get_stylesheet_directory() . "/table-names.php";
-require_once get_stylesheet_directory() . "/inc/university.php";
 
 /* list all universities in NRW */
 function list_universities($wpdb) {
@@ -23,6 +22,16 @@ function list_universities($wpdb) {
 function show_universities() {
     global $wpdb;
     return list_universities($wpdb);
+}
+
+/* show detailed information about the given university */
+function show_university_information($university) {
+    $output = "<h2>" . esc_html($university->name) . "</h2>\n";
+    $output .= "<p><b>Kontaktinformationen zur Beratungsstelle für behinderte Studierende:</b><br />\n";
+    $output .= nl2br($university->contactInformation) . "</p>\n";
+    $output .= "<p><b>Link zur Beratungsstelle: </b><a href='" . esc_url($university->contactURL) . "'>". esc_html($university->contactAlt) . "</a></p>\n";
+    $output .= "<p><b>Arbeitsräume: </b>" . esc_html($university->workspaces) . "</p>\n";
+    return $output;
 }
 
 add_shortcode("universities", "show_universities");
