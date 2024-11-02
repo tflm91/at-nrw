@@ -58,7 +58,7 @@ function list_universities_with_product($wpdb, $product_id) {
         $output .= "<p>Folgende Hochschulen in Nordrhein-Westfalen bieten dieses Hilfsmittel an: </p>\n";
         $output .= "<ul>\n";
         foreach ($universities as $university) {
-            $output .= "<li><a href='" . site_url("/university/" . esc_html($university->id)) ."'>" . esc_html($university->name) . "</li>\n";
+            $output .= "<li><a href='" . site_url("/hochschulen/" . esc_html($university->id)) ."'>" . esc_html($university->name) . "</li>\n";
         }
         $output .= "</ul>\n";
     } else {
