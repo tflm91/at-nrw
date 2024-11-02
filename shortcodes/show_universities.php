@@ -33,7 +33,7 @@ function list_available_products($wpdb, $university_id) {
     $connection_table_name = AVAILABILITY_TABLE;
     $product_table = PRODUCT_TABLE;
     $stmt = "SELECT $product_table.id AS id, $product_table.name AS name FROM $connection_table_name"
-        . " INNER JOIN $product_table ON $connection_table_name.product_id=$product_table.id"
+        . " INNER JOIN $product_table ON $connection_table_name.productId=$product_table.id"
         . " WHERE $connection_table_name.universityId=%d";
     $products = $wpdb->get_results($wpdb->prepare($stmt, $university_id));
 
