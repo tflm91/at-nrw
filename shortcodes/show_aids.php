@@ -58,7 +58,7 @@ function list_universities_with_product($wpdb, $product_id) {
         $output .= "<p>Folgende Hochschulen in Nordrhein-Westfalen bieten dieses Hilfsmittel an: </p>\n";
         $output .= "<ul>\n";
         foreach ($universities as $university) {
-            $output .= "<li>" . $university->name . "</li>\n";
+            $output .= "<li><a href='" . site_url("/university/" . esc_html($university->id)) ."'>" . esc_html($university->name) . "</li>\n";
         }
         $output .= "</ul>\n";
     } else {
@@ -77,13 +77,13 @@ function show_detailed_product_information($wpdb, $product_id) {
     $output = "<div>\n";
     if ($product) {
        $output .= "<h2>" . esc_html($product->name) . "</h2>\n";
-       $output .= '<a href="' . esc_url($product->manufacturerURL) . '" target="_blank">' . esc_html($product->manufacturerAlt) . '</a>';
+       $output .= '<a href="' . esc_url($product->manufacturerURL) . '">' . esc_html($product->manufacturerAlt) . '</a>';
        $output .= list_universities_with_product($wpdb, $product_id);
     } else {
         $output .= "<p>Dieses Produkt wurde nicht gefunden. </p>\n";
     }
     $back_url = site_url('/hilfsmittel');
-    $output .= "<a href='". $back_url ."'>Zurück zur Übersicht</a>\n";
+    $output .= "<a href='". $back_url ."'>Zur Übersicht aller Hilfsmittel</a>\n";
     $output .= "</div>\n";
     return $output;
 }

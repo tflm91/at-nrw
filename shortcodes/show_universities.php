@@ -66,7 +66,7 @@ function show_university_details_page($wpdb, $university_id) {
         $output .= "<p>Die Hochschule konnte nicht gefunden werden. </p>";
     }
 
-    $output .= "<a href='" . site_url("/hochschulen") . "'>Zur Hochschulübersicht</a>\n";
+    $output .= "<a href='" . site_url("/hochschulen") . "'>Zur Übersicht aller Hochschulen</a>\n";
     $output .= "</div>\n";
     return $output;
 }
