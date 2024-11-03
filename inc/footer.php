@@ -16,7 +16,9 @@ add_action('after_setup_theme', 'remove_overwritten_functions');
  */
 function add_footer_info()
 {
-    $copyright = '<span class="copyright">&copy; ' . date('Y') . ' zhb//DoBuS - Bereich Behinderung und Studium - Technische Universität Dortmund</span>';
+    $copyright = '<span class="copyright">&copy; ' . date('Y') . ' <a href="https://zhb.tu-dortmund.de/">zhb</a>'
+        .'//<a href="https://dobus.zhb.tu-dortmund.de/">DoBuS - Bereich Behinderung und Studium</a>'
+        . ' - <a href="https://www.tu-dortmund.de/">Technische Universität Dortmund</a></span>';
     $all_rights_reserved = 'Alle Rechte vorbehalten';
     $generate_press = 'Erstellt mit <a href="https://generatepress.com">GeneratePress</a>';
     $imprint = '<a href="impressum">Impressum</a>';
