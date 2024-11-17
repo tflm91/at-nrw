@@ -21,8 +21,8 @@ function add_footer_info()
         . ' - <a href="https://www.tu-dortmund.de/">Technische Universität Dortmund</a></span>';
     $all_rights_reserved = 'Alle Rechte vorbehalten';
     $generate_press = 'Erstellt mit <a href="https://generatepress.com">GeneratePress</a>';
-    $imprint = '<a href="impressum">Impressum</a>';
-    $privacy = '<a href="datenschutz">Datenschutzerklärung</a>';
+    $imprint = '<a href="https://dobus.zhb.tu-dortmund.de/impressum/">Impressum</a>';
+    $privacy = '<a href="https://dobus.zhb.tu-dortmund.de/datenschutzerklaerung/">Datenschutzerklärung</a>';
     $terms_of_use = '<a href="nutzungsbedingungen">Nutzungsbedingungen</a>';
     $accessibility = '<a href="erklaerung-zur-barrierefreiheit">Barrierefreiheit</a>';
 
