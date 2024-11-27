@@ -77,7 +77,8 @@ function show_detailed_product_information($wpdb, $product_id) {
     $output = "<div>\n";
     if ($product) {
        $output .= "<h2>" . esc_html($product->name) . "</h2>\n";
-       $output .= '<a href="' . esc_url($product->manufacturerURL) . '">' . esc_html($product->manufacturerAlt) . '</a>';
+       $output .= "<p>" . esc_html($product->description) . "</p>\n";
+       $output .= '<p><a href="' . esc_url($product->manufacturerURL) . '">' . esc_html($product->manufacturerAlt) . '</a></p>';
        $output .= list_universities_with_product($wpdb, $product_id);
     } else {
         $output .= "<p>Dieses Produkt wurde nicht gefunden. </p>\n";
