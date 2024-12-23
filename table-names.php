@@ -5,7 +5,7 @@ if (!defined("ABSPATH")) {
 
 define("AIDS_WITH_DISABILITY_TABLE", "aidsWithDisability");
 define("AIDS_WITH_LIMITATION_TABLE", "aidsWithLimitation");
-define("ASSISTIVE_TECHNOLOGY_CATEGORY_TABLE", "assistiveTechnologyCategory");
+define("PRODUCT_CATEGORY_TABLE", "productCategory");
 define("AVAILABILITY_TABLE", "availability");
 define("CATEGORY_OF_PRODUCT_TABLE", "categoryOfProduct");
 define("DISABILITY_TABLE", "disability");

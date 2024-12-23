@@ -2,7 +2,7 @@
 /* list suitable categories of aids for the specified impairment */
 function list_product_categories($connection_table, $impairment_id) {
     global $wpdb;
-    $category_table = ASSISTIVE_TECHNOLOGY_CATEGORY_TABLE;
+    $category_table = PRODUCT_CATEGORY_TABLE;
 
     $stmt = "SELECT $category_table.id AS id, $category_table.name AS name FROM $connection_table"
         . " INNER JOIN $category_table ON $connection_table.assistiveTechnologyCategoryId = $category_table.id"

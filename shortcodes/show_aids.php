@@ -39,7 +39,7 @@ function list_products($wpdb, $category_id) {
 
 /* list all categories of assistive technologies delt with in the database */
 function list_categories($wpdb) {
-    $product_categories_table = ASSISTIVE_TECHNOLOGY_CATEGORY_TABLE;
+    $product_categories_table = PRODUCT_CATEGORY_TABLE;
     $disability_categories = $wpdb->get_results("SELECT * FROM $product_categories_table");
     $output = "<div>\n";
     if ($disability_categories) {
