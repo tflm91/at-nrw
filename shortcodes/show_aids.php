@@ -6,9 +6,20 @@ function list_products($wpdb, $category_id) {
     $product_table_name = PRODUCT_TABLE;
     $connection_table_name = CATEGORY_OF_PRODUCT_TABLE;
 
-    $stmt = "SELECT $product_table_name.id AS id, $product_table_name.name AS name FROM $connection_table_name"
+    $stmt_of_category = "SELECT $product_table_name.id AS id, $product_table_name.name AS name FROM $connection_table_name"
         . " INNER JOIN $product_table_name ON $connection_table_name.productId = $product_table_name.id"
         . " WHERE $connection_table_name.categoryId = %d";
+
+    if ($category_id == 32) {
+        $stmt_without_category = "SELECT $product_table_name.id AS id, $product_table_name.name AS name FROM $product_table_name"
+            . " LEFT JOIN $connection_table_name ON $product_table_name.id = $connection_table_name.productId"
+            . " WHERE $connection_table_name.categoryId IS NULL";
+
+        $stmt = "$stmt_of_category UNION $stmt_without_category";
+    } else {
+        $stmt = $stmt_of_category;
+    }
+
     $products = $wpdb->get_results($wpdb->prepare($stmt, $category_id));
 
     $output = "";
