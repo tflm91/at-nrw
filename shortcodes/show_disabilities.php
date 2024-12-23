@@ -11,9 +11,9 @@ require_once get_stylesheet_directory() . "/inc/product_category.php";
 /* show detailed information about a specific disability */
 function show_detailed_disability_information ($disability_id) {
     global $wpdb;
-    $disability_table_name = DISABILITY_TABLE;
+    $disability_table = DISABILITY_TABLE;
 
-    $disability = $wpdb->get_row($wpdb->prepare("SELECT * FROM $disability_table_name WHERE id = %d", $disability_id));
+    $disability = $wpdb->get_row($wpdb->prepare("SELECT * FROM $disability_table WHERE id = %d", $disability_id));
 
     if ($disability) {
         $output = "<div>\n";
@@ -34,10 +34,10 @@ function show_detailed_disability_information ($disability_id) {
 /* list all disabilities of the corresponding category */
 function list_disabilities($category_id) {
     global $wpdb;
-    $disability_table_name = DISABILITY_TABLE;
+    $disability_table = DISABILITY_TABLE;
 
     $disabilities = $wpdb->get_results($wpdb->prepare(
-        "SELECT id, name FROM $disability_table_name WHERE categoryId = %d",
+        "SELECT id, name FROM $disability_table WHERE categoryId = %d",
         $category_id)
     );
 
@@ -57,8 +57,8 @@ function list_disabilities($category_id) {
 /* list all disability categories */
 function list_disability_categories() {
     global $wpdb;
-    $disability_category_table_name = DISABILITY_CATEGORY_TABLE;
-    $results = $wpdb->get_results("SELECT * FROM $disability_category_table_name");
+    $disability_category_table = DISABILITY_CATEGORY_TABLE;
+    $results = $wpdb->get_results("SELECT * FROM $disability_category_table");
 
     $output = "<div>\n";
     if ($results) {

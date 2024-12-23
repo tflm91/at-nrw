@@ -1,12 +1,12 @@
 <?php
 /* list suitable categories of aids for the specified impairment */
-function list_product_categories($connection_table_name, $impairment_id) {
+function list_product_categories($connection_table, $impairment_id) {
     global $wpdb;
-    $category_table_name = ASSISTIVE_TECHNOLOGY_CATEGORY_TABLE;
+    $category_table = ASSISTIVE_TECHNOLOGY_CATEGORY_TABLE;
 
-    $stmt = "SELECT $category_table_name.id AS id, $category_table_name.name AS name FROM $connection_table_name"
-        . " INNER JOIN $category_table_name ON $connection_table_name.assistiveTechnologyCategoryId = $category_table_name.id"
-        . " WHERE $connection_table_name.impairmentId = %d";
+    $stmt = "SELECT $category_table.id AS id, $category_table.name AS name FROM $connection_table"
+        . " INNER JOIN $category_table ON $connection_table.assistiveTechnologyCategoryId = $category_table.id"
+        . " WHERE $connection_table.impairmentId = %d";
 
     $categories = $wpdb->get_results($wpdb->prepare($stmt, $impairment_id));
 

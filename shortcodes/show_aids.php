@@ -3,17 +3,17 @@ require_once get_stylesheet_directory() . "/table-names.php";
 
 /* list the products of the specified category */
 function list_products($wpdb, $category_id) {
-    $product_table_name = PRODUCT_TABLE;
-    $connection_table_name = CATEGORY_OF_PRODUCT_TABLE;
+    $product_table = PRODUCT_TABLE;
+    $connection_table = CATEGORY_OF_PRODUCT_TABLE;
 
-    $stmt_of_category = "SELECT $product_table_name.id AS id, $product_table_name.name AS name FROM $connection_table_name"
-        . " INNER JOIN $product_table_name ON $connection_table_name.productId = $product_table_name.id"
-        . " WHERE $connection_table_name.categoryId = %d";
+    $stmt_of_category = "SELECT $product_table.id AS id, $product_table.name AS name FROM $connection_table"
+        . " INNER JOIN $product_table ON $connection_table.productId = $product_table.id"
+        . " WHERE $connection_table.categoryId = %d";
 
     if ($category_id == 23) {
-        $stmt_without_category = "SELECT $product_table_name.id AS id, $product_table_name.name AS name FROM $product_table_name"
-            . " LEFT JOIN $connection_table_name ON $product_table_name.id = $connection_table_name.productId"
-            . " WHERE $connection_table_name.categoryId IS NULL";
+        $stmt_without_category = "SELECT $product_table.id AS id, $product_table.name AS name FROM $product_table"
+            . " LEFT JOIN $connection_table ON $product_table.id = $connection_table.productId"
+            . " WHERE $connection_table.categoryId IS NULL";
 
         $stmt = "$stmt_of_category UNION $stmt_without_category";
     } else {
@@ -39,8 +39,8 @@ function list_products($wpdb, $category_id) {
 
 /* list all categories of assistive technologies delt with in the database */
 function list_categories($wpdb) {
-    $product_categories_table_name = ASSISTIVE_TECHNOLOGY_CATEGORY_TABLE;
-    $disability_categories = $wpdb->get_results("SELECT * FROM $product_categories_table_name");
+    $product_categories_table = ASSISTIVE_TECHNOLOGY_CATEGORY_TABLE;
+    $disability_categories = $wpdb->get_results("SELECT * FROM $product_categories_table");
     $output = "<div>\n";
     if ($disability_categories) {
         foreach ($disability_categories as $category) {
@@ -56,12 +56,12 @@ function list_categories($wpdb) {
 
 /* list universities which offer the specified product */
 function list_universities_with_product($wpdb, $product_id) {
-    $connection_table_name = AVAILABILITY_TABLE;
-    $university_table_name = UNIVERSITY_TABLE;
+    $connection_table = AVAILABILITY_TABLE;
+    $university_table = UNIVERSITY_TABLE;
 
-    $stmt = "SELECT $university_table_name.id AS id, $university_table_name.name AS name FROM $connection_table_name"
-        . " INNER JOIN $university_table_name ON $connection_table_name.universityId = $university_table_name.id"
-        . " WHERE $connection_table_name.productId = %d";
+    $stmt = "SELECT $university_table.id AS id, $university_table.name AS name FROM $connection_table"
+        . " INNER JOIN $university_table ON $connection_table.universityId = $university_table.id"
+        . " WHERE $connection_table.productId = %d";
     $universities = $wpdb->get_results($wpdb->prepare($stmt, $product_id));
 
     $output = "<div>\n";
@@ -81,8 +81,8 @@ function list_universities_with_product($wpdb, $product_id) {
 
 /* show detailed information about a specified product */
 function show_detailed_product_information($wpdb, $product_id) {
-    $product_table_name = PRODUCT_TABLE;
-    $stmt = "SELECT * FROM $product_table_name WHERE id = %d";
+    $product_table = PRODUCT_TABLE;
+    $stmt = "SELECT * FROM $product_table WHERE id = %d";
     $product = $wpdb->get_row($wpdb->prepare($stmt, $product_id));
 
     $output = "<div>\n";

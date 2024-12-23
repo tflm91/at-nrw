@@ -6,8 +6,8 @@ require_once get_stylesheet_directory() . "/inc/product_category.php";
 /* list all available functional limitations */
 function show_limitations() {
     global $wpdb;
-    $limitations_table_name = FUNCTIONAL_LIMITATION_TABLE;
-    $functional_limitations = $wpdb->get_results("SELECT * FROM $limitations_table_name");
+    $limitations_table = FUNCTIONAL_LIMITATION_TABLE;
+    $functional_limitations = $wpdb->get_results("SELECT * FROM $limitations_table");
     $output = "<div>\n";
     if ($functional_limitations) {
         foreach ($functional_limitations as $limitation) {
