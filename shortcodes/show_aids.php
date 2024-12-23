@@ -10,7 +10,7 @@ function list_products($wpdb, $category_id) {
         . " INNER JOIN $product_table_name ON $connection_table_name.productId = $product_table_name.id"
         . " WHERE $connection_table_name.categoryId = %d";
 
-    if ($category_id == 32) {
+    if ($category_id == 23) {
         $stmt_without_category = "SELECT $product_table_name.id AS id, $product_table_name.name AS name FROM $product_table_name"
             . " LEFT JOIN $connection_table_name ON $product_table_name.id = $connection_table_name.productId"
             . " WHERE $connection_table_name.categoryId IS NULL";
