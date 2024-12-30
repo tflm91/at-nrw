@@ -64,7 +64,9 @@ function list_disability_categories() {
     if ($results) {
         foreach ($results as $row) {
             $output .= "<h2>" . esc_html($row->name) . "</h2>\n";
-            $output .= "<p>" . esc_html($row->description) . "</p>\n";
+            if ($row->description && $row->description != "") {
+                $output .= "<p>" . esc_html($row->description) . "</p>\n";
+            }
             $output .= list_disabilities($row->id);
         }
     } else {

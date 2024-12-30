@@ -45,6 +45,9 @@ function list_categories($wpdb) {
     if ($disability_categories) {
         foreach ($disability_categories as $category) {
             $output .= "<h2 id='category-" . $category->id . "'>" . esc_html($category->name) . "</h2>\n";
+            if ($category->description && $category->description != "") {
+                $output .= "<p>" . esc_html($category->description) . "</p>\n";
+            }
             $output .= list_products($wpdb, $category->id);
         }
     } else {
