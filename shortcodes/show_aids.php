@@ -101,8 +101,8 @@ function show_detailed_product_information($wpdb, $product_id) {
     } else {
         $output .= "<p>Dieses Produkt wurde nicht gefunden. </p>\n";
     }
-    /* $back_url = site_url('/hilfsmittel');
-    $output .= "<a href='". $back_url ."' aria-label='Zurück zur Seite mit der Übersicht aller verfügbaren Hilfsmittel'>Zur Übersicht aller Hilfsmittel</a>\n"; */
+
+    $output .= "<a href='" . site_url("/hochschulen") . "'>Zur Übersicht aller Hochschulen</a>\n";
     $output .= "</div>\n";
     return $output;
 }
