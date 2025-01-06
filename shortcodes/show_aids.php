@@ -92,7 +92,11 @@ function show_detailed_product_information($wpdb, $product_id) {
     if ($product) {
        $output .= "<h2>" . esc_html($product->name) . "</h2>\n";
        $output .= "<p>" . esc_html($product->description) . "</p>\n";
-       $output .= '<p><a href="' . esc_url($product->manufacturerURL) . '">' . esc_html($product->manufacturerAlt) . '</a></p>';
+       if ($product->manufacturerURL) {
+           $output .= '<p><a href="' . esc_url($product->manufacturerURL) . '">' . esc_html($product->manufacturerAlt) . '</a></p>\n';
+       } else {
+           $output .= '<p>Kein Link zur Herstellerwebsite vorhanden. </p>\n';
+       }
        $output .= list_universities_with_product($wpdb, $product_id);
     } else {
         $output .= "<p>Dieses Produkt wurde nicht gefunden. </p>\n";
