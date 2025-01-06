@@ -102,7 +102,8 @@ function show_detailed_product_information($wpdb, $product_id) {
         $output .= "<p>Dieses Produkt wurde nicht gefunden. </p>\n";
     }
 
-    $output .= "<a href='" . site_url("/hochschulen") . "'>Zur Übersicht aller Hochschulen</a>\n";
+    $output .= "<p><b>Link zur Hilfsmittelseite: </b>";
+    $output .= "<a href='" . site_url("/hilfsmittel") . "'>Zur Übersicht aller Hilfsmittel</a></p>\n";
     $output .= "</div>\n";
     return $output;
 }
