@@ -4,7 +4,7 @@ require_once get_stylesheet_directory() . "/table-names.php";
 /* list all universities in NRW */
 function list_universities($wpdb) {
     $university_table = UNIVERSITY_TABLE;
-    $universities = $wpdb->get_results("SELECT * FROM $university_table");
+    $universities = $wpdb->get_results("SELECT * FROM $university_table ORDER BY name ASC");
 
     $output = "<div>\n";
     if ($universities) {
@@ -38,7 +38,8 @@ function list_available_products($wpdb, $university_id) {
     $product_table = PRODUCT_TABLE;
     $stmt = "SELECT $product_table.id AS id, $product_table.name AS name FROM $connection_table"
         . " INNER JOIN $product_table ON $connection_table.productId=$product_table.id"
-        . " WHERE $connection_table.universityId=%d";
+        . " WHERE $connection_table.universityId=%d"
+        . " ORDER BY $product_table.name ASC";
     $products = $wpdb->get_results($wpdb->prepare($stmt, $university_id));
 
     $output = "<div>\n";

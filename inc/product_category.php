@@ -6,7 +6,8 @@ function list_product_categories($connection_table, $impairment_id) {
 
     $stmt = "SELECT $category_table.id AS id, $category_table.name AS name FROM $connection_table"
         . " INNER JOIN $category_table ON $connection_table.assistiveTechnologyCategoryId = $category_table.id"
-        . " WHERE $connection_table.impairmentId = %d";
+        . " WHERE $connection_table.impairmentId = %d"
+        . "ORDER BY $category_table.name ASC";
 
     $categories = $wpdb->get_results($wpdb->prepare($stmt, $impairment_id));
 

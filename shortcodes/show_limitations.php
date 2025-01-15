@@ -7,7 +7,7 @@ require_once get_stylesheet_directory() . "/inc/product_category.php";
 function show_limitations() {
     global $wpdb;
     $limitations_table = FUNCTIONAL_LIMITATION_TABLE;
-    $functional_limitations = $wpdb->get_results("SELECT * FROM $limitations_table");
+    $functional_limitations = $wpdb->get_results("SELECT * FROM $limitations_table ORDER BY name ASC");
     $output = "<div>\n";
     if ($functional_limitations) {
         foreach ($functional_limitations as $limitation) {
