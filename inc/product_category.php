@@ -11,6 +11,7 @@ function list_product_categories($connection_table, $impairment_id) {
     $categories = $wpdb->get_results($wpdb->prepare($stmt, $impairment_id));
 
     $output = "<div>\n";
+    $output .= "<p>" . $stmt . "</p>\n";
 
     if ($categories) {
         $output .= "<ul>\n";
