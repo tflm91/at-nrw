@@ -5,9 +5,9 @@ function list_product_categories($connection_table, $impairment_id) {
     $category_table = PRODUCT_CATEGORY_TABLE;
 
     $stmt = "SELECT $category_table.id AS id, $category_table.name AS name FROM $connection_table"
+        . "ORDER BY $category_table.name ASC"
         . " INNER JOIN $category_table ON $connection_table.assistiveTechnologyCategoryId = $category_table.id"
-        . " WHERE $connection_table.impairmentId = %d"
-        . "ORDER BY $category_table.name ASC";
+        . " WHERE $connection_table.impairmentId = %d";
 
     $categories = $wpdb->get_results($wpdb->prepare($stmt, $impairment_id));
 
