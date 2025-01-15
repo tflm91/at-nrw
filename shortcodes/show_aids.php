@@ -10,7 +10,7 @@ function list_products($wpdb, $category_id) {
         . " INNER JOIN $product_table ON $connection_table.productId = $product_table.id"
         . " WHERE $connection_table.categoryId = %d";
 
-    if ($category_id == 53) {
+    if ($category_id == 23) {
         $stmt_without_category = "SELECT $product_table.id AS id, $product_table.name AS name FROM $product_table"
             . " LEFT JOIN $connection_table ON $product_table.id = $connection_table.productId"
             . " WHERE $connection_table.categoryId IS NULL";
@@ -40,7 +40,7 @@ function list_products($wpdb, $category_id) {
 /* list all categories of assistive technologies delt with in the database */
 function list_categories($wpdb) {
     $product_categories_table = PRODUCT_CATEGORY_TABLE;
-    $disability_categories = $wpdb->get_results("SELECT * FROM $product_categories_table ORDER BY name ASC");
+    $disability_categories = $wpdb->get_results("SELECT * FROM $product_categories_table");
     $output = "<div>\n";
     if ($disability_categories) {
         foreach ($disability_categories as $category) {
@@ -64,8 +64,7 @@ function list_universities_with_product($wpdb, $product_id) {
 
     $stmt = "SELECT $university_table.id AS id, $university_table.name AS name FROM $connection_table"
         . " INNER JOIN $university_table ON $connection_table.universityId = $university_table.id"
-        . " WHERE $connection_table.productId = %d"
-        . "ORDER BY $university_table.name ASC";
+        . " WHERE $connection_table.productId = %d";
     $universities = $wpdb->get_results($wpdb->prepare($stmt, $product_id));
 
     $output = "<div>\n";

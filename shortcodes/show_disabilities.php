@@ -37,7 +37,7 @@ function list_disabilities($category_id) {
     $disability_table = DISABILITY_TABLE;
 
     $disabilities = $wpdb->get_results($wpdb->prepare(
-        "SELECT id, name FROM $disability_table WHERE categoryId = %d ORDER BY name ASC",
+        "SELECT id, name FROM $disability_table WHERE categoryId = %d",
         $category_id)
     );
 
@@ -58,7 +58,7 @@ function list_disabilities($category_id) {
 function list_disability_categories() {
     global $wpdb;
     $disability_category_table = DISABILITY_CATEGORY_TABLE;
-    $results = $wpdb->get_results("SELECT * FROM $disability_category_table ORDER BY name ASC");
+    $results = $wpdb->get_results("SELECT * FROM $disability_category_table");
 
     $output = "<div>\n";
     if ($results) {
