@@ -60,7 +60,7 @@ function list_disability_categories() {
     $disability_category_table = DISABILITY_CATEGORY_TABLE;
     $results = $wpdb->get_results("SELECT * FROM $disability_category_table");
 
-    $output = "<div>Hello World \n";
+    $output = "<div>\n";
     if ($results) {
         foreach ($results as $row) {
             $output .= "<h2>" . esc_html($row->name) . "</h2>\n";
