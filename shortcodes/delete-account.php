@@ -49,4 +49,5 @@ function delete_user_account() {
 }
 
 add_action('admin_post_delete_user_account', 'delete_user_account');
+add_action('admin_post_nopriv_delete_user_account', 'delete_user_account');
 ?>
