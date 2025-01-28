@@ -32,7 +32,8 @@ function delete_user_account() {
 
         if (in_array('administrator', (array) $user->roles)) {
             wp_redirect(home_url('konto-loeschen-fehlgeschlagen'));
-            exit;
+        } else {
+            wp_redirect(home_url('konto-geloescht'));
         }
 
 /*        wp_logout();
@@ -40,11 +41,9 @@ function delete_user_account() {
         require_once ( ABSPATH . 'wp-admin/includes/user.php' );
         wp_delete_user($user_id);
 */
-        wp_redirect(home_url('konto-geloescht'));
-        exit;
+
     } else {
         wp_redirect(home_url('nicht-eingeloggt'));
-        exit;
     }
 }
 
