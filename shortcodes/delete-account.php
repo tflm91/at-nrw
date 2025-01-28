@@ -40,16 +40,13 @@ function delete_user_account() {
         require_once ( ABSPATH . 'wp-admin/includes/user.php' );
         wp_delete_user($user_id);
 
-        wp_redirect(home_url('/konto-geloescht'));
+        wp_redirect(home_url('konto-geloescht'));
         exit;
     } else {
-        echo "Der Benutzer ist nicht eingeloggt. ";
-        sleep(15); 
         wp_redirect(home_url());
         exit;
     }
 }
 
 add_action('admin_post_delete_user_account', 'delete_user_account');
-add_action('admin_post_nopriv_delete_user_account', 'delete_user_account');
 ?>
