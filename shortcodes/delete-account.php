@@ -43,6 +43,8 @@ function delete_user_account() {
         wp_redirect(home_url('/konto-geloescht'));
         exit;
     } else {
+        echo "Der Benutzer ist nicht eingeloggt. ";
+        sleep(15); 
         wp_redirect(home_url());
         exit;
     }
