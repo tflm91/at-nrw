@@ -43,7 +43,7 @@ function delete_user_account() {
         wp_redirect(home_url('konto-geloescht'));
         exit;
     } else {
-        wp_redirect(home_url());
+        wp_redirect(home_url('nicht-eingeloggt'));
         exit;
     }
 }
