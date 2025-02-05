@@ -40,15 +40,22 @@ function list_products($wpdb, $category_id) {
 /* list all categories of assistive technologies delt with in the database */
 function list_categories($wpdb) {
     $product_categories_table = PRODUCT_CATEGORY_TABLE;
+    $connection_table = CATEGORY_OF_PRODUCT_TABLE;
+    $products_table = PRODUCT_TABLE;
+
     $disability_categories = $wpdb->get_results("SELECT * FROM $product_categories_table ORDER BY name");
     $output = "<div>\n";
     if ($disability_categories) {
         foreach ($disability_categories as $category) {
-            $output .= "<h2 id='category-" . $category->id . "'>" . esc_html($category->name) . "</h2>\n";
-            if ($category->description && $category->description != "") {
-                $output .= "<p>" . esc_html($category->description) . "</p>\n";
+            $number_of_products_stmt = $wpdb->prepare("SELECT COUNT(*) FROM $connection_table WHERE categoryId = %d", $category->id);
+            $number_of_products = $wpdb->get_var($number_of_products_stmt);
+            if ($number_of_products > 0) {
+                $output .= "<h2 id='category-" . $category->id . "'>" . esc_html($category->name) . "</h2>\n";
+                if ($category->description && $category->description != "") {
+                    $output .= "<p>" . esc_html($category->description) . "</p>\n";
+                }
+                $output .= list_products($wpdb, $category->id);
             }
-            $output .= list_products($wpdb, $category->id);
         }
     } else {
         $output .= "<p>Keine Hilfsmittel vorhanden</p>\n";
