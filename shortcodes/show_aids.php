@@ -6,19 +6,9 @@ function list_products($wpdb, $category_id) {
     $product_table = PRODUCT_TABLE;
     $connection_table = CATEGORY_OF_PRODUCT_TABLE;
 
-    $stmt_of_category = "SELECT $product_table.id AS id, $product_table.name AS name FROM $connection_table"
+    $stmt = "SELECT $product_table.id AS id, $product_table.name AS name FROM $connection_table"
         . " INNER JOIN $product_table ON $connection_table.productId = $product_table.id"
         . " WHERE $connection_table.categoryId = %d";
-
-    if ($category_id == 53) {
-        $stmt_without_category = "SELECT $product_table.id AS id, $product_table.name AS name FROM $product_table"
-            . " LEFT JOIN $connection_table ON $product_table.id = $connection_table.productId"
-            . " WHERE $connection_table.categoryId IS NULL";
-
-        $stmt = "$stmt_of_category UNION $stmt_without_category";
-    } else {
-        $stmt = $stmt_of_category;
-    }
 
     $products = $wpdb->get_results($wpdb->prepare($stmt, $category_id));
 
@@ -32,6 +22,32 @@ function list_products($wpdb, $category_id) {
         $output .= "</ul>\n";
     } else {
         $output .= "<p>Keine passenden Produkte gefunden.</p>\n";
+    }
+
+    return $output;
+}
+
+/* list all products without category */
+function list_products_without_category($wpdb) {
+    $product_table = PRODUCT_TABLE;
+    $connection_table = CATEGORY_OF_PRODUCT_TABLE;
+    $stmt = "SELECT $product_table.id AS id, $product_table.name AS name FROM $product_table"
+        . " LEFT JOIN $connection_table ON $product_table.id = $connection_table.productId"
+        . " WHERE $connection_table.categoryId IS NULL";
+
+    $products = $wpdb->get_results($stmt);
+
+    $output = "";
+    if ($products) {
+        $output .= "<h2>Nicht zugeordnete Produkte. </h2>\n";
+        $output .= "<p>Folgende Produkte können für Studierende mit Behinderung "
+        . "hilfreich sein, gehören aber zu keiner der genannten Kategorien. </p>\n";
+        $output .= "<ul>\n";
+        foreach ($products as $product) {
+            $details_url = site_url('/hilfsmittel/' . esc_attr($product->id));
+            $output .= '<li><a href="' . $details_url . '">' . esc_html($product->name) . '</a></li>';
+        }
+        $output .= "</ul>\n";
     }
 
     return $output;
@@ -59,6 +75,7 @@ function list_categories($wpdb) {
     } else {
         $output .= "<p>Keine Hilfsmittel vorhanden</p>\n";
     }
+    $output .= list_products_without_category($wpdb);
     $output .= "</div>\n";
     return $output;
 }
