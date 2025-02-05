@@ -42,19 +42,16 @@ function list_available_products($wpdb, $university_id) {
         . " WHERE $connection_table.universityId=%d";
     $products = $wpdb->get_results($wpdb->prepare($stmt, $university_id));
 
-    $output = "<div>\n";
-    if ($products) {
-        $output .= "<p><b>Verfügbare Hilfsmittel:</b></p>\n";
-        $output .= "<ul>\n";
-        foreach ($products as $product) {
-            $output .= "<li>". generate_item_link($product, "hilfsmittel", null) . "</li>";
-        }
-        $output .= "</ul>\n";
-    } else {
-        $output .= "<p>Diese Hochschule bietet leider keine Hilfsmittel an. </p>\n";
-    }
-    $output .= "</div>\n";
-    return $output;
+    $before_html = "<p><b>Verfügbare Hilfsmittel:</b></p>\n";
+    $error = "Diese Hochschule bietet leider keine Hilfsmittel an. ";
+
+    return generate_item_list(
+        $products,
+        "hilfsmittel",
+        null,
+        $before_html,
+        $error
+    );
 }
 
 function show_university_details_page($wpdb, $university_id) {

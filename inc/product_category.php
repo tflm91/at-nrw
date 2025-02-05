@@ -12,17 +12,10 @@ function list_product_categories($connection_table, $impairment_id) {
 
     $categories = $wpdb->get_results($wpdb->prepare($stmt, $impairment_id));
 
-    $output = "<div>\n";
-
-    if ($categories) {
-        $output .= "<ul>\n";
-        foreach ($categories as $category) {
-            $output .= "<li>" . generate_item_link($category, 'hilfsmittel', 'category') . "</li>\n";
-        }
-        $output .= "</ul>\n";
-    } else {
-        $output .= "<p>Keine passenden Hilfsmittel gefunden. </p>\n";
-    }
-    $output .= "</div>\n";
-    return $output;
+    return generate_item_list($categories,
+        "hilfsmittel",
+        "category",
+        null,
+        "Keine Hilfsmittel gefunden. "
+    );
 }

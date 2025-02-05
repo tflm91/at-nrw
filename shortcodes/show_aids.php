@@ -13,18 +13,13 @@ function list_products($wpdb, $category_id) {
 
     $products = $wpdb->get_results($wpdb->prepare($stmt, $category_id));
 
-    $output = "";
-    if ($products) {
-        $output .= "<ul>\n";
-        foreach ($products as $product) {
-            $output .= "<li>" . generate_item_link($product, "hilfsmittel", null);
-        }
-        $output .= "</ul>\n";
-    } else {
-        $output .= "<p>Keine passenden Produkte gefunden.</p>\n";
-    }
-
-    return $output;
+    return generate_item_list(
+        $products,
+        "hilfsmittel",
+        null,
+        null,
+        "Keine Hilfsmittel zu dieser Kategorie gefunden. "
+    );
 }
 
 /* list all products without category */
@@ -37,19 +32,17 @@ function list_products_without_category($wpdb) {
 
     $products = $wpdb->get_results($stmt);
 
-    $output = "";
-    if ($products) {
-        $output .= "<h2>Nicht zugeordnete Produkte. </h2>\n";
-        $output .= "<p>Folgende Produkte können für Studierende mit Behinderung "
-        . "hilfreich sein, gehören aber zu keiner der genannten Kategorien. </p>\n";
-        $output .= "<ul>\n";
-        foreach ($products as $product) {
-            $output .= '<li>'. generate_item_link($product, "hilfsmittel", null) . '</li>';
-        }
-        $output .= "</ul>\n";
-    }
-
-    return $output;
+    $heading = "<h2>Nicht zugeordnete Produkte. </h2>\n";
+    $description = "<p>Folgende Produkte können für Studierende mit Behinderung "
+        . "hilfreich sein, gehören aber zu keiner der genannten Kategorien. </p>\n";;
+    $before_html = $heading . $description;
+    return generate_item_list(
+        $products,
+        "hilfsmittel",
+        null,
+        $before_html,
+        null
+    );
 }
 
 /* list all categories of assistive technologies delt with in the database */
@@ -89,19 +82,16 @@ function list_universities_with_product($wpdb, $product_id) {
         . " WHERE $connection_table.productId = %d";
     $universities = $wpdb->get_results($wpdb->prepare($stmt, $product_id));
 
-    $output = "<div>\n";
-    if ($universities) {
-        $output .= "<p>Folgende Hochschulen in Nordrhein-Westfalen bieten dieses Hilfsmittel an: </p>\n";
-        $output .= "<ul>\n";
-        foreach ($universities as $university) {
-            $output .= "<li>". generate_item_link($university, "hochschulen", null) ."</li>\n";
-        }
-        $output .= "</ul>\n";
-    } else {
-        $output .= "<p>Dieses Hilfsmittel wird in NRW leider von keiner Hochschule angeboten. </p>\n";
-    }
-    $output .= "</div>\n";
-    return $output;
+    $before_html = "<p>Folgende Hochschulen in Nordrhein-Westfalen bieten dieses Hilfsmittel an: </p>\n";
+    $error = "Dieses Hilfsmittel wird in NRW leider von keiner Hochschule angeboten.";
+
+    return generate_item_list(
+        $universities,
+        "hochschulen",
+        null,
+        $before_html,
+        $error
+    );
 }
 
 /* show detailed information about a specified product */

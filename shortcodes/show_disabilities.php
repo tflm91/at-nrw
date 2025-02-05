@@ -42,16 +42,13 @@ function list_disabilities($category_id) {
         $category_id)
     );
 
-    $output = "";
-    if ($disabilities) {
-        $output .= "<ul>\n";
-        foreach ($disabilities as $disability) {
-            $output .= "<li>" . generate_item_link($disability, "behinderungen", null) . "</li>\n";
-        }
-        $output .= "</ul>\n";
-    }
-
-    return $output;
+    return generate_item_list(
+        $disabilities,
+        "behinderungen",
+        null,
+        null,
+        "Keine spezifische Behinderung gefunden. "
+    );
 }
 
 /* list all disability categories */
