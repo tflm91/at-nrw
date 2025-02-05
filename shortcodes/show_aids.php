@@ -41,7 +41,6 @@ function list_products($wpdb, $category_id) {
 function list_categories($wpdb) {
     $product_categories_table = PRODUCT_CATEGORY_TABLE;
     $connection_table = CATEGORY_OF_PRODUCT_TABLE;
-    $products_table = PRODUCT_TABLE;
 
     $disability_categories = $wpdb->get_results("SELECT * FROM $product_categories_table ORDER BY name");
     $output = "<div>\n";
