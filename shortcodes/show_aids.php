@@ -1,5 +1,6 @@
 <?php
 require_once get_stylesheet_directory() . "/table-names.php";
+require_once get_stylesheet_directory() . "/inc/list_generators.php";
 
 /* list the products of the specified category */
 function list_products($wpdb, $category_id) {
@@ -16,8 +17,7 @@ function list_products($wpdb, $category_id) {
     if ($products) {
         $output .= "<ul>\n";
         foreach ($products as $product) {
-            $details_url = site_url('/hilfsmittel/' . esc_attr($product->id));
-            $output .= '<li><a href="' . $details_url . '">' . esc_html($product->name) . '</a></li>';
+            $output .= "<li>" . generate_item_link($product, "hilfsmittel", null);
         }
         $output .= "</ul>\n";
     } else {
@@ -44,8 +44,7 @@ function list_products_without_category($wpdb) {
         . "hilfreich sein, gehören aber zu keiner der genannten Kategorien. </p>\n";
         $output .= "<ul>\n";
         foreach ($products as $product) {
-            $details_url = site_url('/hilfsmittel/' . esc_attr($product->id));
-            $output .= '<li><a href="' . $details_url . '">' . esc_html($product->name) . '</a></li>';
+            $output .= '<li>'. generate_item_link($product, "hilfsmittel", null) . '</li>';
         }
         $output .= "</ul>\n";
     }
@@ -95,7 +94,7 @@ function list_universities_with_product($wpdb, $product_id) {
         $output .= "<p>Folgende Hochschulen in Nordrhein-Westfalen bieten dieses Hilfsmittel an: </p>\n";
         $output .= "<ul>\n";
         foreach ($universities as $university) {
-            $output .= "<li><a href='" . site_url("/hochschulen/" . esc_attr($university->id)) ."'>" . esc_html($university->name) . "</a></li>\n";
+            $output .= "<li>". generate_item_link($university, "hochschulen", null) ."</li>\n";
         }
         $output .= "</ul>\n";
     } else {

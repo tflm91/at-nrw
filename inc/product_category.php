@@ -1,4 +1,6 @@
 <?php
+require_once get_stylesheet_directory() . '/inc/list_generators.php';
+
 /* list suitable categories of aids for the specified impairment */
 function list_product_categories($connection_table, $impairment_id) {
     global $wpdb;
@@ -15,8 +17,7 @@ function list_product_categories($connection_table, $impairment_id) {
     if ($categories) {
         $output .= "<ul>\n";
         foreach ($categories as $category) {
-            $category_url = 'https://at-nrw.dobus.tu-dortmund.de/hilfsmittel' . '#category-' . $category->id;
-            $output .= "<li><a href='" . esc_url($category_url) . "'>" . esc_html($category->name) . "</a></li>\n";
+            $output .= "<li>" . generate_item_link($category, 'hilfsmittel', 'category') . "</li>\n";
         }
         $output .= "</ul>\n";
     } else {

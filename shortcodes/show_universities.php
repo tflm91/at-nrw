@@ -1,5 +1,6 @@
 <?php
 require_once get_stylesheet_directory() . "/table-names.php";
+require_once get_stylesheet_directory() . "/inc/list_generators.php";
 
 /* list all universities in NRW */
 function list_universities($wpdb) {
@@ -46,7 +47,7 @@ function list_available_products($wpdb, $university_id) {
         $output .= "<p><b>Verfügbare Hilfsmittel:</b></p>\n";
         $output .= "<ul>\n";
         foreach ($products as $product) {
-            $output .= "<li><a href='". site_url("/hilfsmittel/" . esc_attr($product->id)) . "'>" . esc_html($product->name) . "</a></li>";
+            $output .= "<li>". generate_item_link($product, "hilfsmittel", null) . "</li>";
         }
         $output .= "</ul>\n";
     } else {
