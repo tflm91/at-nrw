@@ -1,7 +1,7 @@
 <?php
 
 require_once get_stylesheet_directory() . "/table-names.php";
-require_once get_stylesheet_directory() . "/inc/list_generators.php";
+require_once get_stylesheet_directory() . "/inc/connection_list.php";
 
 /**
  * Shortcode to display disabilities

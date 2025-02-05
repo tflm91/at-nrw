@@ -1,6 +1,6 @@
 <?php
 require_once get_stylesheet_directory() . "/table-names.php";
-require_once get_stylesheet_directory() . "/inc/list_generators.php";
+require_once get_stylesheet_directory() . "/inc/connection_list.php";
 
 /* list the products of the specified category */
 function list_products($wpdb, $category_id) {

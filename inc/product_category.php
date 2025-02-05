@@ -1,5 +1,5 @@
 <?php
-require_once get_stylesheet_directory() . '/inc/list_generators.php';
+require_once get_stylesheet_directory() . '/inc/connection_list.php';
 
 /* list suitable categories of aids for the specified impairment */
 function list_product_categories($connection_table, $impairment_id) {
