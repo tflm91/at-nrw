@@ -58,16 +58,26 @@ function list_disabilities($category_id) {
 function list_disability_categories() {
     global $wpdb;
     $disability_category_table = DISABILITY_CATEGORY_TABLE;
+    $disability_table = DISABILITY_TABLE;
+
     $results = $wpdb->get_results("SELECT * FROM $disability_category_table");
 
     $output = "<div>\n";
     if ($results) {
         foreach ($results as $row) {
-            $output .= "<h2>" . esc_html($row->name) . "</h2>\n";
-            if ($row->description && $row->description != "") {
-                $output .= "<p>" . esc_html($row->description) . "</p>\n";
+            $number_of_disabilities_stmt =
+                $wpdb->prepare("SELECT COUNT(*) FROM $disability_table"
+                . " WHERE categoryId = %d", $row->id);
+
+            $number_of_disabilities = $wpdb->get_var($number_of_disabilities_stmt);
+
+            if ($number_of_disabilities > 0) {
+                $output .= "<h2>" . esc_html($row->name) . "</h2>\n";
+                if ($row->description && $row->description != "") {
+                    $output .= "<p>" . esc_html($row->description) . "</p>\n";
+                }
+                $output .= list_disabilities($row->id);
             }
-            $output .= list_disabilities($row->id);
         }
     } else {
         $output .= "<p>Keine Behinderungskategorien vorhanden.</p>\n";
