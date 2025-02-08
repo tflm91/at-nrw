@@ -23,14 +23,13 @@ function list_products($wpdb, $category_id) {
 }
 
 /* list all products without category */
-function list_products_without_category($wpdb) {
-    $product_table = PRODUCT_TABLE;
-    $connection_table = CATEGORY_OF_PRODUCT_TABLE;
-    $stmt = "SELECT $product_table.id AS id, $product_table.name AS name FROM $product_table"
-        . " LEFT JOIN $connection_table ON $product_table.id = $connection_table.productId"
-        . " WHERE $connection_table.categoryId IS NULL";
-
-    $products = $wpdb->get_results($stmt);
+function list_products_without_category() {
+    $products = select_without_category(
+        CATEGORY_OF_PRODUCT_TABLE,
+        "categoryId",
+        PRODUCT_TABLE,
+        "productId"
+    );
 
     $heading = "<h2>Nicht zugeordnete Produkte. </h2>\n";
     $description = "<p>Folgende Produkte können für Studierende mit Behinderung "
@@ -67,7 +66,7 @@ function list_categories($wpdb) {
     } else {
         $output .= "<p>Keine Hilfsmittel vorhanden</p>\n";
     }
-    $output .= list_products_without_category($wpdb);
+    $output .= list_products_without_category();
     $output .= "</div>\n";
     return $output;
 }

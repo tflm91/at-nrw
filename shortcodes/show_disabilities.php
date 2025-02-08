@@ -2,19 +2,16 @@
 
 require_once get_stylesheet_directory() . "/table-names.php";
 require_once get_stylesheet_directory() . "/inc/connection_list.php";
+require_once get_stylesheet_directory() . "/inc/database.php";
 
 /**
  * Shortcode to display disabilities
  */
 
-require_once get_stylesheet_directory() . "/inc/product_category.php";
 
 /* show detailed information about a specific disability */
-function show_detailed_disability_information ($disability_id) {
-    global $wpdb;
-    $disability_table = DISABILITY_TABLE;
-
-    $disability = $wpdb->get_row($wpdb->prepare("SELECT * FROM $disability_table WHERE id = %d", $disability_id));
+function show_detailed_disability_information ($disability_id): string {
+    $disability = select_one(DISABILITY_TABLE, $disability_id);
 
     if ($disability) {
         $output = "<div>\n";
@@ -22,7 +19,24 @@ function show_detailed_disability_information ($disability_id) {
         $output .= "<h3>Beschreibung</h3>\n";
         $output .= "<p>" . esc_html($disability->description) . "</p>\n";
         $output .= "<h3>Passende Hilfsmittel</h3>\n";
-        $output .= list_product_categories(AIDS_WITH_DISABILITY_TABLE, $disability->id);
+
+        $product_categories =  select_connected(
+            AIDS_WITH_DISABILITY_TABLE,
+            "impairmentId",
+            PRODUCT_CATEGORY_TABLE,
+            "categoryId",
+            $disability_id
+        );
+
+
+        $output .= generate_item_list(
+            $product_categories,
+            'hilfsmittel',
+            'category',
+            null,
+            'Keine passenden Hilfsmittel gefunden. '
+        );
+
         $back_url = site_url('/behinderungen');
         $output .= "<a href='". $back_url ."'>Zurück zur Übersicht</a>\n";
         $output .= "</div>\n";
@@ -34,13 +48,7 @@ function show_detailed_disability_information ($disability_id) {
 
 /* list all disabilities of the corresponding category */
 function list_disabilities($category_id) {
-    global $wpdb;
-    $disability_table = DISABILITY_TABLE;
-
-    $disabilities = $wpdb->get_results($wpdb->prepare(
-        "SELECT id, name FROM $disability_table WHERE categoryId = %d",
-        $category_id)
-    );
+    $disabilities = select_of_category(DISABILITY_TABLE, $category_id);
 
     return generate_item_list(
         $disabilities,
@@ -54,19 +62,14 @@ function list_disabilities($category_id) {
 /* list all disability categories */
 function list_disability_categories() {
     global $wpdb;
-    $disability_category_table = DISABILITY_CATEGORY_TABLE;
     $disability_table = DISABILITY_TABLE;
 
-    $results = $wpdb->get_results("SELECT * FROM $disability_category_table");
+    $results = select_all(DISABILITY_CATEGORY_TABLE);
 
     $output = "<div>\n";
     if ($results) {
         foreach ($results as $row) {
-            $number_of_disabilities_stmt =
-                $wpdb->prepare("SELECT COUNT(*) FROM $disability_table"
-                . " WHERE categoryId = %d", $row->id);
-
-            $number_of_disabilities = $wpdb->get_var($number_of_disabilities_stmt);
+            $number_of_disabilities = count_items(DISABILITY_TABLE, $row->id);
 
             if ($number_of_disabilities > 0) {
                 $output .= "<h2>" . esc_html($row->name) . "</h2>\n";
