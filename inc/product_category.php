@@ -14,8 +14,7 @@ function list_product_categories($connection_table, $impairment_id) {
 
     return generate_item_list($categories,
         "hilfsmittel",
-        "category",
-        null,
-        "Keine Hilfsmittel gefunden. "
+        error: "Keine Hilfsmittel gefunden. ",
+        id_prefix: "category"
     );
 }

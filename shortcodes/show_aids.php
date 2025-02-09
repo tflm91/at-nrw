@@ -16,9 +16,7 @@ function list_products($wpdb, $category_id) {
     return generate_item_list(
         $products,
         "hilfsmittel",
-        null,
-        null,
-        "Keine Hilfsmittel zu dieser Kategorie gefunden. "
+        error: "Keine Hilfsmittel zu dieser Kategorie gefunden. "
     );
 }
 
@@ -38,9 +36,7 @@ function list_products_without_category() {
     return generate_item_list(
         $products,
         "hilfsmittel",
-        null,
-        $before_html,
-        null
+        $before_html
     );
 }
 
@@ -87,7 +83,6 @@ function list_universities_with_product($wpdb, $product_id) {
     return generate_item_list(
         $universities,
         "hochschulen",
-        null,
         $before_html,
         $error
     );

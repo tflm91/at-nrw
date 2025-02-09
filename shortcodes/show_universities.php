@@ -48,7 +48,6 @@ function list_available_products($wpdb, $university_id) {
     return generate_item_list(
         $products,
         "hilfsmittel",
-        null,
         $before_html,
         $error
     );

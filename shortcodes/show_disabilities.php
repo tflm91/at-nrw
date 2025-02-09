@@ -32,9 +32,8 @@ function show_detailed_disability_information ($disability_id): string {
         $output .= generate_item_list(
             $product_categories,
             'hilfsmittel',
-            'category',
-            null,
-            'Keine passenden Hilfsmittel gefunden. '
+            error: 'Keine passenden Hilfsmittel gefunden. ',
+            id_prefix: 'category'
         );
 
         $back_url = site_url('/behinderungen');
@@ -47,20 +46,20 @@ function show_detailed_disability_information ($disability_id): string {
 }
 
 /* list all disabilities of the corresponding category */
-function list_disabilities($category_id) {
+function list_disabilities($category_id): string
+{
     $disabilities = select_of_category(DISABILITY_TABLE, $category_id);
 
     return generate_item_list(
         $disabilities,
         "behinderungen",
-        null,
-        null,
-        "Keine spezifische Behinderung gefunden. "
+        error: "Keine spezifische Behinderung gefunden. "
     );
 }
 
 /* list all disability categories */
-function list_disability_categories() {
+function list_disability_categories(): string
+{
     global $wpdb;
     $disability_table = DISABILITY_TABLE;
 
@@ -88,7 +87,7 @@ function list_disability_categories() {
 }
 
 /* the shortcode for the disability page */
-function show_disabilities() {
+function show_disabilities(): string {
     // Get the disability ID from the URL
     $disability_id = get_query_var('disability_id');
 

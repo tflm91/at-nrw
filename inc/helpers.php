@@ -1,13 +1,5 @@
 <?php
-function generate_item_link($item, $subpage, $id_prefix) {
-    $url = site_url(
-        '/'
-        . $subpage
-        . (($id_prefix) ? '#' . $id_prefix . '-' . esc_attr($item->id) : '/' . esc_attr($item->id)));
-    return '<a href="' . $url . '">' . esc_html($item->name) . '</a>';
-}
-
-function generate_item_list($items, $subpage, $id_prefix, $before_html, $error) {
+function generate_item_list($items, $subpage, $before_html = null, $error = null, $id_prefix = null): string {
     $output = "";
     if($items) {
         if($before_html) {
@@ -25,6 +17,14 @@ function generate_item_list($items, $subpage, $id_prefix, $before_html, $error) 
     }
 
     return $output;
+}
+
+function generate_item_link($item, $subpage, $id_prefix = null): string {
+    $url = site_url(
+        '/'
+        . $subpage
+        . (($id_prefix) ? '#' . $id_prefix . '-' . esc_attr($item->id) : '/' . esc_attr($item->id)));
+    return '<a href="' . $url . '">' . esc_html($item->name) . '</a>';
 }
 ?>
 
