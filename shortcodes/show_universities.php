@@ -37,7 +37,11 @@ function construct_university_from_row($row): University {
     return new University(
         $row->id ?? 0,
         $row->name ?? 'Unbekannt',
-        $row->contactInformation ?? 'Unbekannt',
+        $row->division ?? 'Unbekannt',
+        $row->contactName ?? 'Unbekannt',
+        $row->phoneNumber ?? '',
+        $row->phoneAlt ?? '',
+        $row->email ?? '',
         $row->contactURL ?? '',
         $row->contactAlt ?? '',
         $row->workspaces ?? 'Unbekannt'
