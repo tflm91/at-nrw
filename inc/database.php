@@ -57,6 +57,12 @@ function select_without_category(
 /* count all items of a category specified by its ID */
 function count_items($connection_table, $category_id) {
     global $wpdb;
-    return$wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $connection_table WHERE categoryId = %d", $category_id));
+    return $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $connection_table WHERE categoryId = %d", $category_id));
+}
+
+/* select only items which satisfy a condition */
+function select_conditional($table_name, $conditional_column) {
+    global $wpdb;
+    return $wpdb->get_results("SELECT id, name FROM $table_name WHERE $conditional_column = TRUE");
 }
 ?>

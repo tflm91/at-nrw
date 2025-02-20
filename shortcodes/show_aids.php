@@ -27,7 +27,9 @@ function show_detailed_product_information($product_id): string {
             $row->name ?? 'Unbekannt',
             $row->manufacturerURL ?? '',
             $row->manufacturerAlt ?? '',
-            $row->description ?? 'Unbekannt');
+            $row->description ?? 'Unbekannt',
+            $row->availableEverywhere ?? false
+        );
         $output .= $product->display();
     } else {
         $output .= "<p>Dieses Produkt wurde nicht gefunden. </p>\n";

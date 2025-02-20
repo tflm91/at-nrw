@@ -31,9 +31,9 @@ class University {
         );
     }
 
-    public function list_aids(): string {
-        $before_html = "<p><b>Verfügbare Hilfsmittel:</b></p>\n";
-        $error = "Diese Hochschule bietet leider keine Hilfsmittel an. ";
+    public function list_special_aids(): string {
+        $before_html = "<h4>Spezielle Hilfsmittel der Hochschule</h4>\n";
+        $error = "Diese Hochschule bietet nur die Hilfsmittel an, die an allen Hochschulen angeboten werden. ";
         return generate_item_list(
             $this->get_aids(),
             "hilfsmittel",
@@ -42,7 +42,7 @@ class University {
         );
     }
 
-    public function display_information() {
+    public function display_information(): string {
         $output = "<h2>" . esc_html($this->name) . "</h2>\n";
         $output .= "<p><b>Kontaktinformationen zur Beratungsstelle für behinderte Studierende:</b><br />\n";
         $output .= nl2br($this->contact_information) . "</p>\n";

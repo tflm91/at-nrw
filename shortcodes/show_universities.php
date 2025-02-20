@@ -21,7 +21,9 @@ function show_university_details_page($university_id): string {
     if ($row) {
         $university = construct_university_from_row($row);
         $output .= $university->display_information();
-        $output .= $university->list_aids();
+        $output .= "<h3>Verfügbare Hifsmittel</h3>\n";
+        $output .= $university->list_special_aids();
+        $output .= list_general_aids();
     } else {
         $output .= "<p>Die Hochschule konnte nicht gefunden werden. </p>";
     }
@@ -39,6 +41,16 @@ function construct_university_from_row($row): University {
         $row->contactURL ?? '',
         $row->contactAlt ?? '',
         $row->workspaces ?? 'Unbekannt'
+    );
+}
+
+/* lists all aids available on each university */
+function list_general_aids(): string {
+    $before_html =  '<h4>An allen Hochschulen verfügbare Hilfsmittel</h4>';
+    return generate_item_list(
+        select_conditional(PRODUCT_TABLE, 'availableEverywhere'),
+        "hilfsmittel",
+        $before_html
     );
 }
 
