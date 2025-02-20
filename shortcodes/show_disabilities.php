@@ -22,7 +22,13 @@ function show_disabilities(): string {
 function show_detailed_disability_information ($disability_id): string {
     $row = select_one(DISABILITY_TABLE, $disability_id);
     if ($row) {
-        $disability = new Disability($row->id, $row->categoryId, $row->name, $row->description);
+        $disability = new Disability(
+            $row->id ?? 0,
+                $row->categoryId ?? 0,
+            $row->name ?? 'Unbekannt',
+            $row->description ?? 'Unbekannt'
+        );
+
         $output = "<div>\n";
         $output .= $disability->display();
         $back_url = site_url('/behinderungen');
@@ -54,7 +60,11 @@ function display_disability_category_information($row): string {
     $number_of_disabilities = count_items(DISABILITY_TABLE, $row->id);
     $output = "";
     if ($number_of_disabilities > 0) {
-        $disability_category = new DisabilityCategory($row->id, $row->name, $row->description);
+        $disability_category = new DisabilityCategory(
+            $row->id ?? 0,
+                $row->name ?? 'Unbekannt',
+            $row->description ?? 'Unbekannt'
+        );
         $output .= $disability_category->display();
     }
     return $output;

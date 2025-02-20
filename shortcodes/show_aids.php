@@ -22,7 +22,12 @@ function show_detailed_product_information($product_id): string {
 
     $output = "<div>\n";
     if ($row) {
-        $product = new Product($row->id, $row->name, $row->manufacturerURL, $row->manufacturerAlt, $row->description);
+        $product = new Product(
+            $row->id ?? 0,
+            $row->name ?? 'Unbekannt',
+            $row->manufacturerURL ?? '',
+            $row->manufacturerAlt ?? '',
+            $row->description ?? 'Unbekannt');
         $output .= $product->display();
     } else {
         $output .= "<p>Dieses Produkt wurde nicht gefunden. </p>\n";
@@ -55,7 +60,10 @@ function display_product_category_information($row): string {
     $output = "";
 
     if ($number_of_products > 0) {
-        $category = new ProductCategory($row->id, $row->name, $row->description);
+        $category = new ProductCategory(
+            $row->id ?? 0,
+            $row->name ?? 'Unbekannt',
+            $row->description ?? 'Unbekannt');
         $output .= $category->display();
     }
 

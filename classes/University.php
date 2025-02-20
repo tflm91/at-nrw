@@ -46,7 +46,7 @@ class University {
         $output = "<h2>" . esc_html($this->name) . "</h2>\n";
         $output .= "<p><b>Kontaktinformationen zur Beratungsstelle für behinderte Studierende:</b><br />\n";
         $output .= nl2br($this->contact_information) . "</p>\n";
-        if ($this->contact_url) {
+        if ($this->contact_url != '') {
             $output .= "<p><b>Link zur Beratungsstelle: </b><a href='"
                 . esc_url($this->contact_url) . "'>". esc_html($this->contact_alt) . "</a></p>";
         } else {

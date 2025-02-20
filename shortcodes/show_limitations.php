@@ -11,7 +11,10 @@ function show_limitations(): string {
     $output = "<div>\n";
     if ($rows) {
         foreach ($rows as $row) {
-            $limitation = new FunctionalLimitation($row->id, $row->name);
+            $limitation = new FunctionalLimitation(
+                $row->id ?? 0,
+                $row->name ?? 'Unbekannt'
+            );
             $output .= $limitation->display();
         }
     } else {

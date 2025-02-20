@@ -46,7 +46,7 @@ class Product {
         $output = "<h2>" . esc_html($this->name) . "</h2>\n";
         $output .= "<p>" . esc_html($this->description) . "</p>\n";
 
-        if ($this->manufacturer_url) {
+        if ($this->manufacturer_url != '') {
             $output .= '<p><a href="'
                 . esc_url($this->manufacturer_url) . '">'
                 . esc_html($this->manufacturer_alt) . '</a></p>';

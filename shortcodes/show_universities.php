@@ -33,12 +33,12 @@ function show_university_details_page($university_id): string {
 /* construct university object from database entry */
 function construct_university_from_row($row): University {
     return new University(
-        $row->id,
-        $row->name,
-        $row->contactInformation,
-        $row->contactURL,
-        $row->contactAlt,
-        $row->workspaces
+        $row->id ?? 0,
+        $row->name ?? 'Unbekannt',
+        $row->contactInformation ?? 'Unbekannt',
+        $row->contactURL ?? '',
+        $row->contactAlt ?? '',
+        $row->workspaces ?? 'Unbekannt'
     );
 }
 
