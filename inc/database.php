@@ -86,4 +86,9 @@ function select_connected_links(
         . " WHERE {$connection_table}.{$itemForeignKey} = %d";
     return $wpdb->get_results($wpdb->prepare($stmt, $itemId));
 }
-?>
+
+/* delete a specified element */
+function delete_element($table_name, $object_id): void {
+    global $wpdb;
+    $wpdb->delete($table_name, ['id' => $object_id]);
+}
