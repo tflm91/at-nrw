@@ -85,7 +85,7 @@ class University {
             $output .= "<p>Kein Link zur Beratungsstelle vorhanden. </p>";
         }
         $output .= '<h3>Arbeitsräume</h3>';
-        $output .= esc_html($this->workspaces);
+        $output .= '<p>' . esc_html($this->workspaces) . '</p>';
         return $output;
 
     }
