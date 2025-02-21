@@ -31,5 +31,16 @@ function generate_item_link($item, $subpage, $id_prefix = null): string {
         . (($id_prefix) ? '#' . $id_prefix . '-' . esc_attr($item->id) : '/' . esc_attr($item->id)));
     return '<a href="' . $url . '">' . esc_html($item->name) . '</a>';
 }
+
+/* generate list of additional links */
+function generate_link_list($links) {
+    $output = "<p>Weiterführende Links: </p>";
+    $output .= '<ul>';
+    foreach($links as $link) {
+        $output .= '<li><a href="' . esc_url($link->URL) . '">' . esc_html($link->altText) . '</a></li>';
+    }
+    $output .= "</ul>\n";
+    return $output;
+}
 ?>
 

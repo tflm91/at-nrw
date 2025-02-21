@@ -52,7 +52,7 @@ function construct_university_from_row($row): University {
 function list_general_aids(): string {
     $before_html =  '<h4>An allen Hochschulen verfügbare Hilfsmittel</h4>';
     return generate_item_list(
-        select_conditional(PRODUCT_TABLE, 'availableEverywhere'),
+        select_conditional_product(PRODUCT_TABLE, 'availableEverywhere'),
         "hilfsmittel",
         $before_html
     );

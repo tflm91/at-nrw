@@ -21,6 +21,19 @@ class ProductCategory {
             $output .= "<p>" . esc_html($this->description) . "</p>\n";
         }
         $output .= $this->list_products();
+
+        $additional_links = select_connected_links(
+            LINK_FOR_AID_TABLE,
+            ADDITIONAL_LINK_TABLE,
+            "aidId",
+            "linkId",
+            $this->id,
+        );
+
+        if (!empty($additional_links)) {
+            $output .= generate_link_list($additional_links);
+        }
+
         return $output;
     }
 

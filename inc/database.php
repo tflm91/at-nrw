@@ -60,9 +60,30 @@ function count_items($connection_table, $category_id) {
     return $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $connection_table WHERE categoryId = %d", $category_id));
 }
 
-/* select only items which satisfy a condition */
-function select_conditional($table_name, $conditional_column) {
+/* select only products which satisfy a condition */
+function select_conditional_product($table_name, $conditional_column) {
     global $wpdb;
     return $wpdb->get_results("SELECT id, name FROM $table_name WHERE $conditional_column = TRUE");
+}
+
+/* select only comprehensive links */
+function select_conditional_links($table_name, $conditional_column) {
+    global $wpdb;
+    return $wpdb->get_results("SELECT URL, altText FROM $table_name WHERE $conditional_column = TRUE");
+}
+
+/* select additional links for disability category or product category */
+function select_connected_links(
+    $connection_table,
+    $linkTable,
+    $itemForeignKey,
+    $linkForeignKey,
+    $itemId
+) {
+    global $wpdb;
+    $stmt = "SELECT $linkTable.URL AS URL, $linkTable.altText AS altText FROM $connection_table"
+        . " INNER JOIN $linkTable ON $linkTable.id = {$connection_table}.{$linkForeignKey}"
+        . " WHERE {$connection_table}.{$itemForeignKey} = %d";
+    return $wpdb->get_results($wpdb->prepare($stmt, $itemId));
 }
 ?>

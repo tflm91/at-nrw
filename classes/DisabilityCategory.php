@@ -21,6 +21,18 @@ class DisabilityCategory {
             $output .= "<p>" . esc_html($this->description) . "</p>\n";
         }
         $output .= $this->list_disabilities();
+        $additional_links = select_connected_links(
+            LINK_FOR_DISABILIATION_TABLE,
+            ADDITIONAL_LINK_TABLE,
+            "disabilityId",
+            "linkId",
+            $this->id
+        );
+
+        if (!empty($additional_links)) {
+            $output .= generate_link_list($additional_links);
+        }
+
         return $output;
     }
 
