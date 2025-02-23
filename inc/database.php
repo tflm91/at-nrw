@@ -1,9 +1,13 @@
 <?php
 
 /* select all objects of a specified table */
-function select_all($table_name) {
+function select_all($table_name, $order_by_name = true) {
     global $wpdb;
-    return $wpdb->get_results("SELECT * FROM $table_name ORDER BY name");
+    $stmt = "SELECT * FROM $table_name";
+    if ($order_by_name) {
+        $stmt .= " ORDER BY name";
+    }
+    return $wpdb->get_results($stmt);
 }
 
 /* select an object specified by its ID */

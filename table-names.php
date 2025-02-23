@@ -15,5 +15,5 @@ define("PRODUCT_TABLE", "product");
 define("UNIVERSITY_TABLE", "university");
 define("ADDITIONAL_LINK_TABLE", "additionalLink");
 define("LINK_FOR_AID_TABLE", "linkForAid");
-define("LINK_FOR_DISABILIATION_TABLE", "linkForDisability");
+define("LINK_FOR_DISABILITY_TABLE", "linkForDisability");
 ?>

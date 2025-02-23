@@ -22,7 +22,7 @@ class DisabilityCategory {
         }
         $output .= $this->list_disabilities();
         $additional_links = select_connected_links(
-            LINK_FOR_DISABILIATION_TABLE,
+            LINK_FOR_DISABILITY_TABLE,
             ADDITIONAL_LINK_TABLE,
             "disabilityId",
             "linkId",
