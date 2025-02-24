@@ -1,12 +1,11 @@
 <?php
-
 require_once get_stylesheet_directory() . '/inc/database.php';
 require_once get_stylesheet_directory() . '/table-names.php';
 
 add_shortcode('editable_disability_categories', 'list_editable_disability_categories');
 
 function list_editable_disability_categories(): string {
-    $categories = select_all(DISABILITY_CATEGORY_TABLE);
+    $categories = select_all(DISABILITY_CATEGORY_TABLE, false);
     $output = "";
     if (!empty ($categories)) {
         $output .= "<table>";
@@ -27,11 +26,13 @@ function list_editable_disability_categories(): string {
         $output .= '<div id="delete-dialogue" style="display: none;">' .
             '<div class="modal-content" id="modal-content"></div>' .
             '</div>';
+    } else {
+        $output .= '<p>Keine Behinderungskategorien gefunden.</p> ';
     }
     return $output;
 }
 
-function delete_category_script(): void {
+function delete_disability_category_script(): void {
     ?>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -40,7 +41,7 @@ function delete_category_script(): void {
                    event.preventDefault();
                   let categoryId = this.getAttribute("data-id");
 
-                  fetch('<?php echo admin_url('admin-ajax.php'); ?>?action=check_category&category_id=' + categoryId)
+                  fetch('<?php echo admin_url('admin-ajax.php'); ?>?action=check_disability_category&category_id=' + categoryId)
                       .then(response => response.json())
                       .then(data => {
                           let dialogue = document.getElementById("delete-dialogue");
@@ -55,7 +56,7 @@ function delete_category_script(): void {
                           } else {
                               modalContent.innerHTML = '<span class="close" onclick="closeDialogue()">&times;</span> ' +
                                   "<p>Bist du sicher, dass du die Kategorie löschen möchtest?</p>" +
-                                  "<button onclick='deleteCategory(" + categoryId + ")'>Ja</button> " +
+                                  "<button onclick='deleteDisabilityCategory(" + categoryId + ")'>Ja</button> " +
                                   "<button onclick='closeDialogue()'>Abbrechen</button>";
                           }
                           dialogue.style.display = "block";
@@ -64,15 +65,11 @@ function delete_category_script(): void {
             });
         });
 
-        function closeDialogue() {
-            document.getElementById("delete-dialogue").style.display = "none";
-        }
-
-        function deleteCategory(categoryId) {
+        function deleteDisabilityCategory(categoryId) {
             fetch('<?php echo admin_url("admin-ajax.php") ?>', {
                 method: "POST",
                 headers: {"Content-Type": "application/x-www-form-urlencoded"},
-                body: "action=delete_category&category_id=" + categoryId
+                body: "action=delete_disability_category&category_id=" + categoryId
             })
                 .then(() => {
                     location.reload();
@@ -82,9 +79,9 @@ function delete_category_script(): void {
 <?php
 }
 
-add_action('wp_footer', 'delete_category_script');
+add_action('wp_footer', 'delete_disability_category_script');
 
-function check_category(): void {
+function check_disability_category(): void {
     $category_id = intval($_GET['category_id']);
     $disabilities = select_of_category(DISABILITY_TABLE, $category_id) ?? [];
 
@@ -94,10 +91,10 @@ function check_category(): void {
     ]);
 }
 
-add_action('wp_ajax_check_category', 'check_category');
-add_action('wp_ajax_nopriv_check_category', 'check_category');
+add_action('wp_ajax_check_disability_category', 'check_disability_category');
+add_action('wp_ajax_nopriv_check_disability_category', 'check_disability_category');
 
-function delete_category(): void {
+function delete_disability_category(): void {
     $category_id = intval($_POST['category_id']);
 
     $disabilities = select_of_category(DISABILITY_TABLE, $category_id) ?? [];
@@ -110,4 +107,4 @@ function delete_category(): void {
     }
 }
 ;
-add_action('wp_ajax_delete_category', 'delete_category');
+add_action('wp_ajax_delete_disability_category', 'delete_disability_category');
