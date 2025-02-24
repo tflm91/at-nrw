@@ -96,3 +96,15 @@ function delete_element($table_name, $object_id): void {
     global $wpdb;
     $wpdb->delete($table_name, ['id' => $object_id]);
 }
+
+/* select all ids associated to a specific object */
+function select_associated_ids(
+    $table_name,
+    $object_id_column,
+    $associated_id_column,
+    $object_id) {
+    global $wpdb;
+    $stmt = "SELECT {$associated_id_column} FROM $table_name"
+        . " WHERE {$object_id_column} = %d";
+    return $wpdb->get_col($wpdb->prepare($stmt, $object_id));
+}

@@ -4,5 +4,4 @@ require_once get_stylesheet_directory() . '/inc/rewrite-rules.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes.php';
 require_once get_stylesheet_directory() . '/inc/footer.php';
 require_once get_stylesheet_directory() . '/inc/logout.php';
-require_once get_stylesheet_directory() . '/inc/modal_styles.php';
 ?>

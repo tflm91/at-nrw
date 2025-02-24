@@ -14,7 +14,12 @@ function list_editable_disability_categories(): string {
         foreach ($categories as $category) {
             $output .= "<tr>";
             $output .= "<td>" . $category->name . "</td>";
-            $output .= "<td><button class='delete-category' data-id='". esc_attr($category->id) . "'>Löschen</button></td>";
+            $output .= "<td>";
+            $output .= '<a href="' . esc_url(site_url('/behinderungskategorie-bearbeiten?id=' . $category->id)) . '">';
+            $output .= '<button>Bearbeiten</button>';
+            $output .= '</a>';
+            $output .= "<button class='delete-category' data-id='". esc_attr($category->id) . "'>Löschen</button></td>";
+            $output .= "</td>";
             $output .= "</tr>";
         }
         $output .= "</table>";
