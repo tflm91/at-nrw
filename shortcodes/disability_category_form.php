@@ -48,7 +48,7 @@ ob_start();
     <input type="hidden" name="category_id" value="<?php echo esc_attr($category_id) ?>">
     <?php endif; ?>
 
-    <button type="submit" name="save_category">Speichern</button>
+    <button type="submit" name="save_disability_category">Speichern</button>
     <a href="<?php echo site_url('/behinderungskategorien-editieren')?>">
         <button type="button">Abbrechen</button>
     </a>
@@ -60,7 +60,7 @@ ob_start();
 add_shortcode('disability_category_form', 'disability_category_form');
 
 function save_disability_category(): void {
-    if (isset($_POST['save_category'])) {
+    if (isset($_POST['save_disability_category'])) {
         global $wpdb;
 
         $name = sanitize_text_field($_POST['category_name']);

@@ -17,6 +17,9 @@ function list_editable_disabilities(): string {
             $output .= '<tr>';
             $output .= '<td>' . $disability->name . '</td>';
             $output .= '<td>';
+            $output .= '<a href="' . esc_url(site_url('/behinderung-bearbeiten?id=' . $disability->id)) . '">';
+            $output .= '<button>Bearbeiten</button>';
+            $output .= '</a>';
             $output .= '<button class="delete-disability" data-id="' . esc_attr($disability->id) . '">Löschen</button>';
             $output .= '</td>';
             $output .= '</tr>';
