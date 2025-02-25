@@ -22,7 +22,7 @@ function disability_form(): bool|string {
     }
 
     $disability_categories = select_all(DISABILITY_CATEGORY_TABLE);
-    $product_categories = select_all(PRODUCT_CATEGORY_TABLE, false);
+    $product_categories = select_all(PRODUCT_CATEGORY_TABLE);
 
 
     ob_start();

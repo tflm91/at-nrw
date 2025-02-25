@@ -14,4 +14,6 @@ require_once get_stylesheet_directory() . '/shortcodes/list_editable_disability_
 require_once get_stylesheet_directory() . '/shortcodes/disability_category_form.php';
 require_once get_stylesheet_directory() . '/shortcodes/list_editable_disabilities.php';
 require_once get_stylesheet_directory() . '/shortcodes/disability_form.php';
+require_once get_stylesheet_directory() . '/shortcodes/list_editable_limitations.php';
+require_once get_stylesheet_directory() . '/shortcodes/limitation_form.php';
 ?>
