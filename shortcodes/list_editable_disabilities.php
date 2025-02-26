@@ -6,7 +6,7 @@ require_once get_stylesheet_directory() . '/table-names.php';
 add_shortcode('list_editable_disabilities', 'list_editable_disabilities');
 
 function list_editable_disabilities(): string {
-    $disabilities = select_all(DISABILITY_TABLE, false);
+    $disabilities = select_all(DISABILITY_TABLE);
     $output = '';
 
     if (!empty($disabilities)) {
