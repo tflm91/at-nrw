@@ -20,7 +20,7 @@ function list_editable_product_categories(): string {
             $output .= '<a href="' . esc_url(site_url('/produktkategorie-bearbeiten?id=' . $product_category->id)) . '">';
             $output .= '<button>Bearbeiten</button>';
             $output .= '</a>';
-            $output .= '<button class="delete-category" data-id="' . esc_attr($product_category->id) . '">Löschen</button>';
+            $output .= '<button class="delete-product-category" data-id="' . esc_attr($product_category->id) . '">Löschen</button>';
             $output .= '</td>';
             $output .= '</tr>';
         }
@@ -42,7 +42,7 @@ function delete_product_category_script(): void {
     ?>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".delete-category").forEach(button => {
+            document.querySelectorAll(".delete-product-category").forEach(button => {
                 button.addEventListener("click" , function (event) {
                     event.preventDefault();
                     let categoryId = this.getAttribute("data-id");
@@ -76,7 +76,7 @@ function delete_product_category_script(): void {
 add_action('wp_footer', 'delete_product_category_script');
 
 function delete_product_category(): void {
-    $category_id = intval($_POST['disability_id']);
+    $category_id = intval($_POST['category_id']);
     delete_element(PRODUCT_CATEGORY_TABLE, $category_id);
     wp_send_json(['success' => true]);
 }

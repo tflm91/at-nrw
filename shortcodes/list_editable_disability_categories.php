@@ -17,7 +17,7 @@ function list_editable_disability_categories(): string {
             $output .= '<a href="' . esc_url(site_url('/behinderungskategorie-bearbeiten?id=' . $category->id)) . '">';
             $output .= '<button>Bearbeiten</button>';
             $output .= '</a>';
-            $output .= "<button class='delete-category' data-id='". esc_attr($category->id) . "'>Löschen</button></td>";
+            $output .= "<button class='delete-disability-category' data-id='". esc_attr($category->id) . "'>Löschen</button></td>";
             $output .= "</td>";
             $output .= "</tr>";
         }
@@ -36,7 +36,7 @@ function delete_disability_category_script(): void {
     ?>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".delete-category").forEach(button => {
+            document.querySelectorAll(".delete-disability-category").forEach(button => {
                button.addEventListener("click", function (event) {
                    event.preventDefault();
                   let categoryId = this.getAttribute("data-id");
@@ -55,7 +55,7 @@ function delete_disability_category_script(): void {
                                   "<button onClick='closeDialogue()'>Schließen</button>";
                           } else {
                               modalContent.innerHTML = '<span class="close" onclick="closeDialogue()">&times;</span> ' +
-                                  "<p>Bist du sicher, dass du die Kategorie löschen möchtest?</p>" +
+                                  "<p>Bist du sicher, dass du die Behinderungskategorie löschen möchtest?</p>" +
                                   "<button onclick='deleteDisabilityCategory(" + categoryId + ")'>Ja</button> " +
                                   "<button onclick='closeDialogue()'>Abbrechen</button>";
                           }
