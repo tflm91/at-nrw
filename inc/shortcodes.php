@@ -17,5 +17,7 @@ require_once get_stylesheet_directory() . '/shortcodes/disability_form.php';
 require_once get_stylesheet_directory() . '/shortcodes/list_editable_limitations.php';
 require_once get_stylesheet_directory() . '/shortcodes/limitation_form.php';
 require_once get_stylesheet_directory() . '/shortcodes/list_editable_product_categories.php';
-require_once get_stylesheet_directory() . '/shortcodes/product_category_form.php'
+require_once get_stylesheet_directory() . '/shortcodes/product_category_form.php';
+require_once get_stylesheet_directory() . '/shortcodes/list_editable_products.php';
+require_once get_stylesheet_directory() . '/shortcodes/product_form.php';
 ?>
