@@ -9,7 +9,7 @@ class FunctionalLimitation extends Impairment {
     }
 
     public function display(): string {
-        $output =  '<h3>' . $this->name . '</h3>';
+        $output =  '<h2>' . $this->name . '</h2>';
         $output .= $this->list_suitable_aids();
         return $output;
     }
