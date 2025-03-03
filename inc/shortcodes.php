@@ -22,4 +22,6 @@ require_once get_stylesheet_directory() . '/shortcodes/list_editable_products.ph
 require_once get_stylesheet_directory() . '/shortcodes/product_form.php';
 require_once get_stylesheet_directory() . '/shortcodes/list_editable_universities.php';
 require_once get_stylesheet_directory() . '/shortcodes/university_form.php';
+require_once get_stylesheet_directory() . '/shortcodes/list_editable_links.php';
+require_once get_stylesheet_directory() . '/shortcodes/additional_link_form.php';
 ?>
