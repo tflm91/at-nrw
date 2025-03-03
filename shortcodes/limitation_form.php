@@ -26,8 +26,8 @@ function limitation_form(): bool|string {
     ob_start();
     ?>
     <form method="post">
-        <label for="limitation_name">Name der Funktionseinschränkung</label>
-        <input type="text" id="limitation_name" name="limitation_name" required
+        <label for="limitation_name">Name der Funktionseinschränkung (max. 100 Zeichen) </label>
+        <input type="text" id="limitation_name" name="limitation_name" maxlength="100" required
                value="<?php echo $is_editing ? esc_attr($current_limitation->name) : ''; ?>"><br><br>
 
         <fieldset>

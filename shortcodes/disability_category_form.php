@@ -26,12 +26,12 @@ function disability_category_form(): bool|string {
 ob_start();
 ?>
 <form method="post">
-    <label for="category_name">Name der Behinderungskategorie</label>
-    <input type="text" id="category_name" name="category_name" required
+    <label for="category_name">Name der Behinderungskategorie (max. 50 Zeichen)</label>
+    <input type="text" id="category_name" name="category_name" maxlength="50" required
     value="<?php echo $is_editing ? esc_attr($current_category->name) : ''; ?>"><br><br>
 
-    <label for="category_description">Beschreibung:</label>
-    <textarea id="category_description" name="category_description" required><?php echo $is_editing ? esc_attr($current_category->description) : ''; ?></textarea><br><br>
+    <label for="category_description">Beschreibung (max. 1000 Zeichen) :</label>
+    <textarea id="category_description" name="category_description" maxlength="1000" required><?php echo $is_editing ? esc_attr($current_category->description) : ''; ?></textarea><br><br>
 
     <fieldset>
         <legend>Weiterführende Links auswählen:</legend>

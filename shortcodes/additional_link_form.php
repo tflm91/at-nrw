@@ -37,7 +37,7 @@ function additional_link_form(): bool|string {
     ?>
     <form method="post">
         <label>URL: <input type="url" name="link_url" value="<?php echo $is_editing ? esc_url($current_link->URL) : ''; ?>"></label><br><br>
-        <label>Alternativtext: <input type="text" name="link_alt" value="<?php echo $is_editing ? esc_html($current_link->altText) : ''; ?>"></label><br><br>
+        <label>Alternativtext (max. 255 Zeichen): <input type="text" name="link_alt" maxlength="255" value="<?php echo $is_editing ? esc_html($current_link->altText) : ''; ?>"></label><br><br>
 
         <label>
             <input type="checkbox" name="comprehensive_link" id="comprehensive_link"

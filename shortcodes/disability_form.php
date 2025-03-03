@@ -28,8 +28,8 @@ function disability_form(): bool|string {
     ob_start();
     ?>
     <form method="post">
-        <label for="disability_name">Name der Behinderung</label>
-        <input type="text" id="disability_name" name="disability_name" required
+        <label for="disability_name">Name der Behinderung (max. 50 Zeichen) </label>
+        <input type="text" id="disability_name" name="disability_name" required maxlength="50"
                value="<?php echo $is_editing ? esc_attr($current_disability->name) : ''; ?>"><br><br>
 
         <label for="disability_category">Behinderungskategorie</label>
@@ -43,8 +43,8 @@ function disability_form(): bool|string {
             <?php endforeach; ?>
         </select><br><br>
 
-        <label for="disability_description">Beschreibung:</label>
-        <textarea id="disability_description" name="disability_description" required><?php echo $is_editing ? esc_attr($current_disability->description) : ''; ?></textarea><br><br>
+        <label for="disability_description">Beschreibung (max. 2500 Zeichen):</label>
+        <textarea id="disability_description" name="disability_description" maxlength="2500" required><?php echo $is_editing ? esc_attr($current_disability->description) : ''; ?></textarea><br><br>
 
         <fieldset>
             <legend>Passende Produktkategorien auswählen:</legend>

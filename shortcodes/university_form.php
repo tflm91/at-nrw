@@ -26,34 +26,34 @@ function university_form(): bool|string {
     ob_start();
     ?>
     <form method="post">
-        <label for="university_name">Name der Hochschule</label>
-        <input type="text" id="university_name" name="university_name" required
+        <label for="university_name">Name der Hochschule (max. 100 Zeichen) </label>
+        <input type="text" id="university_name" name="university_name" maxlength="100" required
                value="<?php echo $is_editing ? esc_attr($current_university->name) : ''; ?>"><br><br>
 
-        <label for="university_division">Arbeitsbereich der Ansprechperson</label>
-        <input type="text" id="university_division" name="university_division" required
+        <label for="university_division">Arbeitsbereich der Ansprechperson (max. 500 Zeichen) </label>
+        <input type="text" id="university_division" name="university_division" maxlength="500" required
                 value="<?php echo $is_editing ? esc_attr($current_university->division) : '';?>"><br><br>
 
-        <label for="university_contact_name">Name der Ansprechperson</label>
-        <input type="text" id="university_contact_name" name="university_contact_name" required
+        <label for="university_contact_name">Name der Ansprechperson (max. 100 Zeichen)</label>
+        <input type="text" id="university_contact_name" name="university_contact_name" maxlength="100" required
                value="<?php echo $is_editing ? esc_attr($current_university->contactName) : '';?>"><br><br>
 
         <b>Telefonnummer: </b><br>
         <label>Telefonnummer im internationalen Format: <input type="tel" name="university_phone_number"
-                                                               pattern="\+{1-9}{0-9}+"
+                                                               pattern="\+{1-9}{0-9}+" maxlength="20"
                                                                value="<?php echo $is_editing ? esc_html($current_university->phoneNumber) : ''; ?>"></label><br><br>
-        <label>Alternativtext: <input type="text" name="university_phone_alt" value="<?php echo $is_editing ? esc_html($current_university->phoneAlt) : ''; ?>"></label><br><br>
+        <label>Alternativtext (max. 20 Zeichen): <input type="text" name="university_phone_alt" maxlength="20" value="<?php echo $is_editing ? esc_html($current_university->phoneAlt) : ''; ?>"></label><br><br>
 
         <label for="university_email">E-Mail-Adresse</label>
-        <input type="email" id="university_email" name="university_email" required
+        <input type="email" id="university_email" name="university_email" required maxlength="255"
                value="<?php echo $is_editing ? esc_attr($current_university->email) : '';?>"><br><br>
 
         <b>Link zur Beratungsstelle: </b><br>
-        <label>URL: <input type="url" name="university_contact_url" value="<?php echo $is_editing ? esc_url($current_university->contactURL) : ''; ?>"></label><br><br>
-        <label>Alternativtext: <input type="text" name="university_contact_alt" value="<?php echo $is_editing ? esc_html($current_university->contactAlt) : ''; ?>"></label><br><br>
+        <label>URL: <input type="url" name="university_contact_url" maxlength="2048" value="<?php echo $is_editing ? esc_url($current_university->contactURL) : ''; ?>"></label><br><br>
+        <label>Alternativtext (max. 200 Zeichen): <input type="text" name="university_contact_alt" maxlength="200" value="<?php echo $is_editing ? esc_html($current_university->contactAlt) : ''; ?>"></label><br><br>
 
-        <label for="university_workspaces">Arbeitsplätze:</label><br>
-        <textarea id="university_workspaces" name="university_workspaces" required><?php echo $is_editing ? esc_attr($current_university->workspaces) : ''; ?></textarea><br><br>
+        <label for="university_workspaces">Arbeitsplätze (max. 200 Zeichen):</label><br>
+        <textarea id="university_workspaces" name="university_workspaces" maxlength="200" required><?php echo $is_editing ? esc_attr($current_university->workspaces) : ''; ?></textarea><br><br>
 
         <fieldset>
             <legend>Angebotene Hilfsmittel auswählen:</legend>

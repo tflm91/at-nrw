@@ -35,16 +35,16 @@ function product_form(): bool|string {
     ob_start();
     ?>
     <form method="post">
-        <label for="product_name">Name des Produkts</label>
-        <input type="text" id="product_name" name="product_name" required
+        <label for="product_name">Name des Produkts (max. 100 Zeichen) </label>
+        <input type="text" id="product_name" name="product_name" maxlength="100" required
                value="<?php echo $is_editing ? esc_attr($current_product->name) : ''; ?>"><br><br>
 
-        <label for="product_description">Beschreibung:</label><br>
-        <textarea id="product_description" name="product_description" required><?php echo $is_editing ? esc_attr($current_product->description) : ''; ?></textarea><br><br>
+        <label for="product_description">Beschreibung (max. 3000 Zeichen) :</label><br>
+        <textarea id="product_description" name="product_description" maxlength="3000" required><?php echo $is_editing ? esc_attr($current_product->description) : ''; ?></textarea><br><br>
 
         <b>Link zur Herstellerwebsite: </b><br>
-        <label>URL: <input type="url" name="product_manufacturer_url" value="<?php echo $is_editing ? esc_url($current_product->manufacturerURL) : ''; ?>"></label><br><br>
-        <label>Alternativtext: <input type="text" name="product_manufacturer_alt" value="<?php echo $is_editing ? esc_html($current_product->manufacturerAlt) : ''; ?>"></label><br><br>
+        <label>URL: <input type="url" name="product_manufacturer_url" maxlength="2048" value="<?php echo $is_editing ? esc_url($current_product->manufacturerURL) : ''; ?>"></label><br><br>
+        <label>Alternativtext (max. 200 Zeichen): <input type="text" name="product_manufacturer_alt" maxlength="200" value="<?php echo $is_editing ? esc_html($current_product->manufacturerAlt) : ''; ?>"></label><br><br>
 
         <fieldset>
             <legend>Passende Produktkategorien auswählen:</legend>
