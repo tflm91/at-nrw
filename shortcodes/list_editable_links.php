@@ -66,7 +66,6 @@ function delete_link_script(): void {
                 body: "action=delete_link&link_id=" + linkId
             })
                 .then(() => {
-                    alert("Anfrage durchgeführt. ")
                     this.location.reload();
                 })
         }
