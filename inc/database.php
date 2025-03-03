@@ -101,7 +101,8 @@ function select_connected_links(
 /* delete a specified element */
 function delete_element($table_name, $object_id) {
     global $wpdb;
-    return $wpdb->delete($table_name, ['id' => $object_id]);
+    $wpdb->delete($table_name, ['id' => $object_id]);
+    return $wpdb->last_error;
 }
 
 /* select all ids associated to a specific object */
