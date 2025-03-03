@@ -70,6 +70,13 @@ function select_conditional_product($table_name, $conditional_column) {
     return $wpdb->get_results("SELECT id, name FROM $table_name WHERE $conditional_column = TRUE");
 }
 
+/* select only products which do not satisfy a condition */
+function select_non_conditional_product($table_name, $conditional_column) {
+    global $wpdb;
+    return $wpdb->get_results("SELECT id, name FROM $table_name WHERE $conditional_column = FALSE");
+}
+
+
 /* select only comprehensive links */
 function select_conditional_links($table_name, $conditional_column) {
     global $wpdb;

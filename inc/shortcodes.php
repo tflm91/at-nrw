@@ -20,4 +20,6 @@ require_once get_stylesheet_directory() . '/shortcodes/list_editable_product_cat
 require_once get_stylesheet_directory() . '/shortcodes/product_category_form.php';
 require_once get_stylesheet_directory() . '/shortcodes/list_editable_products.php';
 require_once get_stylesheet_directory() . '/shortcodes/product_form.php';
+require_once get_stylesheet_directory() . '/shortcodes/list_editable_universities.php';
+require_once get_stylesheet_directory() . '/shortcodes/university_form.php';
 ?>
