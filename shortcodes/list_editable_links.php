@@ -78,8 +78,8 @@ add_action('wp_footer', 'delete_link_script');
 
 function delete_link(): void {
     $link_id = intval($_POST['link_id']);
-    $error = delete_element(ADDITIONAL_LINK_TABLE, $link_id);
-    wp_send_json(['success' => true, 'error' => $error]);
+    $deleted_elements = delete_element(ADDITIONAL_LINK_TABLE, $link_id);
+    wp_send_json(['success' => true, 'deleteCount' => $deleted_elements]);
 }
 
 add_action('wp_ajax_delete_link', 'delete_link');
