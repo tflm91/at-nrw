@@ -7,9 +7,8 @@ require_once get_stylesheet_directory() . '/table-names.php';
 function disability_category_form(): bool|string {
     $category_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
     $is_editing = ($category_id > 0);
-
+    $links = select_all(ADDITIONAL_LINK_TABLE, false);
     $current_category = null;
-    $selected_link_ids = [];
 
     if ($is_editing) {
         $current_category = select_one(DISABILITY_CATEGORY_TABLE, $category_id);
@@ -19,9 +18,15 @@ function disability_category_form(): bool|string {
             'linkId',
             $category_id
         );
-    }
 
-    $links = select_all(ADDITIONAL_LINK_TABLE, false);
+        $selected_links = array_filter($links, function ($link) use ($selected_link_ids): bool {
+            return in_array($link->id, $selected_link_ids);
+        });
+
+        $unselected_links =  array_filter($links, function ($link) use ($selected_link_ids): bool {
+            return !in_array($link->id, $selected_link_ids);
+        });
+    }
 
 ob_start();
 ?>
@@ -35,13 +40,35 @@ ob_start();
 
     <fieldset>
         <legend>Weiterführende Links auswählen:</legend>
-        <?php foreach ($links as $link): ?>
-            <label>
-                <input type="checkbox" name="selected_links[]" value="<?php echo esc_attr($link->id); ?>"
-                    <?php checked(in_array($link->id, $selected_link_ids));  ?>>
-                <?php echo esc_html($link->altText); ?> (<?php echo esc_url($link->URL); ?>)
-            </label><br>
-        <?php endforeach; ?>
+        <?php if ($is_editing && !empty($selected_links)): ?>
+            <p>Bislang verknüpfte Links: </p>
+            <?php foreach ($selected_links as $link): ?>
+                <label>
+                    <input type="checkbox" name="selected_links[]" value="<?php echo esc_attr($link->id); ?>"
+                           checked >
+                    <?php echo esc_html($link->altText) ?>
+                </label><br>
+            <?php endforeach; ?>
+            <br>
+            <p>Weitere Links: </p>
+            <?php if(!empty($unselected_links)): ?>
+                <?php foreach ($unselected_links as $link): ?>
+                    <label>
+                        <input type="checkbox" name="selected_links[]" value="<?php echo esc_attr($link->id); ?>">
+                        <?php echo esc_html($link->altText) ?>
+                    </label><br>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Alle verfügbaren Links waren bereits ausgewählt: </p>
+            <?php endif; ?>
+        <?php else: ?>
+            <?php foreach ($links as $link): ?>
+                <label>
+                    <input type="checkbox" name="selected_links[]" value="<?php echo esc_attr($link->id); ?>">
+                    <?php echo esc_html($link->altText) ?>
+                </label><br>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </fieldset><br>
 
     <?php if ($is_editing): ?>
