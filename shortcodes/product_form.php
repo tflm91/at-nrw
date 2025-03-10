@@ -2,7 +2,7 @@
 
 require_once get_stylesheet_directory() . '/inc/helpers.php';
 require_once get_stylesheet_directory() . '/inc/database.php';
-require_once get_stylesheet_directory() . '/table-names.php';
+require_once get_stylesheet_directory() . '/constants.php';
 
 function product_form(): bool|string {
     $product_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -40,7 +40,7 @@ function product_form(): bool|string {
                value="<?php echo $is_editing ? esc_attr($current_product->name) : ''; ?>"><br><br>
 
         <label for="product_description">Beschreibung (max. 3000 Zeichen) :</label><br>
-        <textarea id="product_description" name="product_description" maxlength="3000" required><?php echo $is_editing ? esc_attr($current_product->description) : ''; ?></textarea><br><br>
+        <textarea id="product_description" name="product_description" maxlength="3000" rows="<?php echo esc_attr(TEXTAREA_ROW_COUNT)?>" required><?php echo $is_editing ? esc_attr($current_product->description) : ''; ?></textarea><br><br>
 
         <b>Link zur Herstellerwebsite: </b><br>
         <label>URL: <input type="url" name="product_manufacturer_url" maxlength="2048" value="<?php echo $is_editing ? esc_url($current_product->manufacturerURL) : ''; ?>"></label><br><br>

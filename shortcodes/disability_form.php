@@ -2,7 +2,7 @@
 
 require_once get_stylesheet_directory() . '/inc/helpers.php';
 require_once get_stylesheet_directory() . '/inc/database.php';
-require_once get_stylesheet_directory() . '/table-names.php';
+require_once get_stylesheet_directory() . '/constants.php';
 
 function disability_form(): bool|string {
     $disability_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -44,7 +44,7 @@ function disability_form(): bool|string {
         </select><br><br>
 
         <label for="disability_description">Beschreibung (max. 2500 Zeichen):</label>
-        <textarea id="disability_description" name="disability_description" maxlength="2500" required><?php echo $is_editing ? esc_attr($current_disability->description) : ''; ?></textarea><br><br>
+        <textarea id="disability_description" name="disability_description" maxlength="2500" rows="<?php echo esc_attr(TEXTAREA_ROW_COUNT)?>" required><?php echo $is_editing ? esc_attr($current_disability->description) : ''; ?></textarea><br><br>
 
         <fieldset>
             <legend>Passende Produktkategorien auswählen:</legend>

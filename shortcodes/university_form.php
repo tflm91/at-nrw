@@ -2,7 +2,7 @@
 
 require_once get_stylesheet_directory() . '/inc/helpers.php';
 require_once get_stylesheet_directory() . '/inc/database.php';
-require_once get_stylesheet_directory() . '/table-names.php';
+require_once get_stylesheet_directory() . '/constants.php';
 
 function university_form(): bool|string {
     $university_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -53,7 +53,7 @@ function university_form(): bool|string {
         <label>Alternativtext (max. 200 Zeichen): <input type="text" name="university_contact_alt" maxlength="200" value="<?php echo $is_editing ? esc_html($current_university->contactAlt) : ''; ?>"></label><br><br>
 
         <label for="university_workspaces">Arbeitsplätze (max. 200 Zeichen):</label><br>
-        <textarea id="university_workspaces" name="university_workspaces" maxlength="200" required><?php echo $is_editing ? esc_attr($current_university->workspaces) : ''; ?></textarea><br><br>
+        <textarea id="university_workspaces" name="university_workspaces" maxlength="200" rows="<?php echo esc_attr(TEXTAREA_ROW_COUNT)?>" required><?php echo $is_editing ? esc_attr($current_university->workspaces) : ''; ?></textarea><br><br>
 
         <fieldset>
             <legend>Angebotene Hilfsmittel auswählen:</legend>
@@ -119,7 +119,7 @@ function save_university(): void {
 
         $contact_url = esc_url_raw($_POST['university_contact_url']);
         $contact_alt = sanitize_text_field($_POST['university_contact_alt']);
-        $workspaces = sanitize_text_field($_POST['university_workspaces']);
+        $workspaces = sanitize_textarea_field($_POST['university_workspaces']);
 
         $selected_products = $_POST['selected_products'] ?? [];
 

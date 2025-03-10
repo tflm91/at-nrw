@@ -3,6 +3,7 @@ if (!defined("ABSPATH")) {
     exit;
 }
 
+/* table names */
 define("AIDS_WITH_DISABILITY_TABLE", "aidsWithDisability");
 define("AIDS_WITH_LIMITATION_TABLE", "aidsWithLimitation");
 define("PRODUCT_CATEGORY_TABLE", "productCategory");
@@ -16,4 +17,7 @@ define("UNIVERSITY_TABLE", "university");
 define("ADDITIONAL_LINK_TABLE", "additionalLink");
 define("LINK_FOR_AID_TABLE", "linkForAid");
 define("LINK_FOR_DISABILITY_TABLE", "linkForDisability");
+
+/* other constants */
+define("TEXTAREA_ROW_COUNT", 5);
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 require_once get_stylesheet_directory() . '/classes/Impairment.php';
-require_once get_stylesheet_directory() . '/table-names.php';
+require_once get_stylesheet_directory() . '/constants.php';
 
 class Disability extends Impairment {
     public int $id;

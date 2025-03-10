@@ -1,6 +1,6 @@
 <?php
 
-require_once get_stylesheet_directory() . '/table-names.php';
+require_once get_stylesheet_directory() . '/constants.php';
 require_once get_stylesheet_directory() . '/classes/Impairment.php';
 
 class FunctionalLimitation extends Impairment {

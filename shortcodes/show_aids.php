@@ -2,7 +2,7 @@
 
 require_once get_stylesheet_directory() . "/classes/ProductCategory.php";
 require_once get_stylesheet_directory() . "/classes/Product.php";
-require_once get_stylesheet_directory() . "/table-names.php";
+require_once get_stylesheet_directory() . "/constants.php";
 require_once get_stylesheet_directory() . "/inc/database.php";
 
 add_shortcode("aids", "show_aids");

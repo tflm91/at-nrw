@@ -2,7 +2,7 @@
 
 require_once get_stylesheet_directory() . '/inc/helpers.php';
 require_once get_stylesheet_directory() . '/inc/database.php';
-require_once get_stylesheet_directory() . '/table-names.php';
+require_once get_stylesheet_directory() . '/constants.php';
 
 function product_category_form(): bool|string {
     $category_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -68,7 +68,7 @@ function product_category_form(): bool|string {
                value="<?php echo $is_editing ? esc_attr($current_category->name) : ''; ?>"><br><br>
 
         <label for="category_description">Beschreibung (max. 2000 Zeichen):</label>
-        <textarea id="category_description" name="category_description" maxlength="2000" required><?php echo $is_editing ? esc_attr($current_category->description) : ''; ?></textarea><br><br>
+        <textarea id="category_description" name="category_description" maxlength="2000" rows="<?php echo esc_attr(TEXTAREA_ROW_COUNT)?>" required><?php echo $is_editing ? esc_attr($current_category->description) : ''; ?></textarea><br><br>
 
         <fieldset>
             <legend>Unterstützte Behinderungen auswählen:</legend>

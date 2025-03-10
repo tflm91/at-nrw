@@ -1,7 +1,7 @@
 <?php
 
 require_once get_stylesheet_directory() . '/inc/database.php';
-require_once get_stylesheet_directory() . '/table-names.php';
+require_once get_stylesheet_directory() . '/constants.php';
 
 add_shortcode('list_editable_disabilities', 'list_editable_disabilities');
 

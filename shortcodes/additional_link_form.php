@@ -2,7 +2,7 @@
 
 require_once get_stylesheet_directory() . '/inc/helpers.php';
 require_once get_stylesheet_directory() . '/inc/database.php';
-require_once get_stylesheet_directory() . '/table-names.php';
+require_once get_stylesheet_directory() . '/constants.php';
 
 function additional_link_form(): bool|string {
     $link_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
