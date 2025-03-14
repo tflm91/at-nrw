@@ -58,7 +58,7 @@ function university_form(): bool|string {
         <fieldset>
             <legend>Angebotene Produkte auswählen:</legend>
             <div>
-                <p>Folgende assistive Produkte verfügbar und können daher nicht für diese Hochschule ausgewählt werden: </p>
+                <p>Folgende assistive Produkte sind allgemein verfügbar und können daher nicht für diese Hochschule ausgewählt werden: </p>
                 <ul>
                     <?php foreach ($general_products as $product): ?>
                         <li><?php echo esc_html($product->name)?></li>
