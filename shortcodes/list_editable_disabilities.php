@@ -11,13 +11,13 @@ function list_editable_disabilities(): string {
 
     if (!empty($disabilities)) {
         $output .= '<table>';
-        $output .= '<tr><th>Behinderung</th><th>Aktionen</th></tr>';
+        $output .= '<tr><th>Beeinträchtigungsform</th><th>Aktionen</th></tr>';
 
         foreach ($disabilities as $disability) {
             $output .= '<tr>';
             $output .= '<td>' . $disability->name . '</td>';
             $output .= '<td>';
-            $output .= '<a href="' . esc_url(site_url('/behinderung-bearbeiten?id=' . $disability->id)) . '">';
+            $output .= '<a href="' . esc_url(site_url('/beeintraechtigungsform-bearbeiten?id=' . $disability->id)) . '">';
             $output .= '<button>Bearbeiten</button>';
             $output .= '</a>';
             $output .= '<button class="delete-disability" data-id="' . esc_attr($disability->id) . '">Löschen</button>';
@@ -32,7 +32,7 @@ function list_editable_disabilities(): string {
         '</div>';
 
     } else {
-        $output .= '<p>Keine Behinderungen gefunden.</p>';
+        $output .= '<p>Keine Beeinträchtigungsformen gefunden.</p>';
     }
 
     return $output;
@@ -50,7 +50,7 @@ function delete_disability_script(): void {
                   let modalContent = document.getElementById('modal-content');
 
                   modalContent.innerHTML = "<span class='close' onclick='closeDialogue()'>&times;</span>" +
-                      "<p>Bist du sicher, dass du diese Behinderung löschen möchtest?</p>" +
+                      "<p>Bist du sicher, dass du diese Beeinträchtigungsform löschen möchtest?</p>" +
                       "<button onclick='deleteDisability(" + disabilityId + ")'>Ja</button> " +
                       "<button onclick='closeDialogue()'>Abbrechen</button>";
 

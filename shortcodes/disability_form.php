@@ -28,7 +28,7 @@ function disability_form(): bool|string {
     ob_start();
     ?>
     <form method="post">
-        <label for="disability_name">Name der Behinderung (max. 50 Zeichen) </label>
+        <label for="disability_name">Name der Beeinträchtigungsform (max. 50 Zeichen) </label>
         <input type="text" id="disability_name" name="disability_name" required maxlength="50"
                value="<?php echo $is_editing ? esc_attr($current_disability->name) : ''; ?>"><br><br>
 
@@ -62,7 +62,7 @@ function disability_form(): bool|string {
         <?php endif; ?>
 
         <button type="submit" name="save_disability">Speichern</button>
-        <a href="<?php echo site_url('/behinderungen-editieren')?>">
+        <a href="<?php echo site_url('/beeintraechtigungsformen-editieren')?>">
             <button type="button">Abbrechen</button>
         </a>
     </form>
@@ -113,7 +113,7 @@ function save_disability(): void {
             }
         }
 
-        wp_redirect(site_url('/behinderungen-editieren'));
+        wp_redirect(site_url('/beeintraechtigungsformen-editieren'));
         exit;
     }
 }

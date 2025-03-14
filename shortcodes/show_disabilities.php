@@ -31,12 +31,12 @@ function show_detailed_disability_information ($disability_id): string {
 
         $output = "<div>\n";
         $output .= $disability->display();
-        $back_url = site_url('/behinderungen');
+        $back_url = site_url('/beeintraechtigungsformen');
         $output .= "<a href='". $back_url ."'>Zurück zur Übersicht</a>\n";
         $output .= "</div>\n";
         return $output;
     } else {
-        return "<p>Keine Behinderung mit dieser ID gefunden.</p>";
+        return "<p>Keine Beeinträchtigungsform mit dieser ID gefunden.</p>";
     }
 }
 

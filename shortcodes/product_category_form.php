@@ -71,7 +71,7 @@ function product_category_form(): bool|string {
         <textarea id="category_description" name="category_description" maxlength="2000" rows="<?php echo esc_attr(TEXTAREA_ROW_COUNT)?>" required><?php echo $is_editing ? esc_attr($current_category->description) : ''; ?></textarea><br><br>
 
         <fieldset>
-            <legend>Unterstützte Behinderungen auswählen:</legend>
+            <legend>Unterstützte Beeinträchtigungsformen auswählen:</legend>
             <?php foreach ($disabilities as $disability): ?>
                 <label>
                     <input type="checkbox" name="selected_disabilities[]" value="<?php echo esc_attr($disability->id); ?>"

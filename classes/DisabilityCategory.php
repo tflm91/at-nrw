@@ -40,8 +40,8 @@ class DisabilityCategory {
         $disabilities = select_of_category(DISABILITY_TABLE, $this->id);
         return generate_item_list(
             $disabilities,
-            "behinderungen",
-            error: "Keine spezifische Behinderung gefunden. "
+            "beeintraechtigungsformen",
+            error: "Keine spezifische Beeinträchtigungsformen gefunden. "
         );
     }
 }

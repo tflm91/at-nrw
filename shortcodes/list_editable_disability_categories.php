@@ -49,9 +49,9 @@ function delete_disability_category_script(): void {
 
                           if (data.hasEntries) {
                               modalContent.innerHTML = '<span class="close" onclick="closeDialogue()">&times;</span> ' +
-                                  "<p>Diese Kategorie enthält noch folgende Behinderungen und kann daher nicht gelöscht werden. </p><ul>" +
+                                  "<p>Diese Kategorie enthält noch folgende Beeinträchtigungsformen und kann daher nicht gelöscht werden. </p><ul>" +
                                   data.entries.map(entry => "<li>" + entry.name + "</li>").join("") +
-                                  "</ul><p>Bitte lösche erst diese Behinderungen, bevor du die Kategorie löschst</p>" +
+                                  "</ul><p>Bitte lösche erst diese Beeinträchtigungsformen, bevor du die Kategorie löschst</p>" +
                                   "<button onClick='closeDialogue()'>Schließen</button>";
                           } else {
                               modalContent.innerHTML = '<span class="close" onclick="closeDialogue()">&times;</span> ' +
