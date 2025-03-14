@@ -34,7 +34,7 @@ function generate_item_link($item, $subpage, $id_prefix = null): string {
 
 /* generate list of additional links */
 function generate_link_list($links) {
-    $output = "<p>Weiterführende Links: </p>";
+    $output = "<p>Weiterführende Informationen: </p>";
     $output .= '<ul>';
     foreach($links as $link) {
         $output .= '<li><a href="' . esc_url($link->URL) . '">' . esc_html($link->altText) . '</a></li>';
