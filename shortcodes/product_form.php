@@ -60,7 +60,7 @@ function product_form(): bool|string {
         <label>
             <input type="checkbox" name="available_everywhere" id="available_everywhere"
                 <?php checked($is_editing ? $current_product->availableEverywhere : false) ?>>
-            Dieses Produkt ist überall verfügbar.
+            Dieses Produkt ist allgemein verfügbar.
         </label><br><br>
 
         <fieldset id="university_list">

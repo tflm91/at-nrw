@@ -11,13 +11,13 @@ function list_editable_product_categories(): string {
 
     if (!empty($product_categories)) {
         $output .= '<table>';
-        $output .= '<tr><th>Produktkategorie</th><th>Aktionen</th></tr>';
+        $output .= '<tr><th>Assistive Technologie</th><th>Aktionen</th></tr>';
 
         foreach ($product_categories as $product_category) {
             $output .= '<tr>';
             $output .= '<td>' . $product_category->name . '</td>';
             $output .= '<td>';
-            $output .= '<a href="' . esc_url(site_url('/produktkategorie-bearbeiten?id=' . $product_category->id)) . '">';
+            $output .= '<a href="' . esc_url(site_url('/assistive-technologie-bearbeiten?id=' . $product_category->id)) . '">';
             $output .= '<button>Bearbeiten</button>';
             $output .= '</a>';
             $output .= '<button class="delete-product-category" data-id="' . esc_attr($product_category->id) . '">Löschen</button>';
@@ -32,7 +32,7 @@ function list_editable_product_categories(): string {
             '</div>';
 
     } else {
-        $output .= '<p>Keine Produktkategorien gefunden.</p>';
+        $output .= '<p>Keine assistiven Technologien gefunden.</p>';
     }
 
     return $output;
@@ -50,7 +50,7 @@ function delete_product_category_script(): void {
                     let modalContent = document.getElementById('modal-content');
 
                     modalContent.innerHTML = "<span class='close' onclick='closeDialogue()'>&times;</span>" +
-                        "<p>Bist du sicher, dass du diese Produktkategorie löschen möchtest?</p>" +
+                        "<p>Bist du sicher, dass du diese assistive Technologie löschen möchtest?</p>" +
                         "<button onclick='deleteProductCategory(" + categoryId + ")'>Ja</button> " +
                         "<button onclick='closeDialogue()'>Abbrechen</button>";
 

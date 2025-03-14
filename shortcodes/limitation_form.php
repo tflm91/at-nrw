@@ -31,7 +31,7 @@ function limitation_form(): bool|string {
                value="<?php echo $is_editing ? esc_attr($current_limitation->name) : ''; ?>"><br><br>
 
         <fieldset>
-            <legend>Passende Produktkategorien auswählen:</legend>
+            <legend>Passende assistive Technologien auswählen:</legend>
             <?php foreach ($product_categories as $product_category): ?>
                 <label>
                     <input type="checkbox" name="selected_categories[]" value="<?php echo esc_attr($product_category->id); ?>"

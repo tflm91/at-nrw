@@ -33,12 +33,12 @@ class Product {
 
     function list_universities(): string {
         if ($this->available_everywhere) {
-            return '<p>Dieses Hilfsmittel ist an allen Hochschulen vorhanden. </p>';
+            return '<p>Dieses Produkt ist allgemein verfügbar. </p>';
         }
 
         $universities = $this->get_universities();
-        $before_html = "<p>Folgende Hochschulen in Nordrhein-Westfalen bieten dieses Hilfsmittel an: </p>\n";
-        $error = "Dieses Hilfsmittel wird in NRW leider von keiner Hochschule angeboten.";
+        $before_html = "<p>Folgende Hochschulen in Nordrhein-Westfalen bieten dieses Produkt an: </p>\n";
+        $error = "Dieses Produkt wird in NRW leider von keiner Hochschule angeboten.";
 
         return generate_item_list(
             $universities,

@@ -51,11 +51,11 @@ class University {
     }
 
     public function list_special_aids(): string {
-        $before_html = "<h4>Spezielle Hilfsmittel der Hochschule</h4>\n";
-        $error = "Diese Hochschule bietet nur die Hilfsmittel an, die an allen Hochschulen angeboten werden. ";
+        $before_html = "<h4>Spezielle Produkte der Hochschule</h4>\n";
+        $error = "Diese Hochschule bietet keine eigenen Produkte an. Es können dort nur allgemein verfügbare Produkte genutzt werden ";
         return generate_item_list(
             $this->get_aids(),
-            "hilfsmittel",
+            "assistive-technologien",
             $before_html,
             $error
         );

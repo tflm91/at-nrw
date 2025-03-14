@@ -28,8 +28,8 @@ class Impairment {
     function list_suitable_aids(): string {
         return generate_item_list(
             $this->find_suitable_aids(),
-            'hilfsmittel',
-            error: 'Keine passenden Hilfsmittel gefunden. ',
+            'assistive-technologien',
+            error: 'Keine passenden assistiven Technologien gefunden. ',
             id_prefix: 'category'
         );
     }

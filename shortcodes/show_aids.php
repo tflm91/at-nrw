@@ -35,7 +35,7 @@ function show_detailed_product_information($product_id): string {
         $output .= "<p>Dieses Produkt wurde nicht gefunden. </p>\n";
     }
 
-    $output .= "<a href='". site_url('/hilfsmittel') ."'>Zur Übersicht aller Hilfsmittel</a>\n";
+    $output .= "<a href='". site_url('/assistive-technologien') ."'>Zur Übersicht aller assistiven Technologien</a>\n";
     $output .= "</div>\n";
     return $output;
 }
@@ -49,7 +49,7 @@ function list_categories(): string {
             $output .= display_product_category_information($row);
         }
     } else {
-        $output .= "<p>Keine Hilfsmittel vorhanden</p>\n";
+        $output .= "<p>Keine assistiven Technologien vorhanden</p>\n";
     }
     $output .= list_products_without_category();
     $output .= "</div>\n";
@@ -82,7 +82,7 @@ function list_products_without_category(): string {
 
     return generate_item_list(
         $products,
-        "hilfsmittel",
+        "assistive-technologien",
         $before_html
     );
 }

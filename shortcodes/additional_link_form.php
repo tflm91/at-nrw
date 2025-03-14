@@ -57,7 +57,7 @@ function additional_link_form(): bool|string {
         </fieldset><br>
 
         <fieldset>
-            <legend>Passende Produktkategorien auswählen:</legend>
+            <legend>Passende assistive Technologien auswählen:</legend>
             <?php foreach ($product_categories as $product_category): ?>
                 <label>
                     <input type="checkbox" name="selected_product_categories[]" value="<?php echo esc_attr($product_category->id); ?>"

@@ -63,7 +63,7 @@ function product_category_form(): bool|string {
     ob_start();
     ?>
     <form method="post">
-        <label for="category_name">Name der Produktkategorie (max. 150 Zeichen)</label>
+        <label for="category_name">Name der assistiven Technologie (max. 150 Zeichen)</label>
         <input type="text" id="category_name" name="category_name" maxlength="150" required
                value="<?php echo $is_editing ? esc_attr($current_category->name) : ''; ?>"><br><br>
 
@@ -144,7 +144,7 @@ function product_category_form(): bool|string {
         <?php endif; ?>
 
         <button type="submit" name="save_product_category">Speichern</button>
-        <a href="<?php echo site_url('/produktkategorien-editieren')?>">
+        <a href="<?php echo site_url('/assistive-technologien-editieren')?>">
             <button type="button">Abbrechen</button>
         </a>
     </form>
@@ -241,7 +241,7 @@ function save_product_category(): void {
             }
         }
 
-        wp_redirect(site_url('/produktkategorien-editieren'));
+        wp_redirect(site_url('/assistive-technologien-editieren'));
         exit;
     }
 }

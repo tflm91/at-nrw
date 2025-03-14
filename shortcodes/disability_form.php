@@ -47,7 +47,7 @@ function disability_form(): bool|string {
         <textarea id="disability_description" name="disability_description" maxlength="2500" rows="<?php echo esc_attr(TEXTAREA_ROW_COUNT)?>" required><?php echo $is_editing ? esc_attr($current_disability->description) : ''; ?></textarea><br><br>
 
         <fieldset>
-            <legend>Passende Produktkategorien auswählen:</legend>
+            <legend>Passende assistive Technologien auswählen:</legend>
             <?php foreach ($product_categories as $product_category): ?>
                 <label>
                     <input type="checkbox" name="selected_categories[]" value="<?php echo esc_attr($product_category->id); ?>"

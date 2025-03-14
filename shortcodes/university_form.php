@@ -56,16 +56,16 @@ function university_form(): bool|string {
         <textarea id="university_workspaces" name="university_workspaces" maxlength="500" rows="<?php echo esc_attr(TEXTAREA_ROW_COUNT)?>" required><?php echo $is_editing ? esc_attr($current_university->workspaces) : ''; ?></textarea><br><br>
 
         <fieldset>
-            <legend>Angebotene Hilfsmittel auswählen:</legend>
+            <legend>Angebotene Produkte auswählen:</legend>
             <div>
-                <p>Folgende Hilfsmittel sind grundsätzlich verfügbar und können daher nicht für diese Hochschule ausgewählt werden: </p>
+                <p>Folgende assistive Produkte verfügbar und können daher nicht für diese Hochschule ausgewählt werden: </p>
                 <ul>
                     <?php foreach ($general_products as $product): ?>
                         <li><?php echo esc_html($product->name)?></li>
                     <?php endforeach;?>
                 </ul>
             </div>
-            <p>Folgende Hilfsmittel können ausgewählt werden: </p>
+            <p>Folgende assistive Produkte können ausgewählt werden: </p>
             <?php foreach ($non_general_products as $product): ?>
                 <label>
                     <input type="checkbox" name="selected_products[]" value="<?php echo esc_attr($product->id); ?>"

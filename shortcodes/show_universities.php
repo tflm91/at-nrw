@@ -50,7 +50,7 @@ function construct_university_from_row($row): University {
 
 /* lists all aids available on each university */
 function list_general_aids(): string {
-    $before_html =  '<h4>An allen Hochschulen verfügbare Hilfsmittel</h4>';
+    $before_html =  '<h4>Allgemein verfügbare Produkte</h4>';
     return generate_item_list(
         select_conditional_product(PRODUCT_TABLE, 'availableEverywhere'),
         "hilfsmittel",
@@ -68,7 +68,7 @@ function list_universities(): string {
             $university = construct_university_from_row($row);
             $output .= $university->display_information();
             $output .= "<p><a href='" . site_url("/hochschulen/" . esc_attr($row->id))
-                . "'>Verfügbare Hilfsmittel anzeigen</a></p>\n";
+                . "'>Verfügbare assistive Produkte anzeigen</a></p>\n";
         }
     } else {
         $output .= "<h2>Keine Universitäten gefunden</h2>\n";

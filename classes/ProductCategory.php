@@ -50,8 +50,8 @@ class ProductCategory {
     function list_products(): string {
         return generate_item_list(
             $this->get_products(),
-            "hilfsmittel",
-            error: "Keine Hilfsmittel zu dieser Kategorie gefunden. "
+            "assistive-technologien",
+            error: "Keine Produkte zu dieser assistiven Technologie gefunden. "
         );
     }
 }
