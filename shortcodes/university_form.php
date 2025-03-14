@@ -52,8 +52,8 @@ function university_form(): bool|string {
         <label>URL: <input type="url" name="university_contact_url" maxlength="2048" value="<?php echo $is_editing ? esc_url($current_university->contactURL) : ''; ?>"></label><br><br>
         <label>Alternativtext (max. 200 Zeichen): <input type="text" name="university_contact_alt" maxlength="200" value="<?php echo $is_editing ? esc_html($current_university->contactAlt) : ''; ?>"></label><br><br>
 
-        <label for="university_workspaces">Arbeitsplätze (max. 200 Zeichen):</label><br>
-        <textarea id="university_workspaces" name="university_workspaces" maxlength="200" rows="<?php echo esc_attr(TEXTAREA_ROW_COUNT)?>" required><?php echo $is_editing ? esc_attr($current_university->workspaces) : ''; ?></textarea><br><br>
+        <label for="university_workspaces">Arbeitsplätze (max. 500 Zeichen):</label><br>
+        <textarea id="university_workspaces" name="university_workspaces" maxlength="500" rows="<?php echo esc_attr(TEXTAREA_ROW_COUNT)?>" required><?php echo $is_editing ? esc_attr($current_university->workspaces) : ''; ?></textarea><br><br>
 
         <fieldset>
             <legend>Angebotene Hilfsmittel auswählen:</legend>
