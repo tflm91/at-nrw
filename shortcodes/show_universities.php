@@ -52,8 +52,8 @@ function construct_university_from_row($row): University {
 function list_general_aids(): string {
     $before_html =  '<h4>Allgemein verfügbare Produkte</h4>';
     return generate_item_list(
-        select_conditional_product(PRODUCT_TABLE, 'availableEverywhere'),
-        "hilfsmittel",
+        select_conditional_product(PRODUCT_TABLE, 'availableGeneral'),
+        "assistive-technologien",
         $before_html
     );
 }

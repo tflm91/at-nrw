@@ -42,9 +42,9 @@ function product_form(): bool|string {
         <label for="product_description">Beschreibung (max. 3000 Zeichen) :</label><br>
         <textarea id="product_description" name="product_description" maxlength="3000" rows="<?php echo esc_attr(TEXTAREA_ROW_COUNT)?>" required><?php echo $is_editing ? esc_attr($current_product->description) : ''; ?></textarea><br><br>
 
-        <b>Link zur Herstellerwebsite: </b><br>
-        <label>URL: <input type="url" name="product_manufacturer_url" maxlength="2048" value="<?php echo $is_editing ? esc_url($current_product->manufacturerURL) : ''; ?>"></label><br><br>
-        <label>Alternativtext (max. 200 Zeichen): <input type="text" name="product_manufacturer_alt" maxlength="200" value="<?php echo $is_editing ? esc_html($current_product->manufacturerAlt) : ''; ?>"></label><br><br>
+        <b>Link zu weiterführenden Informationen (leer lassen, wenn kein Link vorhanden): </b><br>
+        <label>URL: <input type="url" name="product_info_url" maxlength="2048" value="<?php echo $is_editing ? esc_url($current_product->infoURL) : ''; ?>"></label><br><br>
+        <label>Alternativtext (max. 200 Zeichen): <input type="text" name="product_info_alt" maxlength="200" value="<?php echo $is_editing ? esc_html($current_product->infoAlt) : ''; ?>"></label><br><br>
 
         <fieldset>
             <legend>Passende Produktkategorien auswählen:</legend>
@@ -58,8 +58,8 @@ function product_form(): bool|string {
         </fieldset><br>
 
         <label>
-            <input type="checkbox" name="available_everywhere" id="available_everywhere"
-                <?php checked($is_editing ? $current_product->availableEverywhere : false) ?>>
+            <input type="checkbox" name="available_general" id="available_general"
+                <?php checked($is_editing ? $current_product->availableGeneral : false) ?>>
             Dieses Produkt ist allgemein verfügbar.
         </label><br><br>
 
@@ -86,9 +86,9 @@ function product_form(): bool|string {
     </form>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('university_list').style.display = document.getElementById('available_everywhere').checked ? 'none' : 'block';
+            document.getElementById('university_list').style.display = document.getElementById('available_general').checked ? 'none' : 'block';
         });
-        document.getElementById('available_everywhere').addEventListener('change', function () {
+        document.getElementById('available_general').addEventListener('change', function () {
             document.getElementById('university_list').style.display = this.checked ? 'none' : 'block';
         });
     </script>
@@ -104,17 +104,17 @@ function save_product(): void {
 
         $name = sanitize_text_field($_POST['product_name']);
         $description = sanitize_textarea_field($_POST['product_description']);
-        $manufacturer_url = esc_url_raw($_POST['product_manufacturer_url']);
-        $manufacturer_alt = sanitize_text_field($_POST['product_manufacturer_alt']);
+        $info_url = esc_url_raw($_POST['product_info_url']);
+        $info_alt = sanitize_text_field($_POST['product_info_alt']);
         $selected_categories = $_POST['selected_categories'] ?? [];
-        $available_everywhere = isset($_POST['available_everywhere']);
+        $available_general = isset($_POST['available_general']);
         $selected_universities = $_POST['selected_universities'] ?? [];
 
         if (!empty($_POST['product_id'])) {
             $product_id = intval($_POST['product_id']);
             $wpdb->update(
                 PRODUCT_TABLE,
-                ['name' => $name, 'description' => $description, 'manufacturerURL' => $manufacturer_url, 'manufacturerAlt' => $manufacturer_alt, 'availableEverywhere' => $available_everywhere],
+                ['name' => $name, 'description' => $description, 'infoURL' => $info_url, 'infoAlt' => $info_alt, 'availableGeneral' => $available_general],
                 ['id' => $product_id]
             );
 
@@ -126,7 +126,7 @@ function save_product(): void {
                 ]);
             }
 
-            if (!$available_everywhere) {
+            if (!$available_general) {
                 $wpdb->delete(AVAILABILITY_TABLE, ['productId' => $product_id]);
                 foreach ($selected_universities as $university_id) {
                     $wpdb->insert(AVAILABILITY_TABLE, [
@@ -140,9 +140,9 @@ function save_product(): void {
             $wpdb->insert(PRODUCT_TABLE, [
                 'name'=> $name,
                 'description' => $description,
-                'manufacturerURL' => $manufacturer_url,
-                'manufacturerAlt' => $manufacturer_alt,
-                'availableEverywhere' => $available_everywhere
+                'infoURL' => $info_url,
+                'infoAlt' => $info_alt,
+                'availableGeneral' => $available_general
             ]);
 
             $product_id = $wpdb->insert_id;
@@ -154,7 +154,7 @@ function save_product(): void {
                 ]);
             }
 
-            if (!$available_everywhere) {
+            if (!$available_general) {
                 foreach ($selected_universities as $university_id) {
                     $wpdb->insert(AVAILABILITY_TABLE, [
                         'productId' => $product_id,

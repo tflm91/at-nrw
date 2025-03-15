@@ -25,10 +25,10 @@ function show_detailed_product_information($product_id): string {
         $product = new Product(
             $row->id ?? 0,
             $row->name ?? 'Unbekannt',
-            $row->manufacturerURL ?? '',
-            $row->manufacturerAlt ?? '',
+            $row->infoURL ?? '',
+            $row->infoAlt ?? '',
             $row->description ?? 'Unbekannt',
-            $row->availableEverywhere ?? false
+            $row->availableGeneral ?? false
         );
         $output .= $product->display();
     } else {
