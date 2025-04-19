@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 19. Apr 2025 um 12:25
+-- Erstellungszeit: 19. Apr 2025 um 12:41
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -20,6 +20,730 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `at-nrw`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `additionallink`
+--
+
+CREATE TABLE `additionallink` (
+  `id` int(11) NOT NULL,
+  `URL` varchar(255) DEFAULT NULL,
+  `altText` varchar(255) DEFAULT NULL,
+  `comprehensive` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `additionallink`
+--
+
+INSERT INTO `additionallink` (`id`, `URL`, `altText`, `comprehensive`) VALUES
+(2, 'https://barrierefreiheit.dh.nrw/blog/uebersicht/beitrag-nutzung-von-vergroesserungstools-bei-sehbehinderung-im-studium', 'Zum Blogbeitrag „Nutzung von Vergrößerungstools“ (Kompetenzzentrum dig. Barrierefreiheit) ', 0),
+(3, 'https://barrierefreiheit.dh.nrw/blog/uebersicht/beitrag-einsatz-assistiver-technologien-im-studium', 'Einsatz assistiver Technologien im Studium', 1),
+(4, 'https://barrierefreiheit.dh.nrw/blog/uebersicht/beitrag-digitale-lehre-barrierefrei-planen-step-by-step', 'Digitale Lehre barrierefrei planen', 1),
+(5, 'https://barrierefreiheit.dh.nrw/blog/akustische-verstaerkung-im-hochschulkontext', 'Zum Blogbeitrag „akustische Verstärkung“ (Kompetenzzentrum dig. Barrierefreiheit) ', 0),
+(6, 'https://barrierefreiheit.dh.nrw/blog/uebersicht/umfragetools-in-der-digitalen-lehre', 'ARS in digitaler Lehre', 0),
+(7, 'https://barrierefreiheit.dh.nrw/blog/kollaborativ-lernen', 'Kollaboratives Lernen', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `aidswithdisability`
+--
+
+CREATE TABLE `aidswithdisability` (
+  `impairmentId` int(11) NOT NULL,
+  `categoryId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `aidswithdisability`
+--
+
+INSERT INTO `aidswithdisability` (`impairmentId`, `categoryId`) VALUES
+(1, 37),
+(1, 40),
+(1, 41),
+(1, 44),
+(1, 45),
+(1, 46),
+(1, 64),
+(2, 35),
+(2, 40),
+(2, 44),
+(2, 45),
+(2, 46),
+(2, 49),
+(2, 50),
+(2, 56),
+(3, 34),
+(3, 66),
+(4, 32),
+(4, 33),
+(4, 34),
+(4, 66),
+(5, 38),
+(5, 47),
+(6, 33),
+(6, 44),
+(6, 47),
+(6, 52),
+(6, 58),
+(6, 65);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `aidswithlimitation`
+--
+
+CREATE TABLE `aidswithlimitation` (
+  `impairmentId` int(11) NOT NULL,
+  `categoryId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `aidswithlimitation`
+--
+
+INSERT INTO `aidswithlimitation` (`impairmentId`, `categoryId`) VALUES
+(1, 40),
+(1, 41),
+(1, 45),
+(2, 41),
+(3, 40),
+(3, 41),
+(3, 49),
+(3, 50),
+(4, 37),
+(4, 46),
+(4, 49),
+(4, 50),
+(4, 52),
+(5, 32),
+(5, 34),
+(6, 38),
+(6, 39),
+(7, 32),
+(7, 34),
+(9, 37),
+(9, 44),
+(9, 46),
+(9, 52),
+(10, 49),
+(10, 50),
+(14, 38),
+(14, 56),
+(16, 44),
+(17, 44),
+(17, 58),
+(18, 47),
+(19, 47),
+(21, 45),
+(21, 49),
+(21, 50),
+(21, 52),
+(21, 65),
+(22, 44),
+(23, 35),
+(23, 56),
+(24, 38),
+(25, 32),
+(25, 35),
+(25, 56),
+(26, 37),
+(26, 39),
+(26, 40),
+(26, 46),
+(27, 37),
+(27, 40);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `availability`
+--
+
+CREATE TABLE `availability` (
+  `universityId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `availability`
+--
+
+INSERT INTO `availability` (`universityId`, `productId`) VALUES
+(5, 29),
+(5, 36),
+(5, 37),
+(5, 40),
+(5, 43),
+(7, 2),
+(7, 4),
+(7, 9),
+(7, 13),
+(7, 16),
+(7, 25),
+(7, 26),
+(7, 29),
+(7, 32),
+(7, 40),
+(7, 43),
+(9, 3),
+(9, 9),
+(9, 13),
+(9, 16),
+(9, 17),
+(9, 26),
+(9, 29),
+(9, 32),
+(9, 34),
+(9, 40),
+(10, 3),
+(10, 9),
+(10, 12),
+(10, 16),
+(10, 26),
+(10, 32),
+(10, 36),
+(10, 37),
+(10, 40),
+(10, 43),
+(10, 45),
+(10, 46),
+(11, 18),
+(11, 34),
+(16, 3),
+(16, 9),
+(16, 13),
+(16, 15),
+(16, 17),
+(16, 25),
+(16, 32),
+(16, 34),
+(16, 40),
+(16, 48),
+(17, 9),
+(17, 13),
+(17, 30),
+(17, 34),
+(20, 2),
+(20, 9),
+(20, 13),
+(20, 40),
+(20, 43),
+(21, 3),
+(21, 4),
+(21, 12),
+(21, 16),
+(21, 19),
+(21, 20),
+(21, 22),
+(21, 26),
+(21, 29),
+(21, 31),
+(21, 32),
+(21, 33),
+(21, 39),
+(21, 40),
+(21, 43),
+(21, 47),
+(21, 48),
+(21, 56),
+(21, 62),
+(22, 2),
+(22, 3),
+(22, 7),
+(22, 10),
+(22, 12),
+(22, 16),
+(22, 25),
+(22, 26),
+(22, 29),
+(22, 32),
+(22, 33),
+(22, 34),
+(22, 35),
+(22, 36),
+(22, 37),
+(22, 46),
+(22, 48),
+(22, 52),
+(22, 53),
+(22, 63),
+(22, 65),
+(23, 1),
+(23, 2),
+(23, 3),
+(23, 9),
+(23, 12),
+(23, 16),
+(23, 25),
+(23, 27),
+(23, 29),
+(23, 30),
+(23, 32),
+(23, 37),
+(23, 40),
+(23, 43),
+(25, 16),
+(27, 2),
+(27, 3),
+(27, 9),
+(27, 12),
+(27, 16),
+(27, 25),
+(27, 29),
+(27, 30),
+(27, 32),
+(27, 34),
+(27, 37),
+(27, 40),
+(27, 43),
+(27, 44),
+(28, 9),
+(28, 13),
+(28, 29),
+(28, 34),
+(28, 36),
+(28, 46),
+(28, 48);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `categoryofproduct`
+--
+
+CREATE TABLE `categoryofproduct` (
+  `categoryId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `categoryofproduct`
+--
+
+INSERT INTO `categoryofproduct` (`categoryId`, `productId`) VALUES
+(32, 40),
+(32, 41),
+(32, 42),
+(32, 62),
+(33, 43),
+(33, 62),
+(33, 63),
+(33, 64),
+(33, 65),
+(34, 38),
+(34, 39),
+(34, 44),
+(34, 45),
+(35, 48),
+(37, 2),
+(37, 3),
+(37, 4),
+(37, 7),
+(37, 18),
+(37, 20),
+(37, 22),
+(38, 36),
+(38, 37),
+(39, 29),
+(39, 79),
+(39, 80),
+(40, 9),
+(40, 10),
+(41, 1),
+(41, 2),
+(44, 71),
+(44, 72),
+(44, 73),
+(45, 12),
+(45, 13),
+(46, 15),
+(46, 16),
+(46, 17),
+(47, 24),
+(47, 29),
+(49, 31),
+(49, 32),
+(49, 33),
+(49, 34),
+(49, 35),
+(50, 25),
+(50, 26),
+(50, 27),
+(50, 28),
+(52, 30),
+(56, 46),
+(56, 47),
+(56, 49),
+(56, 56),
+(58, 52),
+(58, 53),
+(64, 1),
+(64, 19),
+(64, 23),
+(65, 55),
+(65, 83),
+(66, 38),
+(66, 39),
+(66, 44),
+(66, 45);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `consultant`
+--
+
+CREATE TABLE `consultant` (
+  `id` int(11) NOT NULL,
+  `universityId` int(11) DEFAULT NULL,
+  `name` char(100) DEFAULT NULL,
+  `phoneNumber` char(20) DEFAULT NULL,
+  `phoneAlt` char(20) DEFAULT NULL,
+  `email` char(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `consultant`
+--
+
+INSERT INTO `consultant` (`id`, `universityId`, `name`, `phoneNumber`, `phoneAlt`, `email`) VALUES
+(2, 1, 'Anna Müller', '+4915112345678', '(0151) 12345678', 'anna.mueller@uni-example1.de'),
+(3, 2, 'Jonas Becker', '+491721112233', '(0172) 1112233', 'jonas.becker@uni-example2.de'),
+(4, 3, 'Laura Schneider', '+4917612341234', '(0176) 12341234', 'laura.schneider@uni-example3.de'),
+(5, 4, 'Tobias Wagner', '+491751234567', '(0175) 1234567', 'tobias.wagner@uni-example4.de'),
+(6, 5, 'Julia Neumann', '+491601112222', '(0160) 1112222', 'julia.neumann@uni-example5.de'),
+(7, 6, 'Felix Richter', '+491781234987', '(0178) 1234987', 'felix.richter@uni-example6.de'),
+(8, 7, 'Lena Hoffmann', '+491741234321', '(0174) 1234321', 'lena.hoffmann@uni-example7.de'),
+(9, 8, 'Tim Schulz', '+4915912345678', '(0159) 12345678', 'tim.schulz@uni-example8.de'),
+(10, 9, 'Sarah Zimmermann', '+491731234456', '(0173) 1234456', 'sarah.zimmermann@uni-example9.de'),
+(11, 10, 'Paul Lehmann', '+491701112233', '(0170) 1112233', 'paul.lehmann@uni-example10.de'),
+(12, 11, 'Nina Braun', '+4915212345678', '(0152) 12345678', 'nina.braun@uni-example11.de'),
+(13, 12, 'David Fuchs', '+491761234555', '(0176) 1234555', 'david.fuchs@uni-example12.de'),
+(14, 13, 'Katharina König', '+4915012345678', '(0150) 12345678', 'katharina.koenig@uni-example13.de'),
+(15, 14, 'Maximilian Wolf', '+491771234456', '(0177) 1234456', 'max.wolf@uni-example14.de'),
+(16, 15, 'Sophie Lang', '+491601234987', '(0160) 1234987', 'sophie.lang@uni-example15.de'),
+(17, 16, 'Leon Weber', '+491731234123', '(0173) 1234123', 'leon.weber@uni-example16.de'),
+(18, 17, 'Clara Böhm', '+491791234456', '(0179) 1234456', 'clara.boehm@uni-example17.de'),
+(19, 18, 'Moritz Peters', '+4915712341234', '(0157) 12341234', 'moritz.peters@uni-example18.de'),
+(20, 19, 'Isabel Hartmann', '+4915112345670', '(0151) 12345670', 'isabel.hartmann@uni-example19.de'),
+(21, 20, 'Sebastian Jäger', '+491721234567', '(0172) 1234567', 'sebastian.jaeger@uni-example20.de'),
+(22, 21, 'Theresa Schwarz', '+491761234123', '(0176) 1234123', 'theresa.schwarz@uni-example21.de'),
+(23, 22, 'Niklas Brandt', '+491601234555', '(0160) 1234555', 'niklas.brandt@uni-example22.de'),
+(24, 23, 'Eva Krause', '+491781234456', '(0178) 1234456', 'eva.krause@uni-example23.de'),
+(25, 24, 'Daniel Keller', '+491741234678', '(0174) 1234678', 'daniel.keller@uni-example24.de'),
+(26, 25, 'Luisa Winkler', '+491751234890', '(0175) 1234890', 'luisa.winkler@uni-example25.de'),
+(27, 26, 'Jan Schäfer', '+491701234321', '(0170) 1234321', 'jan.schaefer@uni-example26.de'),
+(28, 27, 'Mira Busch', '+491521234444', '(0152) 1234444', 'mira.busch@uni-example27.de'),
+(29, 28, 'Tom Berger', '+491591234321', '(0159) 1234321', 'tom.berger@uni-example28.de'),
+(30, 1, 'Simon Albrecht', '+491601231234', '(0160) 1231234', 'simon.albrecht@uni-example1.de'),
+(31, 5, 'Melanie Krüger', '+491721234789', '(0172) 1234789', 'melanie.krueger@uni-example5.de'),
+(32, 12, 'Benjamin Frank', '+491501234321', '(0150) 1234321', 'benjamin.frank@uni-example12.de'),
+(33, 21, 'Vanessa Lorenz', '+491711234567', '(0171) 1234567', 'vanessa.lorenz@uni-example21.de'),
+(34, 28, 'Jasmin Arnold', '+491601239999', '(0160) 1239999', 'jasmin.arnold@uni-example28.de');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `disability`
+--
+
+CREATE TABLE `disability` (
+  `id` int(11) NOT NULL,
+  `categoryId` int(11) NOT NULL,
+  `name` char(50) DEFAULT NULL,
+  `description` varchar(2500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `disability`
+--
+
+INSERT INTO `disability` (`id`, `categoryId`, `name`, `description`) VALUES
+(1, 1, 'Blindheit', 'Für blinde Studierende müssen alle visuellen Informationen in Text und Sprache übersetzt werden. Für die Computersteuerung und zum Lesen und Schreiben digitaler Inhalte können Screenreader als spezielle Sprachausgabe sowie Braillezeilen genutzt werden, die Texte in tastbare Brailleschrift ausgeben. Mithilfe von Dokumentenscannern mit Texterkennung können gedruckte Materialien eingescannt und lesbar umgesetzt werden. Taktile Medien machen z. B. Schaubilder und Modelle tastbar, die nicht ausreichend textlich beschrieben werden können. KI-gestützte assistive Technologien können zum Beispiel automatische Bildbeschreibungen liefern, z. B. wenn Tafelbilder oder Flipcharts abfotografiert werden.'),
+(2, 1, 'Sehbeeinträchtigung', 'Für Studierende mit Sehbeeinträchtigung können Vergrößerungen und Farbumkehr hilfreich sein, um digitale Inhalte wahrnehmen zu können. Hierfür gibt es betriebssystem-eigene Bedienungshilfen und spezielle assistive Software wie ZoomText. Gedruckte Materialien können je nach Bedarf über Bildschirmlesegeräte mit eingebauter Kamera vergrößert und in invertierten Farben dargestellt werden oder auf assistive Technologie für blinde Nutzer*innen zurückgegriffen werden. Je nach Beeinträchtigung können zudem ein gut ausgeleuchteter Arbeitsplatz oder blendfreie Bildschirme hilfreich sein.'),
+(3, 2, 'Gehörlosigkeit', 'Studierende mit einer Hörbeeinträchtigung oder Gehörlosigkeit benötigen zur Wahrnehmung aller akustischen Inhalte in Lehrveranstaltungen, Prüfungen oder bei Lehr- und Prüfungsmaterialien Unterstützung und Alternativen. Zur Übersetzung gesprochener Inhalte in Lehrveranstaltungen und Prüfungen können sie beispielsweise Gebärdensprachdolmetscher*innen beauftragen, die in der Regel von der Eingliederungshilfe finanziert werden. \r\nAssistive Technologien können sein:'),
+(4, 2, 'Schwerhörigkeit', 'Schwerhörige Studierende benötigen zur Wahrnehmung aller akustischen Inhalte in Lehrveranstaltungen, Prüfungen oder bei Lehr- und Prüfungsmaterialien Unterstützung und Alternativen. Zur Audiotranskription gesprochener Inhalte in Lehrveranstaltungen und Prüfungen können sie beispielsweise Schriftsprachdolmetscher*innen beauftragen, die je nach Ausprägung der Hörbeeinträchtigung von der Eingliederungshilfe finanziert werden.\r\nAssistive Technologien können sein:'),
+(5, 3, 'Motorische Beeinträchtigung', 'Studierende mit motorischer Beeinträchtigung, wie zum Beispiel Bewegungsbeeinträchtigung, Einschränkungen beim Gehen, Stehen oder Greifen, können aufgrund der Einschränkung bei der Bedienung von elektronischen Endgeräten beeinträchtigt sein. Für Studierende mit motorischer Beeinträchtigung gibt es daher Alternative Eingabemöglichkeiten bei der Nutzung elektronischer Geräte. Als Mausalternative können Mund- oder Kopfmäuse dienen. Als Tastaturalternative könne Bildschirmtastaturen, ergonomisch angepasste Tastaturen oder Touchscreens dienen. Eine weiter Eingabemöglichkeit kann die Spracheingabe mittels Sprachsteuerung sein. Smartphones, Tablets und Laptops mit Touchscreens können eine Alternative zu herkömmlichen Computern sein.'),
+(6, 4, 'Teilleistungsstörung', 'Teilleistungsstörungen betreffen Störungen einzelner Teilbereiche der kognitiven Leistungsfähigkeit, wie Lese-Rechtschreib-Störung (Dyslexie), Rechenstörungen (Dyskalkulie) und weitere auditive oder visuelle Verarbeitungs- und Wahrnehmungsstörung. Entsprechend heterogen sind die Barrieren, die sie im Studienalltag erleben. Hilfreich sind assistive Technologien, die das Lesen und Schreiben unterstützen. Sie reichen von betriebssystem-, Browser- oder programmeigenen Hilfen wie Leseansichten, plastische Reader und Sprachausgaben und -eingaben bis zu speziellen Programmen wie die Vorlesesoftware ClaroRead oder Korrektursoftware. Für auditive und visuelle Verarbeitungs- und Wahrnehmungsstörung können assistive Technologien für Hör- und Sehbeeinträchtigungen hilfreich sein.');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `disabilitycategory`
+--
+
+CREATE TABLE `disabilitycategory` (
+  `id` int(11) NOT NULL,
+  `name` char(50) DEFAULT NULL,
+  `description` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `disabilitycategory`
+--
+
+INSERT INTO `disabilitycategory` (`id`, `name`, `description`) VALUES
+(1, 'Sehbeeinträchtigung oder Blindheit', 'Studierende mit einer Sehbeeinträchtigung oder Blindheit haben Einschränkungen in der visuellen Wahrnehmungsfähigkeit hinsichtlich der Sehschärfe, des Gesichtsfeldes oder der Farbwahrnehmung, wodurch die die Wahrnehmung von visuellen Lehr- und Prüfungsmaterialien in vielen Situationen erschwert sein kann. Als assistive Technologien können bei barrierefrei gestalteten digitalen Materialien Screenreader als spezielle Sprachausgabesoftware, Braillezeilen, Vergrößerungssoftware oder betriebssystem-eigene Funktionen wie die Bildschirmlupe verwendet werden. Für gedruckte Materialien sind barrierefreie digitale Versionen oder ein Ausdruck in Brailleschrift notwendig, Videos benötigen immer eine an das Lehrmaterial angepasste Audiodeskription.'),
+(2, 'Hörbeeinträchtigung oder Gehörlosigkeit', 'Studierende mit einer Hörbeeinträchtigung oder Gehörlosigkeit haben ein vermindertes Hörvermögen oder sind schwerhörig, wodurch die Kommunikation und Interaktion in Lehrveranstaltungen sowie die Informationsaufnahme von auditiven Lehr- und Prüfungsinhalten (Audios und Ton in Videos) erschwert sein kann. Als assistive Technologien können mobile und stationäre Höranlagen und -systeme dienen. Audiotranskriptionen von Audiomaterialien und Untertitel für Videos übersetzen gesprochene Sprache in Texte – sogenannte Speech to Text Technologien (STT). Diese können auch je nach verwendeter Technologie in Live-Situationen für Vorlesungen eingesetzt werden. Studierende mit einer Hörbeeinträchtigung oder Gehörlosigkeit können in Lehrveranstaltungen auch Gebärdensprachdolmetscher*innen oder Schriftdolmetscher*innen nutzen. Die Finanzierung kann ggf. durch die Eingliederungshilfe erfolgen.'),
+(3, 'Motorische Beeinträchtigung', 'Studierende mit motorischer Beeinträchtigung, wie zum Beispiel Bewegungsbeeinträchtigung, Einschränkungen beim Gehen, Stehen oder Greifen, können aufgrund der Einschränkung bei der Bedienung von elektronischen Endgeräten beeinträchtigt sein. Für Studierende mit motorischer Beeinträchtigung gibt es daher Alternative Eingabemöglichkeiten bei der Nutzung elektronischer Geräte. Als Mausalternative können Mund- oder Kopfmäuse dienen. Als Tastaturalternative könne Bildschirmtastaturen, ergonomisch angepasste Tastaturen oder Touchscreens dienen. Eine weiter Eingabemöglichkeit kann die Spracheingabe mittels Sprachsteuerung sein. Smartphones, Tablets und Laptops mit Touchscreens können eine Alternative zu herkömmlichen Computern sein.'),
+(4, 'Teilleistungsstörung', 'Studierende mit Teilleistungsstörungen haben oft Schwierigkeiten beim Erlenen des Lesens, Schreibens oder Rechnens. Bei einer Lese- und/oder Rechtschreibstörung (LRS, Dyslexie) haben Studierende Probleme mit der Umsetzung der gesprochenen in geschriebene Sprache und umgekehrt. Bei LRS können assistive Technologien hilfreich sein, die das Lesen und/oder Schreiben unterstützen. Sie reichen von betriebssystem-, Browser- oder programmeigenen Hilfen wie Leseansichten, plastische Reader und Sprachaus- und -eingaben bis zu speziellen Programmen wie eine Vorlese- oder Korrektursoftware. Für auditive und visuelle Verarbeitungs- und Wahrnehmungsstörungen können assistive Technologien für Hör- und Sehbeeinträchtigungen hilfreich sein.'),
+(12, 'Andere Beeinträchtigungen oder Erkrankungen', 'Andere Beeinträchtigungen oder Erkrankungen von Studierenden können neurodivergente Krankheitsbilder, wie Autismus-Spektrum-Störung oder AD(H)S, aber auch Sprechbeeinträchtigungen, wie z.B. Stottern, Tumorerkrankungen oder Migräne umfassen. Die Bedarfe der Studierenden, die sich aus diesen Beeinträchtigungen ergeben, können mitunter sehr unterschiedlich sein. Unterstützungsmaßnahmen an Hochschulen sollten sich daher flexibel auf die Bedarfe der Studierenden anpassen lassen und z.B. Nachteilsausgleiche anbieten.');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `functionallimitation`
+--
+
+CREATE TABLE `functionallimitation` (
+  `id` int(11) NOT NULL,
+  `name` char(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `functionallimitation`
+--
+
+INSERT INTO `functionallimitation` (`id`, `name`) VALUES
+(1, 'Gedruckte Texte visuell erfassen'),
+(2, '3-dimensionale Objekte modellieren'),
+(3, 'Abbildungen visuell erfassen'),
+(4, 'Bildschirminhalt am Computer erkennen'),
+(5, 'Gesprochene Sprache verstehen'),
+(6, 'Tastatur oder Maus bedienen'),
+(7, 'Audioinhalte erfassen'),
+(9, 'Texte lesen & verstehen'),
+(10, 'Kleine Details visuell wahrnehmen'),
+(14, 'Standard-Arbeitsplätze nutzen'),
+(15, 'Physische/digitale Räume navigieren'),
+(16, 'Komplexe Aufgaben strukturieren'),
+(17, 'Reize filtern'),
+(18, 'Texte diktieren'),
+(19, 'Lange Texte schreiben'),
+(21, 'Inhalte korrigieren'),
+(22, 'Inhalte strukturieren'),
+(23, 'Beleuchten'),
+(24, 'Navigieren'),
+(25, 'Orientieren'),
+(26, 'Formulare ausfüllen'),
+(27, 'Taktil erfassen');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `linkforaid`
+--
+
+CREATE TABLE `linkforaid` (
+  `aidId` int(11) NOT NULL,
+  `linkId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `linkforaid`
+--
+
+INSERT INTO `linkforaid` (`aidId`, `linkId`) VALUES
+(32, 5),
+(49, 2),
+(50, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `linkfordisability`
+--
+
+CREATE TABLE `linkfordisability` (
+  `disabilityId` int(11) NOT NULL,
+  `linkId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `linkfordisability`
+--
+
+INSERT INTO `linkfordisability` (`disabilityId`, `linkId`) VALUES
+(1, 2),
+(2, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `product`
+--
+
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL,
+  `name` char(100) DEFAULT NULL,
+  `infoURL` varchar(2048) DEFAULT NULL,
+  `infoAlt` varchar(200) DEFAULT NULL,
+  `description` varchar(3000) DEFAULT NULL,
+  `availableGeneral` tinyint(1) DEFAULT NULL,
+  `hidden` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `infoURL`, `infoAlt`, `description`, `availableGeneral`, `hidden`) VALUES
+(1, '3D-Drucker', 'https://www.rehadat-hilfsmittel.de/de/produkte/kommunikation-information/computerhilfen/drucker-brailledrucker/index.html?reloaded&sort=produktde_final_sort_tec+asc&page=1&mode=detail&listtitle=', 'Informationen zu 3D-Drucker', '3D-Drucker drucken dreidimensionale Gegenstände, indem sie Material Schicht für Schicht auftragen. So erstellte Gegenstände können taktil erfasst werden und z. B. als Tastmodelle eingesetzt werden.', 0, 0),
+(2, 'Braille-Drucker', 'https://www.rehadat-hilfsmittel.de/de/produkte/kommunikation-information/computerhilfen/drucker-brailledrucker/', 'Informationen zu Braille-Druckern', 'Braille-Drucker erzeugen tastbare Zeichen auf Papier, sogenannte Punktschrift oder Blindenschrift, welche blinde Menschen mit den Fingern ertasten und lesen. Digitale Inhalte müssen zunächst am PC mittels passender Braille-Übersetzungssoftware in Brailleschrift umgewandelt werden, bevor sie in Vollschrift oder Kurzschrift gedruckt werden können. Die Software wird in der Regel mit dem Drucker mitgeliefert. Es gibt Drucker mit Einzelblatteinzug oder mit Endlospapiereinzug und Drucker, die einseitig oder doppelseitig drucken können.', 0, 0),
+(3, 'stationäre Braillezeilen', 'https://www.rehadat.de/suche/?q=station%C3%A4re+Braillezeilen', 'Übersicht möglicher stationärer Braillezeilen bei REHADAT', 'Eine stationäre Braillezeile ist ein größeres Gerät, welches Schrift mithilfe von beweglichen Stiften in Brailleschrift wiedergibt.', 0, 0),
+(4, 'mobile Braillezeilen', 'https://www.rehadat.de/suche/?q=mobile+Braillezeilen', 'Übersicht möglicher mobiler Braillezeilen bei REHADAT', 'Eine mobile Braillezeile ist ein kleineres und portables Gerät, welches Schrift mithilfe von beweglichen Stiften in Brailleschrift wiedergibt.', 0, 0),
+(7, 'Braille-Übersetzungsprogramm RTFC', 'https://www.rehadat.de/suche/index.html?reloaded&q=RTFC&sort=score+desc&page=1&mode=detail', 'Informationen zum Braille-Übersetzungsprogramm RTFC', 'RTFC ist ein Formatierungs- und -Übersetzungs-Programm für Brailleschrift. Damit lassen sich digitalisierte Inhalte in Blindenschrift sowie Blindenkurzschrift umwandeln und mittels Braille Drucker ausdrucken. Auch Tabellen oder einfache Zeichnungen können so taktil dargestellt werden. Das Programm bietet auch die Möglichkeit, Inhalte in Audio-Datei (bspw. im Daisy- oder MP3-Format) mit einer synthetischen Stimme (Text-to-Speech) auszugeben. Herstellerinformationen zu RTFC:\r\nRTFC Braille-Konverter 200,00 €\r\nRTFC Daisy-Generator 200,00 €\r\nRTFC Personal Edition 400,00 €\r\nRTFC Professional Edition 600,00 €\r\nZusatzlizenz für weiteren Arbeitsplatz 200,00 €\r\nCampus-Lizenz (Für bis zu 50 Arbeitsplätze an einem Standort des Lizenznehmers einschließlich Heimbüros.) 5.400,00 €\r\nDistrict-Lizenz (Für mehr als 50 Arbeitsplätze an mehreren Standorten des Lizenznehmers innerhalb eines Landes einschließlich Heimbüros.) Auf Anfrage', 0, 0),
+(9, 'Flachbettscanner', '', '', 'Flachbettscanner sind Geräte, die gedruckte Seiten scannen, welche anschließend am PC weiterverarbeitet werden können. Gedruckte Inhalte können so digital erfasst werden und z. B. mit einer Vorlesesoftware vorgelesen werden. Neben Flachbettscannern gibt es auch Buchkantenscanner, die zum Scannen und digitalisieren von ganzen Büchern eingesetzt werden.', 0, 0),
+(10, 'Buchkantenscanner', NULL, NULL, 'Buchkantenscanner sind Scanner, welche zur Digitalisierung von Büchern genutzt werden. So können gedruckte Bücher digital erfasst und mit entsprechender Software in das gewünschte Format übertragen werden.', 0, 0),
+(12, 'Abbyy Finereader', '', '', 'Es handelt sich dabei um eine OCR-Software, die zur Erkennung von gescannten Inhalten dient. Die erfassten Inhalte können als Text in diversen Formaten abgespeichert und bearbeitet werden. Auch die Erkennung digitaler Inhalte und Umwandlung zur Weiterverarbeitung ist möglich.', 0, 0),
+(13, 'Adobe Acrobat', '', '', 'Die Software Adobe Acrobat dient dazu PDF-Dokumente anzuzeigen, zu bearbeiten und auf Barrierefreiheit zu überprüfen. Mit der kostenfreien Reader Version lassen sich Inhalte anzeigen und ggf. ausfüllen. Zur Bearbeitung und Prüfung ist die kostenpflichtige Version Adobe Acrobat pro erforderlich. Das Programm kann gescannte PDF mit OCR in maschinenlesbaren Text umwandeln.', 0, 0),
+(15, 'NVDA', 'https://www.rehadat.de/suche/index.html?reloaded&q=nvda&sort=score+desc&page=3&mode=detail', 'Informationen zu NVDA', 'NVDA ist ein kostenfreier Open Source Screenreader für Windows zur Sprachausgabe und Brailleanzeige, mit der Computer und Programme gesteuert werden können.', 0, 0),
+(16, 'JAWS', 'https://www.rehadat.de/suche/?q=jaws', 'Informationen zu JAWS', 'JAWS ist ein Screenreader für Windows mit Sprachausgabe und Braille Anzeige, mit der Computer und Programme gesteuert werden können. Die Braille-Anzeige kann entweder virtuell auf dem Bildschirm oder auf einer Braillezeile, einem externen Gerät dargestellt werden. JAWS ist kostenpflichtig.', 0, 0),
+(17, 'VoiceOver', '', '', 'VoiceOver ist der Screenreader von Apple, der auf allen Geräten mit iOS-Betriebssystemen integriert ist und sowohl eine Sprachausgabe als auch eine Braille Anzeige, z. B. auf einer Braillezeile ermöglicht.', 0, 0),
+(18, 'Braille-Notizgerät', '', '', 'Das Braille-Notizgerät ist eine Braillezeile mit integrierter Notizfunktion. Sie hat in der Regel auch Tasten sodass sie als Notizgerät verwendet werden kann.', 0, 0),
+(19, 'Tactonom Reader (interaktives Grafiklesegerät)', 'https://www.rehadat-gkv.de/produkt/index.html?sys=07.99.06.0001&s3f=s3f', 'Informationen zum Tactonom Reader bei REHADAT ', 'Ein Tactonom Reader ist ein Gerät, welches es Blinden oder hochgradig sehbehinderten Menschen ermöglichen kann, graphische Inhalte taktil zu erfassen, welche zudem auditiv erklärt werden. ', 0, 0),
+(20, 'Braille-Etikettiergerät', '', '', 'Mit einem Braille-Etikettiergerät können Etiketten in Brailleschrift erstellt werden.', 0, 0),
+(22, 'Braille-Schreibmaschine', 'https://www.rehadat.de/suche/?q=Brailleschreibmaschine', 'Beschreibung der Brailleschreibmaschine durch das blindenmuseum-berlin.de', 'Mit einer Braille-Schreibmaschine können Menschen mit Sehbeeinträchtigung oder Blindheit Texte in Brailleschrift erstellen.', 0, 0),
+(23, 'Schwellpapier-Zeichengeräte', 'https://www.rehadat.de/suche/?q=schwellpapier', 'Informationen zu Schwellpapier-Zeichngeräte', 'Schwellpapierzeichengeräten dienen dazu, taktile Zeichnungen durch Erhitzen auf Folie anzufertigen. Das sog. Schwellpapier kann erhabene Linien und Punkte enthalten, die blinde Menschen ertasten können.', 0, 0),
+(24, 'Microsoft Office Diktierfunktion', '', '', 'Microsoft bietet eine Sprachausgabe in vielen Apps von Microsoft 365. Des Weiteren gibt es eine Diktierfunktion (Word, PowerPoint, Outlook und OneNote) sowie eine Barrierefreiheitsüberprüfung für Windows (Outlook, Word, Excel, PowerPoint, OneNote, Visio), Mac (Outlook, Word, Excel, PowerPoint, OneNote) und das Web (Outlook, Word, Excel, PowerPoint, OneNote, Sway, Visio).', 1, 0),
+(25, 'ZoomText', 'https://www.rehadat.de/suche/index.html?reloaded&q=zoomtext&sort=score+desc&page=2&mode=detail', 'Informationen zu ZoomText', 'ZoomText ist eine kostenpflichtige Vergrößerungssoftware des Herstellers AI Squared, um Inhalte auf dem Bildschirm stark vergrößert und kontrastreich darzustellen. Es kann auch in einem Softwarepaket gemeinsam mit dem Screenreader JAWS unter der Bezeichnung Fusion erworben werden.', 0, 0),
+(26, 'Fusion', 'https://www.rehadat.de/suche/?q=fusion', 'Informationen zu Fusion', 'Fusion ist ein kostenpflichtiges Produkt mit einer Kombination aus Jaws als Screenreader und ZoomText als Vergrößerungssoftware von der Firma Freedom Scientific.', 0, 0),
+(27, 'Windows Bildschirmlupe', '', '', 'Die Windows-eigene Bildschirmlupe vergrößert Ausschnitte des Bildschirms. Mit der Tastenkombination Windows + Plus-Taste kann sie direkt im Anmeldedialog von Windows gestartet werden.', 0, 0),
+(28, 'Zoom Mac', '', '', 'Zoom Mac ist ein Apple Programm, mit dem eine Vergrößerung von Bildschirminhalten mittels Tastaturbefehlen oder Mausnutzung möglich ist.', 0, 0),
+(29, 'Dragon', 'https://www.rehadat.de/suche/?q=dragon', 'Informationen zu Dragon', 'Dragon ist eine kostenpflichtige Software zur Spracherkennung am PC und setzt gesprochene Äußerungen in Text, Mausbewegung oder Steuerungsbefehle um.', 0, 0),
+(30, 'ClaroRead', '', '', 'ClaroRead ist ein Programm, welches beim Lesen und Schreiben durch die Vorlesefunktion am Bildschirm unterstützt und weitere Funktionen wie eine Rechtschreibprüfung umfasst.', 0, 0),
+(31, 'Lupen analog', '', '', 'Sehbehinderte Menschen können Lupen nutzen, um schlecht sichtbare Details zu vergrößern und schärfer sehen zu können.', 0, 0),
+(32, 'Bildschirmlesegeräte', 'https://www.rehadat-hilfsmittel.de/de/produkte/kommunikation-information/sehhilfen/bildschirmlesegeraete/', 'Informationen zu Bildschirmlesegeräten', 'Ein Bildschirmlesegerät ist eine Vergrößerungshardware mit einem Kamerasystem und einem Monitor zur elektronischen Bildvergrößerung. Die Geräte besitzen entweder einen integrierten Bildschirm oder lassen sich mit dem Computerbildschirm oder dem Tablet kombinieren. Zudem sind viele Modelle mit einen so genannten Kreuztisch ausgestattet, d. h. einer beweglichen Unterlage auf der Texte oder Bücher etc. unter der Kamera hin und her bewegt werden können. Dabei gibt es sowohl Modelle für den stationären als auch für den mobilen Einsatz. Je nach Modell sind Funktionen wie Kontrastanpassungen, Veränderung der Helligkeit oder das Einblenden von Hilfslinien möglich. Es können Dokumente, Bilder oder Gegenstände im Nahbereich vergrößert werden. Versierte Nutzer*innen können an einen Bildschirmlesegerät auch mit der Hand schreiben oder kleinere Arbeiten ausführen. Manche Modelle erlauben zudem auch Elemente in der Ferne zu vergrößern (so genannte Tafelbildkameras).', 0, 0),
+(33, 'Lupen elektronisch', 'https://www.rehadat.de/suche/index.html?lq=elektronische+Lupen&reloaded=&q=elektronische+Lupen&listtitle=&facet_global_type=tec&sort=score+desc', 'Informationen zu elektronischen Lupen', 'Elektronische Lupen sind handliche elektrische Sehhilfen, welche Texte oder Objekte mithilfe einer Kamera vergrößert auf einem Display darstellen.', 0, 0),
+(34, 'Kamerasystem mit elektronischer Bildvergrößerung', 'https://www.rehadat.de/suche/?q=Kamerasystem+mit+elektronischer+Bildvergr%C3%B6%C3%9Ferung', 'Informationen zu Kameras', 'Kamerasysteme mit elektronischer Bildvergrößerung sind kostenpflichtige Geräte, die mobil oder stationär zur Vergrößerung einsetzbar sind.', 0, 0),
+(35, 'Lesestäbe', 'https://www.rehadat.de/suche/?q=lesest%C3%A4be', 'Informationen zu Lesestäben', 'Lesestäbe sind Lupen, die den Text auf einer Zeile in voller Breite vergrößern. Zum Teil ist eine integrierte Beleuchtung enthalten.', 0, 0),
+(36, 'Spezialtastaturen', 'https://www.rehadat.de/suche/?q=Spezialtastaturen', 'Übersicht möglicher Spezialtastaturen bei REHADAT', 'Spezialtastaturen haben je nach Bedarf unterschiedliche Tastenanordnungen, ergonomische Anpassungen oder Beleuchtungseinstellungen.', 0, 0),
+(37, 'Spezialmäuse', 'https://www.rehadat.de/suche/?q=Spezialm%C3%A4use', 'Übersicht möglicher Spezialmäuse bei REHADAT', 'Spezialmäuse sind alternative Bedienmöglichkeiten mithilfe von Kopf- oder Mundsteuerung für Computer.', 0, 0),
+(38, 'F4X', '', '', 'F4x ist eine Plattform, die Audio- und Video automatisch transkribiert. Die Texte können in drei Formaten heruntergeladen werden: Word (docx), f4transkript (rtf) und Untertitel (srt). Die Preise werden nach Zeit des Audios oder Videos berechnet.', 0, 0),
+(39, 'Amberscript', '', '', 'Amberscript ist eine kostenpflichtige Plattform, die automatisch Transkripte von Videos und Audios erzeugt. Die Texte können auf der Plattform korrigiert und anschließend in Untertitel umgewandelt werden. Abgerechnet wird nach Zeit (= Länge des Videos/Audios). Amberscript kann auch in den Workflow beim Hochladen von Videos auf den Streaming-Server der Hochschule eingebaut werden.', 0, 0),
+(40, 'Induktionsschleifen', 'https://www.rehadat.de/suche/?q=Induktionsschleifen', 'Übersicht möglicher Induktionsschleifen bei REHADAT', 'Induktionsschleifen sind fest im Raum verlegte Drahtschleifen und Teil einer mit dem Raummikro verbundenen Höranlage, die Sprache oder andere Töne per Magnetfeld direkt an Hörgeräte oder Cochlea-Implantate mit T-Spule senden. Sie versorgen oft gezielt bestimmte Bereiche eines Raumes, z. B. eine bestimmte Anzahl von Sitzreihen.', 0, 0),
+(41, 'Infrarot-Hörhilfen', 'https://www.rehadat.de/suche/?q=Infrarot-H%C3%B6ranlagen', 'Informationen zu Infrarot-Hörhilfen', 'Infrarot-Anlagen übertragen Tonsignale wie Sprache oder Musik drahtlos mittels Infrarot-Lichtstrahlen. Infrarot-Anlagen bestehen aus einem oder mehreren Sendern und speziellen Empfangsgeräten, die die Infrarot-Signale wieder in Audiosignale umwandeln.', 0, 0),
+(42, 'FM-Anlagen', 'https://www.rehadat-hilfsmittel.de/de/produkte/kommunikation-information/audio-video-geraete/fm-anlagen/', 'Informationen zu FM-Anlagen', 'FM-Anlagen übertragen Sprache drahtlos per Funksignal von einem Mikrofon direkt an einen Empfänger, der mit einem Hörgerät oder Cochlea-Implantat einer hörbeeinträchtigten Person verbunden ist. Auch kabelgebundene Kopfhörer können angeschlossen werden. Sie eignen sich für Vortrags- und Diskussionssituationen, da auch mehrere Mikros eingesetzt werden können. Bei induktiven FM-Anlagen müssen Hörgeräte über eine T-Spule verfügen.', 0, 0),
+(43, 'mobile FM-Anlagen', 'https://www.rehadat-hilfsmittel.de/de/produkte/kommunikation-information/audio-video-geraete/fm-anlagen/', 'Informationen zu mobilen FM-Anlagen', 'Mobile FM-Anlagen werden eingesetzt, um akustische Informationen auf größeren Raum verbreitet zu übertragen. Es sind meist vorinstallierte Höranlagen, die mit mobilen Zusatzgeräten oder via APPs in einem bestimmten Umkreis oder im Netzwerk genutzt werden können.', 0, 0),
+(44, 'Whisper', '', '', 'Whisper AI ist ein leistungsfähiges automatisches Spracherkennung System von OpenAI, das Audios in Text umwandelt (Open Source). Es kann über Skripte in den Workflow beim Hochladen von Videos auf den Streaming-Server der Hochschule eingebaut werden, um automatische Untertitel zu erzeugen.', 0, 0),
+(45, 'Microsoft Office (Hörbeeinträchtigung)', '', '', 'Microsoft bietet diverse Einstellungen, um Audiowarnungen visuell darzustellen sowie das Erstellen und Anpassen von Untertiteln. Hierbei können mit Microsoft 365 Videos in PowerPoint Präsentationen etc. automatisch untertitelt werden, indem die Videos über Microsoft Stream zur Verfügung gestellt werden. Zudem besteht die Möglichkeit der Liveuntertitelung bei Teams oder Skype Meetings im Desktop oder mobil sowie eine Barrierefreiheitsüberprüfung für Windows (Outlook, Word, Excel, PowerPoint, OneNote, Visio), Mac (Outlook, Word, Excel, PowerPoint, OneNote) und das Web (Outlook, Word, Excel, PowerPoint, OneNote, Sway, Visio).', 1, 0),
+(46, 'Großschrifttastaturen', 'https://www.rehadat.de/suche/?q=Gro%C3%9Fschrifttastaturen', 'Informationen zu Großschrifttastaturen', 'Eine Großschrifttastatur ist eine Tastatur mit vergrößerten Zeichen für sehbehinderte Menschen.', 0, 0),
+(47, 'Blendfreie Monitore mit Lichtschutzhaube', '', '', 'Blendfreie Monitore mit Lichtschutzhaube verbessern die visuelle Wahrnehmung und verringern die Augenbelastungen für Menschen mit Sehbeeinträchtigung.', 0, 0),
+(48, 'Leselampen', 'https://www.rehadat.de/suche/?q=Leselampen', 'Übersicht möglicher Leselampen bei REHADAT ', 'Leselampen können durch die gezielte Beleuchtung von Textstücken das Lesen erleichtern.', 0, 0),
+(49, 'Microsoft Office (Sehbeeinträchtigung)', '', '', 'In MS-Office 365 gibt es verschiedene Möglichkeiten die Farben und Kontraste den eigenen Bedürfnissen entsprechend anzupassen. Zudem ermöglicht das Feature Plastischer Reader das Anpassen von Spaltenbreite, Seitenfarbe, Zeilenfokus und Textabstand, das Anzeigen der Silben sowie das laute Vorlesen von Texten. Microsoft bietet zudem eine Sprachausgabe in vielen Apps von Microsoft 365. Des Weiteren gibt es eine Diktierfunktion (Word, PowerPoint, Outlook und OneNote) sowie eine Barrierefreiheitsüberprüfung für Windows (Outlook, Word, Excel, PowerPoint, OneNote, Visio), Mac (Outlook, Word, Excel, PowerPoint, OneNote) und das Web (Outlook, Word, Excel, PowerPoint, OneNote, Sway, Visio).', 1, 0),
+(52, 'Gehörschutz', 'https://www.rehadat.de/suche/?q=Geh%C3%B6rschutz', 'Informationen zu Gehörschutz', 'Gehörschutz sind kopfhörerähnliche Produkte, welche die Ohren und das Gehör von den Umgebungsgeräuschen schützen. Es können meist laute und ablenkende Geräusche minimiert werden.', 0, 0),
+(53, 'Gewichtswesten', 'https://www.rehadat.de/suche/?q=gewichtsweste', 'Informationen zu Gewichtswesten', 'Gewichtswesten sind mit Gewichten versehene Westen, welche beim Tragen der Westen das Gewicht auf den Körper übertragen und so bei bestimmten Situationslagen unterstützen können.', 0, 0),
+(55, 'Microsoft Office (bedarfsübergreifend)', '', '', 'Neben einer Anpassung des Startmenüs sowie der Taskleiste zur Übersichtlichkeit bietet der Fokusassistent von Microsoft verschiedene Einstellungen der Benachrichtigungen (Ruhezeiten). \r\nEs bestehen zudem verschiedene Möglichkeiten zum Verbessern des Leseverständnisses und der Schreibfähigkeit (Textvorschläge, Fluent-Schriftarten für einfaches Lesen, Anpassen des Textabstands, Lerntools in OneNote, Microsoft Translator, Microsoft-Editor zum Überprüfen der Grammatik). Der Microsoft-Editor kann zusätzlich als Schreibassistent in Dokumenten, E-Mails und im Web verwendet werden sowie zum Überprüfen von Grammatik, Rechtschreibung und mehr in Word. Zudem ermöglicht das Feature Plastischer Reader das Anpassen von Spaltenbreite, Seitenfarbe, Zeilenfokus und Textabstand, das Anzeigen der Silben sowie das laute Vorlesen von Texten. Des Weiteren gibt es eine Diktierfunktion (Word, PowerPoint, Outlook und OneNote) sowie eine Barrierefreiheitsüberprüfung für Windows (Outlook, Word, Excel, PowerPoint, OneNote, Visio), Mac (Outlook, Word, Excel, PowerPoint, OneNote) und das Web (Outlook, Word, Excel, PowerPoint, OneNote, Sway, Visio).', 0, 0),
+(56, 'Microsoft Surface Studio 2', '', '', 'Das Microsoft Surface Studio 2 ist ein All-in-one-Computer mit einem großen und leistungsstarken Touch-Screen-Monitor. Er bietet vor allem für Studierende mit Sehbeeinträchtigung viele Vorteile, da Bildschirmelemente sehr groß dargestellt werden können und nach Bedarf mehrere Anwendungen nebeneinander geöffnet werden können oder mit einen speziellen Stift direkt auf dem Monitor gearbeitet werden kann, z. B. beim Ausfüllen einer Multiple-Choice-Klausur.', 0, 0),
+(62, 'Sennheiser MobileConnect Station', '', '', 'Bei einer Höranlage von Sennheiser MobileConnect erfolgt die Hörunterstützung über WLAN und das eigene Smartphone. Erforderlich ist die Vorinstallation der Höranlage sowie die Einrichtung von Hörkanälen seitens der Universität. Studierende können das Smartphone mit dem WLAN verbinden und per Bluetooth mit einem Headset koppeln, bevor sie in der App die Verbindung zu einem Hörkanal herstellen. Eine Übertragung ist campusweit möglich.', 0, 0),
+(63, 'Hörsystem-Mikrofone Roger Phonak', 'https://www.rehadat.de/suche/?q=Roger+Phonak', 'Informationen zur Hörsystem-Mikrofone Roger Phonak', 'Roger ist eine Technologie, die Sprache über Distanz und bei Störgeräuschen direkt an Hörgeräte, Cochlea-Implantate oder Kopfhörer überträgt. Das System verfügt über verschiedene Mikrofone, die sich für verschiedene Hörsituationen eignen, wie Vorlesungen in großen oder kleinen Räumen sowie für Gruppenarbeiten, bei denen das Mikrofon herumgereicht oder auf den Tisch gelegt wird. In großen Räumen wie Hörsälen können zudem Repeater eingesetzt werden, welche die Reichweite des Signals verlängern. Die Roger-Technologie ist eine Weiterentwicklung von den herkömmlichen FM-Anlagen. FM-Anlagen verwenden analoge Frequenzmodulations-Funksignale, um Sprache von einem Mikrofon an einen Empfänger zu senden. Bei der Roger-Technologie wird eine digitale Übertragung genutzt, mit einer anpassbaren Frequenzmodulation. Die Empfänger können bereits in Hörgeräten und Cochlea-Implantaten verbaut sein.', 0, 0),
+(64, 'Mobile Höranlagen', 'https://www.rehadat.de/suche/index.html?reloaded&q=mobile+h%C3%B6ranlagen&sort=score+desc&page=1&mode=detail', 'Informationen zu mobilen Höranlagen', 'Eine mobile Höranlage ist ein tragbares Gerät, das dazu dient, Schall zu verstärken und die Sprachverständlichkeit für Personen mit Hörbeeinträchtigungen zu verbessern. Diese Systeme bestehen typischerweise aus einem Mikrofon, einem Verstärker und Kopfhörern oder Ohrhörern. Sie können beispielsweise bei Vorträgen, Konferenzen oder anderen Veranstaltungen eingesetzt werden, um Personen mit Hörproblemen die Teilnahme zu erleichtern.', 0, 0),
+(65, 'Beyerdynamic induktive Hörsysteme', NULL, NULL, 'Das induktive Hörsystem von Beyerdynamic ist eine technische Einrichtung, mit der Audiosignale wie Musik oder Redebeiträge in Veranstaltungsräumen für schwerhörige Personen zugänglich gemacht werden können.', 0, 0),
+(71, 'Notion', '', '', 'Notion ist eine kostenlose App, mit welcher neben der Erstellung von Notizen auch organisatorische Aufgaben verwaltet werden können. Die App lässt sich auf individuelle Bedarfe anpassen, z. B. Schriften, Farben, Symbole etc. Inhalte lassen sich mithilfe einer Vorlesefunktion anhören sowie mit der Sprachsteuerung bedienen.', 0, 0),
+(72, 'Seeing AI', '', '', 'Seeing AI ist die All-in-one-App für blinde und sehbehinderte Menschen. Sie bietet die Möglichkeit, sich mittels der Kamera des Smartphones verschiedenste Informationen bereitzustellen. Man kann sich zum Beispiel Farben, Schrift, Lichtintensität oder Szenen beschreiben lassen.', 0, 0),
+(73, 'Be My Eyes', '', '', 'Be My Eyes ist eine weitere KI unterstützte App. Ursprünglich war sie als Plattform gedacht, auf der sich Menschen mit und ohne Seheinschränkungen anmelden können, damit Sehbehinderte im Bedarfsfall einen sehenden Nutzer per Videotelefonie um visuelle Unterstützung bitten können.\r\nViele nutzen mittlerweile die Funktion Be My AI - eine kleine Anspielung auf den Namen der App Be My Eyes - bei der man ein Bild hochladen kann, das dann mittels KI analysiert wird und eine detaillierte Beschreibung liefert. Es ist möglich, Rückfragen im Stil eines Chats in einem Eingabefeld zu stellen, die ebenfalls beantwortet werden.\r\nIm Studium ist diese Funktion hilfreich, wenn man sich beispielsweise Tafelanschriebe, Grafiken oder Bilder beschreiben lassen möchte. Jede noch so kleine Information kann im Studium von Nutzen sein.\r\nBe My Eyes findet man in den gängigen Appstores.', 0, 0),
+(79, 'Windows Bildschirmtastatur', 'https://www.rehadat.de/suche/index.html?reloaded&q=bildschirmtastatur&sort=score+desc&page=3&mode=detail', 'Informationen zu Windows Bildschirmtastatur', 'Die Bildschirmtastatur in Windows ermöglicht Eingaben über eine virtuelle Tastatur auf dem Bildschirm. Sie kann aktiviert werden, um eine physische Tastatur zu ersetzen oder zu ergänzen. Die Bildschirmtastatur unterstützt verschiedene Eingabemethoden und kann an die Bedarfe der Nutzer*innen angepasst werden (z. B. auch durch die Bedienung per Maus oder Touchscreen).', 1, 0),
+(80, 'MacOS Bedienungshilfentastatur', 'https://support.apple.com/de-de/guide/mac-help/mchlc74c1c9f/mac', 'Informationen zu MacOS Bedienungshilfentastatur', 'Die Bedienungshilfentastatur in macOS ist eine virtuelle Tastatur, die Nutzern hilft, Eingaben zu tätigen. Sie bietet anpassbare Funktionen wie die Möglichkeit, Tasten durch Klicken oder durch Scannen auszuwählen. Die Bedienungshilfentastatur kann auch mit verschiedenen Eingabemethoden kombiniert werden und ermöglicht eine einfache Navigation durch das Betriebssystem sowie den Zugriff auf Menüs und Anwendungen.', 0, 0),
+(83, 'LanguageTool', '', 'Informationen zu LanguageTool', 'LanguageTool kann zur Grammatik-, Rechtschreib- und Stilprüfung eingesetzt werden. Es kann als eigenes Desktop-Programm oder als Erweiterung in Browser und Office-Programme genutzt werden.', 1, 0),
+(86, 'Sennheiser Mobile Connect', '', '', 'Sennheiser Mobile Connect ist eine Ergänzung zur fest verbauten Audiotechnik in Hörsälen und Seminarräumen mit eingebauter Übertragungstechnik. Die Übertragung erfolgt über WLAN. Die Nutzer*innen empfangen den Ton über eine Smartphone-App, die per Bluetooth mit einem Headset, Bluetooth-fähigen Hörgeräten oder Cochlea-Implantaten verbunden wird.', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `productcategory`
+--
+
+CREATE TABLE `productcategory` (
+  `id` int(11) NOT NULL,
+  `name` char(150) DEFAULT NULL,
+  `description` varchar(2000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `productcategory`
+--
+
+INSERT INTO `productcategory` (`id`, `name`, `description`) VALUES
+(32, 'Höranlagen stationär', 'Akustische Hilfsmittel wie Hörsysteme oder Induktionsschleifen verbessern die Wahrnehmung von Sprache und Klängen. Sie sind mit der Mikrofon- und Übertragungsanlage des Raums verbunden, ermöglichen eine klare Übertragung akustischer Signale und reduzieren störende Hintergrundgeräusche. Hörgeräte und Cochlea-Implantate können sich drahtlos mit den Höranlagen über Funk oder Bluetooth verbinden.'),
+(33, 'Hörhilfen mobil', 'Mobile Hörhilfen sind tragbare Geräte, die Sprache oder Audiosignale an ein Hörgerät oder einen Empfänger übertragen – oft per Funk, Bluetooth oder WLAN. Dazu gehören z.B. FM-Anlagen, wie z. b. Roger-Systeme oder mobile Lösungen. Manche Geräte eignen sich vor allem für Gruppen- und Seminarsituationen in Räumen ohne fest installierter Übertragungstechnik wie z.B. Roger Phonak, andere für Hörsäle mit fest installierter Mikrofon- und Übertragungstechnik.'),
+(34, 'Audiotranskription & Untertitelung', 'Produkte zur Audiotranskription wie Amberscript oder Whisper wandeln gesprochene Sprache in Text um und erleichtern so die Dokumentation und Nachverfolgung von Inhalten. Untertitelsoftware generiert Textdarstellungen von gesprochenem Inhalten oder Audioaufzeichnungen. Sie wird verwendet, um Videoinhalte oder Live-Veranstaltungen schriftlich zu unterstützen, und bietet Optionen zur Anpassung von Schriftgröße und Synchronisation.'),
+(35, 'Beleuchtungssysteme', 'Anpassbare Beleuchtungssysteme sichern eine gute und blendfreie Ausleuchtung von Arbeitsplätzen und reduzieren die Belastung durch unzureichende Lichtverhältnisse. Grundsätzlich ist eine gute Beleuchtung am Arbeitsplatz (z. B. bei der Anfertigung von Klausuren) für alle Studierende hilfreich, für sehbeeinträchtigte Studierende ist eine auf die individuellen Bedarfe abgestimmte Beleuchtung unter Umständen eine zwingende Voraussetzung.'),
+(37, 'Braille', 'Braille ermöglicht das taktile Erfassen von Texten. Geräte zur Brailleausgabe geben digitale Informationen in der Blindenschrift aus. Die Inhalte können am Computer über dynamisch veränderbare Braille-Zellen ausgegeben oder mit Braille-Druckern ausgedruckt werden. Braillezeilen lassen sich mit Computern oder mobilen Geräten verbinden und gewährleisten eine kontinuierliche Übertragung der Informationen. Mit analogen Geräten wie Braille-Notiz- und Etikettiergeräten können Notizen und Aufkleber direkt auf Papier übertragen werden.'),
+(38, 'Computersteuerungshardware', 'Computersteuerungshardware bietet alternative oder (ergonomisch) angepasste Tastaturen und Mäuse. Sie können die Computerbedienung bei motorischen oder Sehbeeinträchtigungen erleichtern.'),
+(39, 'Computersteuerungssoftware', 'Computersteuerungssoftware kann über alternative Eingabemethoden die Navigation an Computern und Tablets erleichtern.'),
+(40, 'Dokumentenscanner', 'Dokumentenscanner digitalisieren gedruckte Texte und Bilder, um sie am Computer weiterzuverarbeiten. Sie ermöglichen das Erfassen von Texten in hoher Qualität und Gescannte Dokumente können mit der Texterkennung (OCR) bearbeitet und als PDF-Dokumente gespeichert werden.'),
+(41, 'Drucker', 'Spezielle Drucker können taktil erfassbare Ausdrucke von digitalen Dokumenten erstellen, die in verschiedenen Formaten und Materialien weiterverarbeitet werden können.'),
+(44, 'KI-unterstützte assistive Technologien', 'Künstliche Intelligenz, die immer häufiger auf Plattformen und in Software integriert wird, kann assistive Funktionen z. B. beim Lesen und Schreiben übernehmen. KI-unterstützte assistive Technologien umfassen spezielle Anwendungen, die für bestimmte Bedarfe entwickelt wurden, wie APPs, die Menschen mit Sehbeeinträchtigung Bilder beschreiben und beim Erkennen der Umgebung unterstützen. Allgemeine KI-Anwendungen und Funktionen können die Spracherkennung und -steuerung verbessern sowie die Wahrnehmung von Inhalten durch die Adaption der Darstellung unterstützen und beim Schreiben von Texten assistieren.'),
+(45, 'Texterkennungssoftware', 'Texterkennungssoftware, auch OCR-Software (Optical Character Recognition) genannt, erkennt Texte in gescannten Dokumenten und wandelt sie in eine maschinenlesbare digitale Form um.'),
+(46, 'Screenreader', 'Ein Screenreader ist eine Sprachausgabe-Software, die den Bildschirminhalt für blinde oder stark sehbeeinträchtigte Personen zugänglich macht, indem sie Texte, Menüs und Bedienelemente vorliest oder in Brailleschrift auf einer Braillezeile ausgibt. Die Personen steuern mit Screenreadern den Computer. Für Windows sind JAWS und NVDA die meist genutzten Screenreader. Daneben wird unter Windows auch der integrierte Narrator verwendet. iOS verfügt mit VoiceOver über eine eigene Sprachausgabe Software. Auf Android-Geräten wird der Screenreader TalkBack verwendet. Auf Smartphones oder Tablets werden spezielle Gesten für die Nutzung mit dem Screenreadern Voice Over oder Talkback verwendet.'),
+(47, 'Spracheingabesoftware', 'Spracheingabesoftware wandelt gesprochene Sprache in Text oder Befehle um. Sie erlaubt die Steuerung von Computern und das Verfassen von Dokumenten durch Sprachkommandos. Spracheingabesoftware kann bei motorischen Beeinträchtigungen eine effiziente Eingabe Möglichkeit sein.'),
+(49, 'Vergrößerungshilfen', 'Vergrößerungshilfen umfassen Geräte wie Lupen oder Kamerasysteme, die gedruckte Inhalte optisch vergrößern. Sie werden genutzt, um Texte, Bilder oder Objekte stark zu vergrößern. Die so vergrößerten Objekte können dann digitalisiert und mit einer integrierten Bildverarbeitungssoftware verarbeitet werden.'),
+(50, 'Vergrößerungssoftware', 'Vergrößerungssoftware skaliert digitale Inhalte, um Details besser sichtbar zu machen. Sie kann Texte, Symbole und Grafiken auf dem Bildschirm vergrößern und Funktionen wie Kontrastanpassung oder Texthervorhebung bieten.'),
+(52, 'Vorlesesoftware und Screenreader', 'Vorlesesoftware gibt digitale Texte in gesprochener Sprache wieder. Sie liest digitale Inhalte aus Dokumenten, Webseiten oder E-Mails vor und kann individuell angepasst werden (z. B. Sprachgeschwindigkeit und Stimmauswahl). Vorlesesoftware kann in der Regel nur digitale Textinhalte auf Webseiten oder in Dokumenten vorlesen. Demgegenüber kann ein Screenreader auch Bedienelemente vorlesen und bei der Navigation auf semantische Auszeichnungen zugreifen. Dementsprechend richtet sich Vorlesesoftware an Menschen mit Problemen beim Lesen und eine Screenreader-Software an blinde Nutzerinnen.'),
+(56, 'Weitere Hilfsmittel für Sehbeeinträchtigung', 'Diese Produkte bieten Unterstützung für Studierende mit Sehbeeinträchtigung, etwa durch die Verbesserung von Sichtbedingungen an Computerarbeitsplätzen. Ein Beispiel hierfür ist der blendfreie Monitor mit Lichtschutzhaube, der Blendungen durch den Bildschirm vermeidet.'),
+(58, 'Weitere Hilfsmittel für Teilleistungsstörung', 'Für Studierende mit Teilleistungsstörungen bieten Produkte wie Gehörschutz und Gewichtswesten Unterstützung, um Ablenkungen zu minimieren und die Konzentration zu fördern.'),
+(64, 'Taktile Medien', 'Beschreibung folgt.'),
+(65, 'Korrekturhilfen', 'Korrekturhilfen können bei der Formulierung und korrekten Rechtschreibung von Texten unterstützen. Sie sind integraler Bestandteil von Office-Software, können als eigene Programme Texte prüfen und verbessern oder als Add-on in Browser und Office Programmen eingebunden werden.'),
+(66, 'Audiotranskription und Untertitelung', 'Produkte zur Audiotranskription wandeln gesprochene Sprache in Text um. In der Regel können viele Plattformen und Softwarelösungen sowohl Transkripte als auch Untertiteldateien erzeugen. Mit spezieller Untertitelsoftware wie Subtitle Edit können mit der Integration von Whisper Untertitel für Video generiert und gestaltet werden. Live-Untertitel können während Lehrveranstaltungen unter anderem mit Microsoft Office 365 erzeugt werden. Videokonferenzsysteme wie Zoom und Webex bieten ebenfalls automatisch erzeugte Untertitel an.');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `university`
+--
+
+CREATE TABLE `university` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `contactURL` varchar(2048) DEFAULT NULL,
+  `contactAlt` varchar(200) DEFAULT NULL,
+  `workspaces` varchar(500) DEFAULT NULL,
+  `division` varchar(500) DEFAULT NULL,
+  `contactName` char(100) DEFAULT NULL,
+  `phoneNumber` char(20) DEFAULT NULL,
+  `phoneAlt` char(20) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Daten für Tabelle `university`
+--
+
+INSERT INTO `university` (`id`, `name`, `contactURL`, `contactAlt`, `workspaces`, `division`, `contactName`, `phoneNumber`, `phoneAlt`, `email`) VALUES
+(1, 'Bergische Universität Wuppertal', 'https://www.inklusion.uni-wuppertal.de/de/kontakt/', 'Link: Beratungsstelle zur Inklusion bei Behinderung oder chronischer Erkrankung der Bergische Universität Wuppertal', 'In der Bibliothek, separater Lernraum / Ruheraum (von Beratungsstelle Inklusion, reizreduzierte Arbeitsumgebung vorhanden), Beratungsstelle Inklusion (Ausleihe), ZIM Geräteausleihe.', 'Beauftragter für Studierende mit Behinderung oder chronischer Erkrankung', 'Dr. Andreas Kotthaus', '+492024392607', '0202-439-2607', 'inklusion@uni-wuppertal.de'),
+(2, 'FH Aachen', 'https://www.fh-aachen.de/studium/studieren/unterstuetzung-fuer-studierende/studieren-mit-beeintraechtigung', 'Link: Studieren mit Beeinträchtigung der FH Aachen', 'Keine Angaben vorhanden.', 'Hochschulleitung - Prorektorin für Diversity und Chancengerechtigkeit - Referentin Prorektorin Diversity und Chancengerechtigkeit', 'Thi Luong', '+49241600951381', '0241 600951381', 'luong@fh-aachen.de'),
+(3, 'FH Dortmund', 'https://www.fh-dortmund.de/studieren/beratung/zentrale-beratungsstellen/barrierefrei-studieren.php', 'Link: Barrierefrei studieren der FH Dortmund', 'Reizreduzierte Arbeitsumgebung vorhanden, höhenverstellbare Tische vorhanden.', 'Arbeitsstelle Digitale Barrierefreiheit in Studium und Lehre', 'Wolfgang Schmidt-Sielex, Dipl.-Inform.', '+4923191128324', '0231 91128324', 'wolfgang.schmidt-sielex@fh-dortmund.de'),
+(4, 'FH Münster\r\n', 'https://www.fh-muenster.de/studium/studienberatung/zsb/Kontakt-zsb.php', 'Link: Team der Zentralen Studienberatung (ZSder FH Münster\r\n', 'Reizreduzierte Arbeitsumgebung vorhanden\r\n', 'Projekt Inklusive Hochschule', 'Rieke Becker', '+492518364124', '0251 83-64123', 'Inklusion@fh-muenster.de'),
+(5, 'FH Südwestfalen', 'https://www.fh-swf.de/de/studierende/ansprechpartner_1/studium_und_behinderung/studium_und_behinderung_1.php', 'Link: Studium und Behinderung der FH Südwestfalen', 'Höhenverstellbare Tische vorhanden', 'Studium mit Behinderung oder chronischer Erkrankung und Nachteilsausgleiche bei Prüfungen', 'Sonja Elbe', '+4923715661742', '02371 566 1742', 'elbe.sonja@fh-swf.de'),
+(6, 'FernUniversität Hagen', 'https://www.fernuni-hagen.de/zli/services/lehren-ohne-barrieren/index.shtml', 'Link: Lehren ohne Barrieren - FernUniversität Hagen', 'Keine Hilfsmittel vorhanden (Anschaffung bei Bedarf möglich, bitte Beratungsstelle kontaktieren.', 'Hochschulbeauftragte für Studierende mit Behinderung und/oder chronischer Erkrankung', 'Anja Friebel und Kristin Wünsche', '+4923319871527', '02331 987-1527', 'beratung-barrierefrei@fernuni-hagen.de'),
+(7, 'Heinrich-Heine-Universität Düsseldorf', 'https://www.hhu.de/bbst/das-team-der-bbst', 'Link: Das Team der Beratungsangebote und Services der BBST der Heinrich Heine Universität Düsseldorf', 'in der Bibliothek (reizreduzierte Arbeitsumgebung vorhanden), höhenverstellbare Tische vorhanden', 'Leitung der Beratungsstelle für Studierende mit Behinderung oder chronischer Erkrankung (BBST)', 'Lydia Schmidt M. A.', '+492118115005', '0211 81-15005', 'bbst@hhu.de'),
+(8, 'Hochschule Bielefeld', 'https://www.hsbi.de/beauftragte-fuer-studierende-mit-handicap', 'Link: Beauftragte für Studierende mit Behinderungen und chronischen Krankheiten der Hochschule Bielefeld', 'Keine Angaben vorhanden', 'Referentin der Leitung Datenverarbeitungszentrale', 'Anna Culjak', '+4952110670572', '0521.106-70572', 'anna.culjak@fh-bielefeld.de'),
+(9, 'Hochschule Bochum', 'https://www.hochschule-bochum.de/inklusion/', 'Link: Inklusive Hochschule der Hochschule Bochum', 'in der Bibliothek, höhenverstellbare Tische vorhanden', 'Dezernat 4 / Mitarbeiter InklusionsPartner, Stellv. Beauftragter für Studierende mit Schwerbehinderung und chronischer Erkrankung sowie Vertrauensperson Schwerbehinderte', 'Benjamin Thomas', '+492343210629', '0234 3210629', 'benjamin.thomas@hs-bochum.de'),
+(10, 'Hochschule Düsseldorf', 'https://www.hs-duesseldorf.de/hochschule/verwaltung/diversity/arbeitsstelle-barrierefreies-studium', 'Link: Arbeitsstelle Barrierefreies Studium der Hochschule Düsseldorf', 'in der Bibliothek / Computerpool', 'Beauftragter für die Belange von Studierenden mit Behinderung und chronischen Erkrankungen', 'Björn Brünink', '+4921143518970', '0 211 4351-8970', 'bjoern.bruenink@hs-duesseldorf.de'),
+(11, 'Hochschule für Musik Detmold', 'https://www.hfm-detmold.de/studium/studierendenservice/studienberatung/', 'Link: Studienberatung der Hochschule für Musik Detmold', 'In der Bibliothek, Lerntreff, spezifischer Arbeitsraum im Erdgeschoss der Musikbibliothek, höhenverstellbare Tische vorhanden', 'Musikermedizinische Einzelberatung', 'Prof. Dr. med. Anna-Maria Addicks', '+495231975824', '05231 975 824', 'anna-maria.addicks@hfm-detmold.de'),
+(12, 'Hochschule für Musik und Tanz Köln', 'https://www.hfmt-koeln.de/informationen-fuer/studierende/service-beratung/psychische-und-physische-gesundheit/', 'Link: Psychische und physiche Gesundheit der Hochschule für Musik und Tanz Köln', 'Keine Angaben vorhanden', 'Leitung Dezernat 2 Studium und Lehre ', 'Kristina Preis', '+4922128380120', '0221-28380-120', 'kristina.preis@hfmt-koeln.de'),
+(13, 'Hochschule Niederrhein', 'https://www.hs-niederrhein.de/studieren-mit-beeintraechtigung/', 'Link: Studium mit Beeinträchtigung an der Hochschule Niederrhein', 'Keine Angaben vorhanden\r\n', 'Beauftragte für die Belange behinderter und chronisch kranker Studierender der Hochschule Niederrhein', ' Eva Malecha-Konietz, M. A.', '+491757577303', '0175 7577 303', 'Eva.Malecha(at)hs-niederrhein.de'),
+(14, 'Hochschule Rhein-Waal', 'https://www.hochschule-rhein-waal.de/de/studium/studierende/zentrale-studienberatung/studierende-mit-behinderung-oder-chronischer-erkrankung', 'Link: Studieren mit Behinderung oder chronischer Erkrankung der Hochschule Rhein-Waal', 'Keine Angaben vorhanden', 'Leitung Abteilung Lehrinnovationen & E-Learning', 'Birte Heidkamp-Kergel', '+492842908259726', '02842/90825 9726', 'birte.heidkamp@hochschule-rhein-waal.de'),
+(15, 'Kunst Akademie Düsseldorf', 'https://www.kunstakademie-duesseldorf.de/de/akademie/100-organisation/178-beauftragte#:~:text=Beauftragte%20f%C3%BCr%20Studierende%20mit%20Behinderung,Gunsten%20geltenden%20Rechtsvorschriften%20beachtet%20werden.', 'Linlk: Organisation - Beauftragte für Studierende mit Behinderung/chronischer Erkrankung der Kunst Akademie Düsseldorf', 'Keine Angaben vorhanden', '1. Beauftragte für Studierende mit Behinderung/chronischer Erkrankung\n2. Hauptschwerbehindertenvertretung der Kunst-und Musikhochschulen und sonstigen Einrichtungen des MKW des Landes NRW', 'Sarah Wiesmann', '+492111396271', '0211/1396-271', '1. wiesmann@kunstakademie-duesseldorf.de\r\n2. mennewisch.hsv@hfmt-koeln.de'),
+(16, 'Rheinische Friedrich-Wilhelms-Universität Bonn', 'https://www.uni-bonn.de/de/studium/beratung-und-service/studieren-mit-handicap/studieren-mit-handicap', 'Link: Studium INKLUSIV Studieren mit Behinderung oder chronischer Erkrankung der Rheinische Friedrich-Wilhelms-Universität Bonn', 'Arbeitsplatz für Studierende mit Sehbehinderung\r\nAVZ I, Endenicher Allee 11-13, 2. OG, Raum 2.003 \r\n\r\nRuhe- und Rückszugsraum / Lern- und Prüfungsraum\r\nAVZ I, Endenicher Allee 11-13, 2. OG, Raum 2.004', 'Beauftragte für Studierende mit Behinderung ', 'Marion Becker', '+49228737306', '0228 73-7306', 'studierenmithandicap@uni-bonn.de'),
+(17, 'Robert Schumann Hochschule Düsseldorf', 'https://www.rsh-duesseldorf.de/musikhochschule/personen/studierende-mit-behinderung', 'Link: Beauftragte für Studierende mit Behinderung oder chronischer Erkrankung der Robert Schumann Hochschule Düsseldorf', 'in der Bibliothek (reizreduzierte Arbeitsumgebung vorhanden)', 'Dezernat Akademische und studentische Angelegenheiten', 'Theresa Braun', '+492114918102', '0211 4918 102', 'theresa.braun@rsh-duesseldorf.de'),
+(18, 'RWTH Aachen', 'https://www.rwth-aachen.de/cms/root/studium/Beratung-Hilfe/Studium-mit-Handicap/~kckp/Beauftragte-fuer-inklusives-Studium/?allou=1', 'Link Beauftragte für inklusives Studium der RWTH Aachen', 'Keine Angaben vorhanden', 'Beauftragte für inklusives Studium', 'Lena Schulte', '+492418097871', '0241 80-97871', 'lena.schulte@bis.rwth-aachen.de'),
+(19, 'Technische Hochschule Ostwestfalen-Lippe', 'https://www.th-owl.de/hochschule/organisation/schwerbehindertenvertretung/', 'Link: Schwerbehindertenvertretung der Technische Hochschule Ostwestfalen-Lippe', 'Keine Angaben vorhanden', 'Technische Betreuung der Lernplattform eCampus (ILIAS)', 'Jan Rademaker', '+4952617025710', '05261 - 702 5710', 'jan.rademaker@th-owl.de'),
+(20, 'TH Köln', 'https://www.th-koeln.de/studium/studieren-mit-beeintraechtigung_169.php', 'Studieren mit Beeinträchtigung, chronischer oder psychischer Erkrankung der TH Köln', 'Höhenverstellbare Tische vorhanden', 'Beauftragte für Studierende mit Beeinträchtigung', 'Nadine Fischer', '+4922182753248', '0221-8275-3248', 'nadine.fischer@th-koeln.de'),
+(21, 'TU Dortmund', 'https://dobus.zhb.tu-dortmund.de/dobus/', 'Link: DoBuS der TU Dortmund', 'im Arbeitsraum, in der Bibliothek, höhenverstellbare Tische vorhanden', 'Beratung und Unterstützung von Studierenden bei der Nutzung der Assistiven Technologien', 'Marion Burghoff', '+492317555888', '0231 755-5888', 'marion.burghoff@tu-dortmund.de'),
+(22, 'Universität Bielefeld', 'https://www.uni-bielefeld.de/einrichtungen/zab/studierende/index.xml', 'Link:Zentrale Anlaufstelle Barrierefrei (ZAder Universität Bielefeld', 'Arbeitsräume der Zentralen Anlaufstelle Barrierefrei - ZAB, höhenverstellbare Tische vorhanden', 'Beauftragter für Studierende mit Behinderung oder chronischer Erkrankung', 'Michael Johannfunke', '+4952110612600', '0521-106-12600', 'zab@uni-bielefeld.de'),
+(23, 'Universität Duisburg-Essen', 'https://www.uni-due.de/inklusionsportal/studierende.php', 'Link: Bereich Studium und Inklusion der Universität Duisburg-Essen\r\n', 'in der Bibliothek (reizreduzierte Arbeitsumgebung vorhanden)', 'Beratung bei Behinderung und chronischer Erkrankung im Studium', 'Verena Herwig', '+492011833794', ' 0201 18 – 33794', '1.verena.herwig@uni-due.de\n2. inklusionsberatung@uni-due.org'),
+(24, 'Universität Münster', 'https://www.uni-muenster.de/studium/hilfeundberatung/studiummitbeeintraechtigung/index.html', 'Link: Studium mit Beeinträchtigung der Universität Münster', 'Keine Angaben vorhanden', 'Koordinierungsstelle Studium mit Beeinträchtigung', 'Tobias Grunwald', '+492518322015', '0251 83-22015', 'tobias.grunwald@uni-muenster.de '),
+(25, 'Universität Paderborn', 'https://zsb.uni-paderborn.de/studium-mit-beeintraechtigung', 'Link: Beratung zum Studium mit Beeinträchtigung (Smder Universität Paderborn', 'in der Bibliothek, Lerntreff, aktuell wird ein spezifischer Arbeitsraum aufgebaut.', 'ZS - Servicestelle Studium mit Beeinträchtigung', 'Kathrin Weber', '+495251605498', '05251 60-5498', '1. kathrin.weber@upb.de \n2. s-m-b@upd.de'),
+(26, 'Universität Siegen', 'https://inklusive.uni-siegen.de/buero/', 'Link: Servicebüro Inklusive Universität Siegen', 'Keine Angaben vorhanden', 'Behindertenbeauftragte', 'Dr. Sonja Weber-Menges', '+492717404233', '0271 740 -4233', 'behindertenberatung@uni-siegen.de'),
+(27, 'Universität zu Köln', 'https://inklusion.uni-koeln.de/beauftragte_fuer_studierende_mit_behinderung_oder_chronischer_erkrankung/index_ger.html#:~:text=Seit%20dem%2001.04.2020%20wird,und%20seiner%20Stellvertreterin%20Frau%20Prof.', 'Link: Beauftragte für Studierende mit Behinderung oder chronischer Erkrankung der Universität zu Köln', 'Reizreduzierte Arbeitsumgebung vorhanden', 'Inklusionsberatung', '1. Frieder Schumann\n2. Hannah Scherer', '+492214707716', '0221 470-7716', '1. f.schumann@verw.uni-koeln.de\n2. h.scherer@verw.uni-koeln.de'),
+(28, 'Westfälische Hochschule', 'https://www.w-hs.de/inklusion-beratung/', 'Link: Beratung für Studierende mit Behinderungen und chronischen Krankheiten der Westfälische Hochschule', 'In der Bibliothek (reizreduzierte Arbeitsumgebung vorhanden), höhenverstellbare Tische vorhanden', 'Psychologische Studienberatung', 'Dipl. Päd. Leila Mesaros', '+492099596957', '0209 9596-957', 'leila.mesaros@w-hs.de');
 
 -- --------------------------------------------------------
 
@@ -467,6 +1191,102 @@ INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_
 --
 
 --
+-- Indizes für die Tabelle `additionallink`
+--
+ALTER TABLE `additionallink`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `aidswithdisability`
+--
+ALTER TABLE `aidswithdisability`
+  ADD PRIMARY KEY (`impairmentId`,`categoryId`) USING BTREE,
+  ADD KEY `fk_aidsWithDisabilty_disability` (`impairmentId`) USING BTREE,
+  ADD KEY `fk_aidsWithDisability_productCategory` (`categoryId`) USING BTREE;
+
+--
+-- Indizes für die Tabelle `aidswithlimitation`
+--
+ALTER TABLE `aidswithlimitation`
+  ADD PRIMARY KEY (`impairmentId`,`categoryId`) USING BTREE,
+  ADD KEY `fk_aidsWithLimitation_functionalLimitation` (`impairmentId`) USING BTREE,
+  ADD KEY `fk_aidsWithLimitation_productCategory` (`categoryId`) USING BTREE;
+
+--
+-- Indizes für die Tabelle `availability`
+--
+ALTER TABLE `availability`
+  ADD PRIMARY KEY (`universityId`,`productId`) USING BTREE,
+  ADD KEY `fk_availability_product` (`productId`),
+  ADD KEY `fk_availability_university` (`universityId`);
+
+--
+-- Indizes für die Tabelle `categoryofproduct`
+--
+ALTER TABLE `categoryofproduct`
+  ADD PRIMARY KEY (`categoryId`,`productId`) USING BTREE,
+  ADD KEY `fk_categoryOfProduct_assistiveTechnologyCategory` (`categoryId`),
+  ADD KEY `fk_categoryOfProduct_product` (`productId`);
+
+--
+-- Indizes für die Tabelle `consultant`
+--
+ALTER TABLE `consultant`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_university` (`universityId`);
+
+--
+-- Indizes für die Tabelle `disability`
+--
+ALTER TABLE `disability`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_disability_category` (`categoryId`);
+
+--
+-- Indizes für die Tabelle `disabilitycategory`
+--
+ALTER TABLE `disabilitycategory`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `functionallimitation`
+--
+ALTER TABLE `functionallimitation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `linkforaid`
+--
+ALTER TABLE `linkforaid`
+  ADD PRIMARY KEY (`aidId`,`linkId`),
+  ADD KEY `fk_link_aid` (`linkId`);
+
+--
+-- Indizes für die Tabelle `linkfordisability`
+--
+ALTER TABLE `linkfordisability`
+  ADD PRIMARY KEY (`disabilityId`,`linkId`),
+  ADD KEY `fk_link_disability` (`linkId`);
+
+--
+-- Indizes für die Tabelle `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `productcategory`
+--
+ALTER TABLE `productcategory`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `university`
+--
+ALTER TABLE `university`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indizes für die Tabelle `wp_commentmeta`
 --
 ALTER TABLE `wp_commentmeta`
@@ -571,6 +1391,54 @@ ALTER TABLE `wp_users`
 --
 
 --
+-- AUTO_INCREMENT für Tabelle `additionallink`
+--
+ALTER TABLE `additionallink`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT für Tabelle `consultant`
+--
+ALTER TABLE `consultant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT für Tabelle `disability`
+--
+ALTER TABLE `disability`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT für Tabelle `disabilitycategory`
+--
+ALTER TABLE `disabilitycategory`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT für Tabelle `functionallimitation`
+--
+ALTER TABLE `functionallimitation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT für Tabelle `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
+--
+-- AUTO_INCREMENT für Tabelle `productcategory`
+--
+ALTER TABLE `productcategory`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+
+--
+-- AUTO_INCREMENT für Tabelle `university`
+--
+ALTER TABLE `university`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
 -- AUTO_INCREMENT für Tabelle `wp_commentmeta`
 --
 ALTER TABLE `wp_commentmeta`
@@ -635,6 +1503,64 @@ ALTER TABLE `wp_usermeta`
 --
 ALTER TABLE `wp_users`
   MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints der exportierten Tabellen
+--
+
+--
+-- Constraints der Tabelle `aidswithdisability`
+--
+ALTER TABLE `aidswithdisability`
+  ADD CONSTRAINT `fk_aidsWithDisability_assistiveTechnologyCategory` FOREIGN KEY (`categoryId`) REFERENCES `productcategory` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_aidsWithDisabilty_disability` FOREIGN KEY (`impairmentId`) REFERENCES `disability` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints der Tabelle `aidswithlimitation`
+--
+ALTER TABLE `aidswithlimitation`
+  ADD CONSTRAINT `fk_aidsWithLimitation_assistiveTechnologyCategory` FOREIGN KEY (`categoryId`) REFERENCES `productcategory` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_aidsWithLimitation_functionalLimitation` FOREIGN KEY (`impairmentId`) REFERENCES `functionallimitation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints der Tabelle `availability`
+--
+ALTER TABLE `availability`
+  ADD CONSTRAINT `fk_availability_product` FOREIGN KEY (`productId`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_availability_university` FOREIGN KEY (`universityId`) REFERENCES `university` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints der Tabelle `categoryofproduct`
+--
+ALTER TABLE `categoryofproduct`
+  ADD CONSTRAINT `fk_categoryOfProduct_assistiveTechnologyCategory` FOREIGN KEY (`categoryId`) REFERENCES `productcategory` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_categoryOfProduct_product` FOREIGN KEY (`productId`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints der Tabelle `consultant`
+--
+ALTER TABLE `consultant`
+  ADD CONSTRAINT `fk_university` FOREIGN KEY (`universityId`) REFERENCES `university` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints der Tabelle `disability`
+--
+ALTER TABLE `disability`
+  ADD CONSTRAINT `fk_disability_category` FOREIGN KEY (`categoryId`) REFERENCES `disabilitycategory` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints der Tabelle `linkforaid`
+--
+ALTER TABLE `linkforaid`
+  ADD CONSTRAINT `fk_aid` FOREIGN KEY (`aidId`) REFERENCES `productcategory` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_link_aid` FOREIGN KEY (`linkId`) REFERENCES `additionallink` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints der Tabelle `linkfordisability`
+--
+ALTER TABLE `linkfordisability`
+  ADD CONSTRAINT `fk_disability` FOREIGN KEY (`disabilityId`) REFERENCES `disabilitycategory` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_link_disability` FOREIGN KEY (`linkId`) REFERENCES `additionallink` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
